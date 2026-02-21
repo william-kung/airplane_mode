@@ -1,0 +1,64 @@
+{
+ "actions": [],
+ "autoname": "Format: {airline}-{model}",
+ "creation": "2026-02-20 15:09:52.791117",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "model",
+  "airline",
+  "capacity"
+ ],
+ "fields": [
+  {
+   "fieldname": "model",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Model",
+   "reqd": 1
+  },
+  {
+   "fetch_from": "Airline",
+   "fieldname": "airline",
+   "fieldtype": "Link",
+   "label": "Airline",
+   "options": "Airline",
+   "reqd": 1
+  },
+  {
+   "fieldname": "capacity",
+   "fieldtype": "Int",
+   "label": "Capacity",
+   "non_negative": 1,
+   "reqd": 1
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2026-02-21 14:59:04.305454",
+ "modified_by": "Administrator",
+ "module": "Airplane Mode",
+ "name": "Airplane",
+ "naming_rule": "Expression",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": []
+}
