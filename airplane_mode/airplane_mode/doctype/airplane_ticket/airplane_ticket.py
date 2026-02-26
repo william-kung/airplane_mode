@@ -2,39 +2,45 @@
 # For license information, please see license.txt
 
 import frappe
+from frappe import _
 from frappe.model.document import Document
+from frappe.utils import flt
 
 
 class AirplaneTicket(Document):
 	def validate(self):
+		self.process_add_ons()
+
+	def on_submit(self):
+		self.only_submit_boarded()
+
+	def process_add_ons(self):
+		seen_names = set()
+		unique_items = []
 		total_add_on_amount = 0
-		clean_list = remove_duplicate(self)
-		has_duplicate(clean_list, self)
-		for i in clean_list:
-			total_add_on_amount += i.amount
-		self.total_amount = self.flight_price + total_add_on_amount
+		has_duplicates = False
 
+		for d in self.add_ons:
+			if d.item not in seen_names:
+				seen_names.add(d.item)
+				unique_items.append(d)
+				total_add_on_amount += d.amount
+			else:
+				has_duplicates = True
 
-def remove_duplicate(self):
-	items = self.add_ons
-	seen_names = set()
-	unique_items = []
+		# Update the document if duplicates were found
+		if has_duplicates:
+			self.add_ons = unique_items
+			frappe.msgprint(
+				msg=_("Duplicated items were identified and removed."),
+				title=_("Notice"),
+				indicator="blue",
+			)
 
-	for i in items:
-		if i.item not in seen_names:
-			unique_items.append(i)
-			seen_names.add(i.item)
-	print(unique_items)
+		# Final calculation
+		self.total_amount = flt(self.flight_price) + flt(total_add_on_amount)
 
-	return unique_items
-
-
-def has_duplicate(clean_list, self):
-	if len(clean_list) < len(self.add_ons):
-		self.add_ons = clean_list
-
-		frappe.msgprint(
-			msg="Duplicated items are removed.",
-			title="Notice",
-			indicator="blue",
-		)
+	def only_submit_boarded(self):
+		if self.status != "Boarded":
+			frappe.throw(_("The status must be Boarded before submission."))
+		pass
