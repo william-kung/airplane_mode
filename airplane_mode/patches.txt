@@ -4,3 +4,6 @@
 
 [post_model_sync]
 # Patches added in this section will be executed after doctypes are migrated
+airplane_mode.airplane_mode.patches.rename_flight_tickets 
+airplane_mode.airplane_mode.patches.refactor_flights
+airplane_mode.airplane_mode.patches.populate_seats

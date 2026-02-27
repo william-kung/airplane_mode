@@ -6,4 +6,5 @@ from frappe.model.document import Document
 
 
 class AirplaneFlight(Document):
+	# TODO: Set the Status field of the Airplane Flight DocType to Completed after the document is submitted.
 	pass

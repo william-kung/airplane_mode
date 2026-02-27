@@ -132,14 +132,12 @@
   },
   {
    "fieldname": "charges_section",
-   "fieldtype": "Section Break",
-   "label": "Charges"
+   "fieldtype": "Section Break"
   },
   {
    "fieldname": "flight_price",
    "fieldtype": "Currency",
-   "label": "Flight Price",
-   "reqd": 1
+   "label": "Flight Price"
   },
   {
    "fieldname": "total_amount",
@@ -150,6 +148,7 @@
   {
    "fieldname": "seat",
    "fieldtype": "Data",
+   "in_list_view": 1,
    "label": "Seat"
   },
   {
@@ -173,7 +172,7 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2026-02-27 09:42:58.655863",
+ "modified": "2026-02-27 17:37:25.073161",
  "modified_by": "Administrator",
  "module": "Airplane Mode",
  "name": "Airplane Ticket",
