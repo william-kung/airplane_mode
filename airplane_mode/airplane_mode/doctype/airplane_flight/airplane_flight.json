@@ -10,7 +10,11 @@
   "date_of_departure",
   "time_of_departure",
   "duration",
-  "status"
+  "status",
+  "source_airport",
+  "destination_airport",
+  "source_airport_code",
+  "destination_airport_code"
  ],
  "fields": [
   {
@@ -45,12 +49,40 @@
    "fieldtype": "Select",
    "label": "Status",
    "options": "Scheduled\nCompleted\nCancelled"
+  },
+  {
+   "fieldname": "source_airport",
+   "fieldtype": "Link",
+   "label": "Source Airport",
+   "options": "Airport",
+   "reqd": 1
+  },
+  {
+   "fieldname": "destination_airport",
+   "fieldtype": "Link",
+   "label": "Destination Airport",
+   "options": "Airport",
+   "reqd": 1
+  },
+  {
+   "fetch_from": "source_airport.code",
+   "fieldname": "source_airport_code",
+   "fieldtype": "Data",
+   "label": "Source Airport Code",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "destination_airport.code",
+   "fieldname": "destination_airport_code",
+   "fieldtype": "Data",
+   "label": "Destination Airport Code",
+   "read_only": 1
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2026-02-26 23:53:59.890572",
+ "modified": "2026-02-27 09:20:35.143486",
  "modified_by": "Administrator",
  "module": "Airplane Mode",
  "name": "Airplane Flight",

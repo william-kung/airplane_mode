@@ -14,7 +14,7 @@
  "label": "Airplane Mode",
  "link_type": "DocType",
  "links": [],
- "modified": "2026-02-26 13:56:43.172927",
+ "modified": "2026-02-27 09:36:49.924007",
  "modified_by": "Administrator",
  "module": "Airplane Mode",
  "name": "Airplane Mode",
@@ -25,7 +25,14 @@
  "quick_lists": [],
  "roles": [],
  "sequence_id": 2.0,
- "shortcuts": [],
+ "shortcuts": [
+  {
+   "doc_view": "Report Builder",
+   "label": "Airplane Tickets",
+   "link_to": "Airplane Ticket",
+   "type": "DocType"
+  }
+ ],
  "title": "Airplane Mode",
  "type": "Workspace"
 }

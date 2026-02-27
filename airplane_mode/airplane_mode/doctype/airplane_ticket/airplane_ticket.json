@@ -8,24 +8,25 @@
  "engine": "InnoDB",
  "field_order": [
   "passenger",
-  "source_airport",
-  "source_airport_code",
-  "seat",
+  "status",
   "column_break_tswi",
   "flight",
-  "destination_airport",
+  "seat",
+  "section_break_khpz",
+  "source_airport_code",
+  "column_break_zztr",
   "destination_airport_code",
+  "add_ons_section",
+  "add_ons",
+  "charges_section",
+  "flight_price",
+  "column_break_kisa",
+  "total_amount",
   "departure_details_section",
   "departure_date",
   "departure_time",
   "column_break_ibcq",
   "duration_of_flight",
-  "status",
-  "add_ons_section",
-  "add_ons",
-  "charges_section",
-  "flight_price",
-  "total_amount",
   "section_break_cncb",
   "amended_from"
  ],
@@ -39,21 +40,12 @@
    "reqd": 1
   },
   {
-   "fetch_from": "flight.source_airport",
-   "fieldname": "source_airport",
-   "fieldtype": "Data",
-   "label": "Source Airport",
-   "options": "Airport",
-   "reqd": 1
-  },
-  {
    "fetch_from": "flight.source_airport_code",
    "fieldname": "source_airport_code",
    "fieldtype": "Data",
    "in_list_view": 1,
    "label": "Source Airport Code",
-   "read_only": 1,
-   "reqd": 1
+   "read_only": 1
   },
   {
    "fieldname": "column_break_tswi",
@@ -67,21 +59,12 @@
    "reqd": 1
   },
   {
-   "fetch_from": "flight.destination_airport",
-   "fieldname": "destination_airport",
-   "fieldtype": "Data",
-   "label": "Destination Airport",
-   "options": "Airport",
-   "reqd": 1
-  },
-  {
    "fetch_from": "flight.destination_airport_code",
    "fieldname": "destination_airport_code",
    "fieldtype": "Data",
    "in_list_view": 1,
    "label": "Destination Airport Code",
-   "read_only": 1,
-   "reqd": 1
+   "read_only": 1
   },
   {
    "fieldname": "amended_from",
@@ -167,19 +150,30 @@
   {
    "fieldname": "seat",
    "fieldtype": "Data",
-   "label": "Seat",
-   "read_only": 1
+   "label": "Seat"
   },
   {
    "fieldname": "section_break_cncb",
    "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "section_break_khpz",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "column_break_zztr",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_kisa",
+   "fieldtype": "Column Break"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2026-02-26 22:24:13.051521",
+ "modified": "2026-02-27 09:42:58.655863",
  "modified_by": "Administrator",
  "module": "Airplane Mode",
  "name": "Airplane Ticket",
