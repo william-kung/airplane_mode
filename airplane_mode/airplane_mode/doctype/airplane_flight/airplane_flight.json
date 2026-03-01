@@ -22,7 +22,9 @@
   "column_break_pixt",
   "time_of_departure",
   "amended_from",
+  "section_break_zffv",
   "is_published",
+  "column_break_dhxo",
   "route"
  ],
  "fields": [
@@ -126,12 +128,20 @@
    "description": "Publish to web form?",
    "fieldname": "is_published",
    "fieldtype": "Check",
-   "label": "Publish"
+   "label": "Is published"
   },
   {
    "fieldname": "route",
    "fieldtype": "Data",
    "label": "Route"
+  },
+  {
+   "fieldname": "section_break_zffv",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "column_break_dhxo",
+   "fieldtype": "Column Break"
   }
  ],
  "grid_page_length": 50,
@@ -145,7 +155,7 @@
    "link_fieldname": "flight"
   }
  ],
- "modified": "2026-02-28 10:59:12.394773",
+ "modified": "2026-02-28 17:42:33.916063",
  "modified_by": "Administrator",
  "module": "Airplane Mode",
  "name": "Airplane Flight",
@@ -165,7 +175,7 @@
    "write": 1
   }
  ],
- "route": "route",
+ "route": "flights",
  "row_format": "Dynamic",
  "rows_threshold_for_grid_search": 20,
  "sort_field": "creation",
