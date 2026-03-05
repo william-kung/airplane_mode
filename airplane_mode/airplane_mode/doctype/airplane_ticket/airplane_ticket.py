@@ -7,9 +7,11 @@ import frappe
 from frappe import _
 from frappe.model.document import Document
 from frappe.utils import flt
+from frappe.model.naming import getseries
 
 
 class AirplaneTicket(Document):
+
 	def validate(self):
 		self.process_add_ons()
 
@@ -18,6 +20,31 @@ class AirplaneTicket(Document):
 
 	def before_insert(self):
 		self.assign_seat()
+
+	def on_update(self):
+		if self.get_doc_before_save():
+			old_doc = self.get_doc_before_save() 
+			if old_doc.flight != self.flight:
+				self.prefix()
+				index = getseries(self.prefix, 3)
+				new_name = f"{self.prefix}{index}"
+				frappe.rename_doc(self.doctype, old_doc.name, new_name)
+
+	def autoname(self):
+		self.prefix()
+		index = getseries(self.prefix, 3)
+		self.name = f"{self.prefix}{index}"
+	
+	
+	def prefix(self):
+		flight = self.flight
+		source_airport_code = self.source_airport_code
+		destination_airport_code = self.destination_airport_code
+		self.prefix = f'{flight}-{source_airport_code}-to-{destination_airport_code}-'
+		
+
+
+		
 
 	def assign_seat(self):
 		number = random.randint(0, 99)
