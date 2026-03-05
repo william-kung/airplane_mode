@@ -1,7 +1,7 @@
 {
  "app": "airplane_mode",
  "charts": [],
- "content": "[]",
+ "content": "[{\"id\":\"H93Ave-IJq\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\">Welcome to the Airplane Mode workspace</span>\",\"col\":12}},{\"id\":\"yGvkDy6Bc7\",\"type\":\"header\",\"data\":{\"text\":\"<br>\",\"col\":12}},{\"id\":\"H1uaaUlIzr\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"All Airlines\",\"col\":3}},{\"id\":\"DxSS9uYSsG\",\"type\":\"paragraph\",\"data\":{\"text\":\"Click on \\n\\t\\t\\t\\n\\t\\t\\t\\n\\t\\t to edit\",\"col\":12}}]",
  "creation": "2026-02-22 20:52:24.049786",
  "custom_blocks": [],
  "docstatus": 0,
@@ -14,7 +14,7 @@
  "label": "Airplane Mode",
  "link_type": "DocType",
  "links": [],
- "modified": "2026-02-27 09:36:49.924007",
+ "modified": "2026-03-05 18:19:40.641151",
  "modified_by": "Administrator",
  "module": "Airplane Mode",
  "name": "Airplane Mode",
@@ -27,9 +27,11 @@
  "sequence_id": 2.0,
  "shortcuts": [
   {
-   "doc_view": "Report Builder",
-   "label": "Airplane Tickets",
-   "link_to": "Airplane Ticket",
+   "color": "Grey",
+   "doc_view": "List",
+   "label": "All Airlines",
+   "link_to": "Airline",
+   "stats_filter": "[]",
    "type": "DocType"
   }
  ],
