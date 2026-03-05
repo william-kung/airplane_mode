@@ -6,3 +6,9 @@
 
 // 	},
 // });
+
+frappe.add_custom_button(
+    'test', ()=>{
+        console.log("button pressed")
+    }
+)

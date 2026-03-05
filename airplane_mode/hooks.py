@@ -5,6 +5,13 @@ app_description = "A hyothetical flight ticket system"
 app_email = "info@dotdotread.com"
 app_license = "mit"
 
+
+# Fixtures
+
+fixtures = [
+    "Airplane Ticket Add-on Type"
+]
+
 # Apps
 # ------------------
 
