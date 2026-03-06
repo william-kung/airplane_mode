@@ -7,7 +7,8 @@
  "field_order": [
   "model",
   "airline",
-  "capacity"
+  "capacity",
+  "initial_audit_completed"
  ],
  "fields": [
   {
@@ -23,7 +24,8 @@
    "fieldtype": "Link",
    "label": "Airline",
    "options": "Airline",
-   "reqd": 1
+   "reqd": 1,
+   "search_index": 1
   },
   {
    "fieldname": "capacity",
@@ -31,12 +33,19 @@
    "label": "Capacity",
    "non_negative": 1,
    "reqd": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "initial_audit_completed",
+   "fieldtype": "Check",
+   "label": "Initial Audit Completed",
+   "permlevel": 1
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2026-02-26 23:37:42.607172",
+ "modified": "2026-03-06 21:38:12.267333",
  "modified_by": "Administrator",
  "module": "Airplane Mode",
  "name": "Airplane",
@@ -48,6 +57,70 @@
    "delete": 1,
    "email": 1,
    "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Fleet Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Travel Agent",
+   "share": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Airport Authority Personnel",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Flight Crew Member",
+   "share": 1
+  },
+  {
+   "email": 1,
+   "export": 1,
+   "permlevel": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Airport Authority Personnel",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "email": 1,
+   "export": 1,
+   "permlevel": 1,
    "print": 1,
    "read": 1,
    "report": 1,
