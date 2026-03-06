@@ -17,8 +17,10 @@ def execute(filters: dict | None = None):
 	"""
 	columns = get_columns()
 	data = get_data()
+	chart = get_chart(data)
+	report_summary = get_report_summary(data)
 
-	return columns, data
+	return columns, data, None, chart, report_summary
 
 
 def get_columns() -> list[dict]:
@@ -62,7 +64,7 @@ def get_data() -> list[dict]:
         .left_join(Flight).on(Flight.airplane == Airplane.name)
         .left_join(Ticket).on(
             (Ticket.flight == Flight.name) & 
-            (Ticket.docstatus == 1)
+            (Ticket.docstatus == 1)  # 0 for draft; 1 for submitted; 2 for cancelled
         )
         .select(
             Airline.name.as_("airline"), 
@@ -72,3 +74,38 @@ def get_data() -> list[dict]:
     )
 
     return query.run(as_dict=1)
+
+
+def get_chart(data):
+    if not data:
+        return None
+
+    # Filter out airlines with 0 revenue for a cleaner chart
+    labels = [d.airline for d in data if d.revenue > 0]
+    values = [d.revenue for d in data if d.revenue > 0]
+    
+
+    return {
+        "data": {
+            "labels": labels,
+            "datasets": [{"values": values}]
+        },
+        "type": "donut",
+        "height": 250,
+        "colors": ["#7cd6fd", "#743ee2", "#ff5858", "#ffa00a", "#1ed173"]
+    }
+
+def get_report_summary(data):
+    if not data:
+        return None
+
+    total_revenue = sum(d.get("revenue", 0) for d in data)
+    
+    return [
+        {
+            "value": total_revenue,
+            "indicator": "Green",
+            "label": _("Total Revenue"),
+            "datatype": "Currency",
+        }
+    ]
