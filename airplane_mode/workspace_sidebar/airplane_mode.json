@@ -53,9 +53,21 @@
    "link_type": "DocType",
    "show_arrow": 0,
    "type": "Link"
+  },
+  {
+   "child": 0,
+   "collapsible": 1,
+   "icon": "send-horizontal",
+   "indent": 0,
+   "keep_closed": 0,
+   "label": "Airplane",
+   "link_to": "Airplane",
+   "link_type": "DocType",
+   "show_arrow": 0,
+   "type": "Link"
   }
  ],
- "modified": "2026-03-05 21:27:01.893546",
+ "modified": "2026-03-06 12:13:29.500449",
  "modified_by": "Administrator",
  "module": "Airplane Mode",
  "name": "Airplane Mode",

@@ -14,6 +14,7 @@ class AirplaneTicket(Document):
 
 	def validate(self):
 		self.process_add_ons()
+		self.if_flight_full()
 
 	def on_submit(self):
 		self.only_boarded()
@@ -21,7 +22,13 @@ class AirplaneTicket(Document):
 	def before_insert(self):
 		self.assign_seat()
 
+	def autoname(self):
+		self.prefix()
+		index = getseries(self.prefix, 3)
+		self.name = f"{self.prefix}{index}"
+	
 	def on_update(self):
+		# if flight is changed, change doc id too.
 		if self.get_doc_before_save():
 			old_doc = self.get_doc_before_save() 
 			if old_doc.flight != self.flight:
@@ -30,20 +37,11 @@ class AirplaneTicket(Document):
 				new_name = f"{self.prefix}{index}"
 				frappe.rename_doc(self.doctype, old_doc.name, new_name)
 
-	def autoname(self):
-		self.prefix()
-		index = getseries(self.prefix, 3)
-		self.name = f"{self.prefix}{index}"
-	
-	
 	def prefix(self):
 		flight = self.flight
 		source_airport_code = self.source_airport_code
 		destination_airport_code = self.destination_airport_code
 		self.prefix = f'{flight}-{source_airport_code}-to-{destination_airport_code}-'
-		
-
-
 		
 
 	def assign_seat(self):
@@ -81,3 +79,13 @@ class AirplaneTicket(Document):
 		if self.status != "Boarded":
 			frappe.throw(_("Status must be 'Boarded' before submission."))
 		pass
+
+	def if_flight_full(self):
+		# Get plane capacity
+		flight = self.flight
+		airplane = frappe.db.get_value("Airplane Flight", flight, "airplane")
+		capacity = frappe.db.get_value("Airplane", airplane, "capacity")
+		# TODO: filter total of seats on specifc "Airplane Flight"
+		sold_count = frappe.db.count(self.doctype)
+		if sold_count > capacity:
+			frappe.throw("The flight is full")
