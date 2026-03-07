@@ -1,6 +1,7 @@
 {
  "actions": [],
  "allow_rename": 1,
+ "autoname": "C-{first_name}-{last_name}-.###",
  "creation": "2026-03-07 12:26:18.918769",
  "doctype": "DocType",
  "engine": "InnoDB",
@@ -23,10 +24,11 @@
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2026-03-07 12:32:43.065838",
+ "modified": "2026-03-07 19:51:57.653284",
  "modified_by": "Administrator",
  "module": "Airplane Mode",
  "name": "Flight Crew Member",
+ "naming_rule": "Expression",
  "owner": "Administrator",
  "permissions": [
   {
@@ -43,7 +45,6 @@
   },
   {
    "create": 1,
-   "delete": 1,
    "email": 1,
    "export": 1,
    "print": 1,
@@ -73,8 +74,7 @@
    "read": 1,
    "report": 1,
    "role": "Flight Crew Member",
-   "share": 1,
-   "write": 1
+   "share": 1
   },
   {
    "email": 1,
