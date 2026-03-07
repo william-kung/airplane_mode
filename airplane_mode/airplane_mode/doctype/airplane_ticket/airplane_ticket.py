@@ -14,12 +14,12 @@ class AirplaneTicket(Document):
 
 	def validate(self):
 		self.process_add_ons()
-		self.if_flight_full()
 
 	def on_submit(self):
 		self.only_boarded()
 
 	def before_insert(self):
+		self.if_flight_full()
 		self.assign_seat()
 
 	def autoname(self):
@@ -85,7 +85,6 @@ class AirplaneTicket(Document):
 		flight = self.flight
 		airplane = frappe.db.get_value("Airplane Flight", flight, "airplane")
 		capacity = frappe.db.get_value("Airplane", airplane, "capacity")
-		# TODO: filter total of seats on specifc "Airplane Flight"
-		sold_count = frappe.db.count(self.doctype)
-		if sold_count > capacity:
-			frappe.throw("The flight is full")
+		sold_count = frappe.db.count(self.doctype, {'flight': self.flight})
+		if sold_count >= capacity:
+			frappe.throw(f"The flight is full.")
