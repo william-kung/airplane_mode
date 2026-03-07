@@ -2,14 +2,22 @@
 # For license information, please see license.txt
 
 import frappe
-from frappe.website.website_generator import WebsiteGenerator
 from frappe import _
+from frappe.model.document import Document
+from frappe.utils import get_datetime, add_to_date
 
 
 
-class AirplaneFlight(WebsiteGenerator):
+
+class AirplaneFlight(Document):
 	def before_submit(self):
 		self.status = "Completed"
+
+	def validate(self):
+		start = get_datetime(self.date_of_departure)
+		if start and self.duration:
+			self.flight_end = add_to_date(start, seconds=self.duration)
+
 
 	def on_update(self):
 		self.push_changes_to_tickets()
@@ -41,3 +49,5 @@ class AirplaneFlight(WebsiteGenerator):
 				doc = frappe.get_doc('Airplane Ticket', t)
 				doc.save()
 			frappe.msgprint(f"{len(tickets)} tickets was updated")
+
+
