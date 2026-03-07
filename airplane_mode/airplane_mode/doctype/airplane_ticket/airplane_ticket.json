@@ -13,8 +13,10 @@
   "seat",
   "section_break_khpz",
   "source_airport_code",
+  "source_gate_number",
   "column_break_zztr",
   "destination_airport_code",
+  "destination_gate_number",
   "add_ons_section",
   "add_ons",
   "charges_section",
@@ -165,13 +167,25 @@
   {
    "fieldname": "column_break_kisa",
    "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "flight.source_gate_number",
+   "fieldname": "source_gate_number",
+   "fieldtype": "Data",
+   "label": "Source Gate Number"
+  },
+  {
+   "fetch_from": "flight.destination_gate_number",
+   "fieldname": "destination_gate_number",
+   "fieldtype": "Data",
+   "label": "Destination Gate Number"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2026-03-06 21:22:07.644430",
+ "modified": "2026-03-07 12:37:38.803893",
  "modified_by": "Administrator",
  "module": "Airplane Mode",
  "name": "Airplane Ticket",
