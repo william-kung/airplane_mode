@@ -38,7 +38,8 @@
    "in_list_view": 1,
    "label": "Passenger",
    "options": "Flight Passenger",
-   "reqd": 1
+   "reqd": 1,
+   "search_index": 1
   },
   {
    "fetch_from": "flight.source_airport_code",
@@ -57,7 +58,8 @@
    "fieldtype": "Link",
    "label": "Flight",
    "options": "Airplane Flight",
-   "reqd": 1
+   "reqd": 1,
+   "search_index": 1
   },
   {
    "fetch_from": "flight.destination_airport_code",
@@ -86,7 +88,7 @@
   {
    "fetch_from": "flight.date_of_departure",
    "fieldname": "departure_date",
-   "fieldtype": "Date",
+   "fieldtype": "Datetime",
    "in_list_view": 1,
    "in_standard_filter": 1,
    "label": "Departure Date",
@@ -96,8 +98,8 @@
    "fetch_from": "flight.time_of_departure",
    "fieldname": "departure_time",
    "fieldtype": "Time",
-   "label": "Departure Time",
-   "reqd": 1
+   "hidden": 1,
+   "label": "Departure Time"
   },
   {
    "fieldname": "column_break_ibcq",
@@ -185,7 +187,7 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2026-03-07 12:37:38.803893",
+ "modified": "2026-03-07 22:30:58.391701",
  "modified_by": "Administrator",
  "module": "Airplane Mode",
  "name": "Airplane Ticket",
