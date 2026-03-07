@@ -24,6 +24,8 @@
   "column_break_pixt",
   "time_of_departure",
   "amended_from",
+  "section_break_djkl",
+  "crew_on_board",
   "section_break_zffv",
   "is_published",
   "column_break_dhxo",
@@ -40,7 +42,7 @@
   },
   {
    "fieldname": "date_of_departure",
-   "fieldtype": "Date",
+   "fieldtype": "Datetime",
    "in_list_view": 1,
    "label": "Date of Departure",
    "reqd": 1
@@ -48,8 +50,8 @@
   {
    "fieldname": "time_of_departure",
    "fieldtype": "Time",
-   "label": "Time of Departure",
-   "reqd": 1
+   "hidden": 1,
+   "label": "Time of Departure"
   },
   {
    "fieldname": "duration",
@@ -154,11 +156,22 @@
    "fieldname": "destination_gate_number",
    "fieldtype": "Data",
    "label": "Destination Gate Number"
+  },
+  {
+   "fieldname": "section_break_djkl",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "crew_on_board",
+   "fieldtype": "Table",
+   "label": "Crew On Board",
+   "options": "Flight Crew On Board"
   }
  ],
  "grid_page_length": 50,
  "has_web_view": 1,
  "index_web_pages_for_search": 1,
+ "is_calendar_and_gantt": 1,
  "is_published_field": "is_published",
  "is_submittable": 1,
  "links": [
@@ -167,7 +180,7 @@
    "link_fieldname": "flight"
   }
  ],
- "modified": "2026-03-07 12:35:12.591588",
+ "modified": "2026-03-07 22:35:17.849717",
  "modified_by": "Administrator",
  "module": "Airplane Mode",
  "name": "Airplane Flight",
