@@ -7,19 +7,20 @@
  "engine": "InnoDB",
  "field_order": [
   "airport",
-  "airport_code",
   "shop_number",
   "area",
-  "column_break_vkkx"
+  "column_break_vkkx",
+  "airport_code",
+  "shop_type"
  ],
  "fields": [
   {
    "fieldname": "airport",
    "fieldtype": "Link",
-   "in_list_view": 1,
    "label": "Airport",
    "options": "Airport",
-   "reqd": 1
+   "reqd": 1,
+   "search_index": 1
   },
   {
    "fieldname": "shop_number",
@@ -34,6 +35,7 @@
    "fieldtype": "Float",
    "label": "Area",
    "precision": "1",
+   "reqd": 1,
    "width": "200"
   },
   {
@@ -46,13 +48,23 @@
    "fieldtype": "Data",
    "in_list_view": 1,
    "label": "Airport Code",
+   "read_only": 1,
+   "reqd": 1
+  },
+  {
+   "fieldname": "shop_type",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Shop Type",
+   "options": "Shop Type",
    "reqd": 1
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2026-03-08 13:39:40.505938",
+ "modified": "2026-03-08 16:37:18.348066",
  "modified_by": "Administrator",
  "module": "Shop Lease",
  "name": "Airport Shop",
