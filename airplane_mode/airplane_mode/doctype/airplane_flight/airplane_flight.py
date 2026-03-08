@@ -10,13 +10,15 @@ from frappe.utils import get_datetime, add_to_date
 
 
 class AirplaneFlight(Document):
+	# @property
+	# def datetime_of_arrival(self):
+	# 	start = get_datetime(self.date_of_departure)
+	# 	if start and self.duration:
+	# 		flight_end = add_to_date(start, seconds=self.duration)
+	# 	return flight_end
+	
 	def before_submit(self):
 		self.status = "Completed"
-
-	def validate(self):
-		start = get_datetime(self.date_of_departure)
-		if start and self.duration:
-			self.flight_end = add_to_date(start, seconds=self.duration)
 
 
 	def on_update(self):
@@ -62,3 +64,29 @@ def push_to_ticket(flight):
 			'duration_of_flight': flight.duration,
 		}
 	)
+
+@frappe.whitelist()
+def get_events():
+
+	events = frappe.get_all(
+		"Airplane Flight",
+		fields=["name", "date_of_departure", "duration", "source_airport_code", "destination_airport_code"],
+		# filters=filters
+	)
+
+
+	processed_events = []
+	for event in events:
+		if event.date_of_departure and event.duration:
+			start_datetime = get_datetime(f"{event.date_of_departure}")
+			end_datetime = add_to_date(start_datetime, seconds=event.duration)			
+			processed_events.append({
+				"name": event.name,
+				"doctype": "Airplane Flight",
+				"start": start_datetime,
+				"end": end_datetime,
+				"title": f"{event.source_airport_code} -> {event.destination_airport_code} \n {event.name}",
+				"allDay": 0
+			})
+
+	return processed_events
