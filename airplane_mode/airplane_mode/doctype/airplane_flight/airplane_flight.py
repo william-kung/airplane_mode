@@ -20,9 +20,15 @@ class AirplaneFlight(Document):
 
 
 	def on_update(self):
-		self.push_changes_to_tickets()
+		if self.is_ticket_related():
+			frappe.enqueue(
+				'airplane_mode.airplane_mode.doctype.airplane_flight.airplane_flight.push_to_ticket',
+				queue='short',
+				flight = self
+			)
 
-	def push_changes_to_tickets(self):
+
+	def is_ticket_related(self):
 		# validate if the following ticket related fields are changed.  Avoid unnecessary DB operations.
 		fields_to_check = [
 			'source_gate_number',
@@ -36,18 +42,23 @@ class AirplaneFlight(Document):
 		old_doc = self.get_doc_before_save()
 		if any(getattr(old_doc, field) != getattr(self, field) and # compare value before and after
 			str(getattr(old_doc, field)) != str(getattr(self, field)) # compare string version of that value e.g. datetime, trigger action only if both are False.
-			for field in fields_to_check): 
+			for field in fields_to_check):
+			return True
+		else:
+			return False
 			# if ticket related fields are changed push changes to ticket.
-			tickets = frappe.db.get_list(
-				'Airplane Ticket', 
-				pluck='name',
-				filters={
-					'flight': self.name
-				})
-			# Open and save Airplane Ticket doctype to trigger the update of all related fields.
-			for t in tickets:
-				doc = frappe.get_doc('Airplane Ticket', t)
-				doc.save()
-			frappe.msgprint(f"{len(tickets)} tickets was updated")
-
-
+			
+def push_to_ticket(flight):
+	frappe.db.set_value(
+		'Airplane Ticket',
+		{'flight': flight.name},
+		{
+			'source_gate_number': flight.source_gate_number,
+			'source_airport_code': flight.source_airport_code,
+			'destination_airport_code': flight.destination_airport_code,
+			'destination_gate_number': flight.destination_gate_number,
+			'departure_date': flight.date_of_departure,
+			'departure_time': flight.time_of_departure,
+			'duration_of_flight': flight.duration,
+		}
+	)
