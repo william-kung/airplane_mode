@@ -9,7 +9,8 @@ app_license = "mit"
 # Fixtures
 
 fixtures = [
-    "Airplane Ticket Add-on Type"
+    "Airplane Ticket Add-on Type",
+    "Shop Type"
 ]
 
 # Apps
