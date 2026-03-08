@@ -35,8 +35,13 @@
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
- "links": [],
- "modified": "2026-03-06 21:13:10.891915",
+ "links": [
+  {
+   "link_doctype": "Airport Shop",
+   "link_fieldname": "airport"
+  }
+ ],
+ "modified": "2026-03-08 11:07:40.985639",
  "modified_by": "Administrator",
  "module": "Airplane Mode",
  "name": "Airport",
