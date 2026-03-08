@@ -1,6 +1,7 @@
 {
  "actions": [],
  "allow_rename": 1,
+ "autoname": "{airport_code}-S{shop_number}-.###",
  "creation": "2026-03-08 10:04:55.625607",
  "doctype": "DocType",
  "engine": "InnoDB",
@@ -10,12 +11,17 @@
   "shop_number",
   "column_break_dbvn",
   "tenant",
-  "rent_amount",
-  "currency",
+  "shop_name",
   "section_break_itnz",
   "effective_date",
   "column_break_fxsd",
   "expiry_date",
+  "rental_amount_section",
+  "rent_per_square_meter",
+  "area",
+  "column_break_ecxx",
+  "rent_amount",
+  "calculate_rent_amount",
   "section_break_gosk",
   "amended_from"
  ],
@@ -37,19 +43,12 @@
    "reqd": 1
   },
   {
+   "description": "i.e. Rent Per Square Meter * Area",
    "fieldname": "rent_amount",
-   "fieldtype": "Float",
+   "fieldtype": "Currency",
    "in_list_view": 1,
    "label": "Rent Amount",
-   "precision": "2",
-   "reqd": 1
-  },
-  {
-   "fieldname": "currency",
-   "fieldtype": "Select",
-   "in_list_view": 1,
-   "label": "Currency",
-   "options": "USD\nHKD\nJPY\nTWD",
+   "read_only": 1,
    "reqd": 1
   },
   {
@@ -101,13 +100,46 @@
    "fieldname": "shop_number",
    "fieldtype": "Data",
    "label": "Shop Number"
+  },
+  {
+   "fieldname": "shop_name",
+   "fieldtype": "Data",
+   "label": "Shop Name"
+  },
+  {
+   "fieldname": "rental_amount_section",
+   "fieldtype": "Section Break",
+   "label": "Rental Amount"
+  },
+  {
+   "description": "In system currency",
+   "fieldname": "rent_per_square_meter",
+   "fieldtype": "Currency",
+   "label": "Rent Per Square Meter"
+  },
+  {
+   "fieldname": "column_break_ecxx",
+   "fieldtype": "Column Break"
+  },
+  {
+   "description": "Square Meter",
+   "fetch_from": "airport_shop.area",
+   "fieldname": "area",
+   "fieldtype": "Float",
+   "label": "Area"
+  },
+  {
+   "button_color": "Primary",
+   "fieldname": "calculate_rent_amount",
+   "fieldtype": "Button",
+   "label": "Calculate Rent Amount"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2026-03-08 11:18:50.018439",
+ "modified": "2026-03-08 16:18:07.708173",
  "modified_by": "Administrator",
  "module": "Shop Lease",
  "name": "Shop Rental Contract",

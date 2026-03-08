@@ -33,7 +33,8 @@
    "fieldname": "area",
    "fieldtype": "Float",
    "label": "Area",
-   "precision": "1"
+   "precision": "1",
+   "width": "200"
   },
   {
    "fieldname": "column_break_vkkx",
@@ -51,7 +52,7 @@
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2026-03-08 11:08:41.161990",
+ "modified": "2026-03-08 13:39:40.505938",
  "modified_by": "Administrator",
  "module": "Shop Lease",
  "name": "Airport Shop",
