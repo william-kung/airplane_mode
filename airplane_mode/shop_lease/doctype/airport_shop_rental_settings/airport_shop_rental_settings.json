@@ -5,7 +5,8 @@
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
-  "standard_rate"
+  "standard_rate",
+  "enable_rent_reminder"
  ],
  "fields": [
   {
@@ -14,13 +15,19 @@
    "fieldtype": "Currency",
    "label": "Standard Rate",
    "precision": "2"
+  },
+  {
+   "default": "0",
+   "fieldname": "enable_rent_reminder",
+   "fieldtype": "Check",
+   "label": "Enable Rent Reminder"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "issingle": 1,
  "links": [],
- "modified": "2026-03-08 14:07:54.708787",
+ "modified": "2026-03-09 14:46:26.132029",
  "modified_by": "Administrator",
  "module": "Shop Lease",
  "name": "Airport Shop Rental Settings",

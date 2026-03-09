@@ -32,7 +32,7 @@ def get_columns() -> list[dict]:
 		{
 			"label": _("Airline"),
 			"fieldname": "airline",
-			"fieldtype": "link",
+			"fieldtype": "Link",
 			"options": "Airline",
 			"width": 250,
 		},

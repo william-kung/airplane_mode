@@ -26,7 +26,7 @@ def get_columns() -> list[dict]:
 		{
 			"label": _("Airport"),
 			"fieldname": "airport",
-			"fieldtype": "link",
+			"fieldtype": "Link",
 			"options": "Airport",
 			"width": 250,
 		},
@@ -41,7 +41,13 @@ def get_columns() -> list[dict]:
 			"fieldname": "occupied_shop_count",
 			"fieldtype": "Int",
 			"width": 120,
-		}
+		},
+		{
+			"label": _("Available"),
+			"fieldname": "available_shops",
+			"fieldtype": "Int",
+			"width": 120,
+		},
 	]
 
 
@@ -71,12 +77,13 @@ def get_data(filters: dict | None = None) -> list[list]:
 		.on((ShopRentalContract.airport_shop == AirportShop.name) & is_occupied)
 		.select(
 			Airport.name.as_("airport"),
-			AirportShop.name.as_("shop_name"),
 			Count(AirportShop.name).distinct().as_("shop_count"),
 			Count(ShopRentalContract.airport_shop).distinct().as_("occupied_shop_count"),
-			ShopRentalContract.effective_date.as_("effective_date"),
-			ShopRentalContract.expiry_date.as_("expiry_date"),
 		)
 		.groupby(Airport.name)
 	)
-	return query.run(as_dict=1)
+	data = query.run(as_dict=1)
+	for row in data:
+		row["available_shops"] = row.get("shop_count", 0) - row.get("occupied_shop_count", 0)
+
+	return data
