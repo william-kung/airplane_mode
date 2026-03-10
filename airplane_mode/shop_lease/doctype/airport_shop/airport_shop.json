@@ -1,7 +1,6 @@
 {
  "actions": [],
  "allow_rename": 1,
- "autoname": "S-{airport_code}-{shop_number}",
  "creation": "2026-03-08 10:10:36.877158",
  "doctype": "DocType",
  "engine": "InnoDB",
@@ -64,11 +63,11 @@
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2026-03-09 15:16:20.004012",
+ "modified": "2026-03-10 10:49:46.494223",
  "modified_by": "Administrator",
  "module": "Shop Lease",
  "name": "Airport Shop",
- "naming_rule": "Expression",
+ "naming_rule": "By script",
  "owner": "Administrator",
  "permissions": [
   {

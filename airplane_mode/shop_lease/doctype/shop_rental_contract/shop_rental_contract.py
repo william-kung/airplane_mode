@@ -23,7 +23,8 @@ class ShopRentalContract(Document):
 		if effective_date_status == "Warning" or expiry_date_status == "Warning":
 			frappe.msgprint(
 				title=_("Warning"),
-				msg=_("⚠️There is another potential contract overlapping this period.  Please resolve conflict before submit!")
+				msg=_("⚠️There is another potential contract overlapping this period.  Please resolve conflict before submit!"),
+				indicator="orange"
 			)
 
 	# make sure rental amount equals rate * area

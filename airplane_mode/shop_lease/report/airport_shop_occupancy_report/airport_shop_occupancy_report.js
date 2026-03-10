@@ -5,8 +5,7 @@ frappe.query_reports["Airport Shop Occupancy Report"] = {
 	"filters": [
 		{
 			"fieldname": "reference_date",
-			"label": __("Date"),
-			"label": "Date",
+			"label": __("As at Date"),
 			"fieldtype": "Date",
 			"default": frappe.datetime.get_today()
 		}
