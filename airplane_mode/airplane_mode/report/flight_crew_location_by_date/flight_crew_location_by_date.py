@@ -4,7 +4,7 @@ from frappe.utils import get_datetime, now
 from datetime import timedelta
 
 def execute(filters: dict | None = None):
-    return get_columns(), get_data(filters)
+    return get_columns(), get_data(filters), message
 
 def get_columns() -> list[dict]:
     return [
@@ -71,6 +71,7 @@ def get_data(filters: dict | None = None) -> list[dict]:
     ref_date = filters.get("reference_date") if filters and filters.get("reference_date") else now()
     ref_date = get_datetime(ref_date)
 
+
     CrewsOnBoard = frappe.qb.DocType("Flight Crew On Board")
     Flights = frappe.qb.DocType("Airplane Flight")
 
@@ -104,10 +105,17 @@ def get_data(filters: dict | None = None) -> list[dict]:
             duration_delta = timedelta(seconds=flight["duration"] or 0)
             arrival_time = departure_time + duration_delta
             flight["arrival_time"] = arrival_time
-            if arrival_time < ref_date and departure_time < ref_date:
+            if departure_time + timedelta(hours=-18) < ref_date or arrival_time + timedelta(hours=-18) < ref_date:
                 last_flight = flight
             if arrival_time > ref_date:
                 break
         
         data.append(last_flight)
     return data
+
+
+message = """
+    <div class="alert alert-warning">
+        <strong>Note:</strong> Change the Target Datetime above to update last flight information.  18 hours buffer is added.
+    </div>
+"""
