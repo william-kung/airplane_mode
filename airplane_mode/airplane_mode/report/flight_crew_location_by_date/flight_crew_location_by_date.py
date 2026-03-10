@@ -32,6 +32,40 @@ def get_columns() -> list[dict]:
         },
     ]
 
+# def get_data(filters: dict | None = None) -> list[dict]:
+
+#     ref_date = filters.get("reference_date") if filters and filters.get("reference_date") else now()
+#     ref_date = get_datetime(ref_date)
+
+#     CrewsOnBoard = frappe.qb.DocType("Flight Crew On Board")
+#     Flights = frappe.qb.DocType("Airplane Flight")
+
+#     query = (
+#         frappe.qb.from_(CrewsOnBoard)
+#         .inner_join(Flights).on(Flights.name == CrewsOnBoard.parent)
+#         .select(
+#             CrewsOnBoard.flight_crew_member.as_("crew_name"),
+#             CrewsOnBoard.parent.as_("flight"),
+#             Flights.destination_airport_code.as_("destination_code"),
+#             Flights.date_of_departure.as_("departure_time"),
+#             Flights.duration.as_("duration")
+#         )
+#         .where(Flights.date_of_departure <= ref_date)
+# 		.orderby(Flights.date_of_departure, order=frappe.qb.desc)
+#         .groupby(CrewsOnBoard.flight_crew_member)
+# 	)
+
+#     raw_data = query.run(as_dict=1)
+    
+#     for d in raw_data:
+#         departure_time = get_datetime(d["departure_time"])
+#         duration_delta = timedelta(seconds=d["duration"] or 0)
+#         arrival_time = departure_time + duration_delta
+#         d["arrival_time"] = arrival_time
+    
+#     return raw_data
+
+
 def get_data(filters: dict | None = None) -> list[dict]:
 
     ref_date = filters.get("reference_date") if filters and filters.get("reference_date") else now()
@@ -40,72 +74,40 @@ def get_data(filters: dict | None = None) -> list[dict]:
     CrewsOnBoard = frappe.qb.DocType("Flight Crew On Board")
     Flights = frappe.qb.DocType("Airplane Flight")
 
-    query = (
-        frappe.qb.from_(CrewsOnBoard)
-        .inner_join(Flights).on(Flights.name == CrewsOnBoard.parent)
-        .select(
-            CrewsOnBoard.flight_crew_member.as_("crew_name"),
-            CrewsOnBoard.parent.as_("flight"),
-            Flights.destination_airport_code.as_("destination_code"),
-            Flights.date_of_departure.as_("departure_time"),
-            Flights.duration.as_("duration")
-        )
-        .where(Flights.date_of_departure <= ref_date)
-		.orderby(Flights.date_of_departure, order=frappe.qb.desc)
-        .groupby(CrewsOnBoard.flight_crew_member)
+	
+    onboard_flights = (
+		frappe.qb.from_(CrewsOnBoard)
+		.inner_join(Flights).on(Flights.name == CrewsOnBoard.parent)
+		.select(
+			CrewsOnBoard.flight_crew_member.as_("crew_name"),
+			CrewsOnBoard.parent.as_("flight"),
+			Flights.destination_airport_code.as_("destination_code"),
+			Flights.date_of_departure.as_("departure_time"),
+			Flights.duration.as_("duration")
+		)
+		.orderby(Flights.date_of_departure, order=frappe.qb.asc)
+		.run(as_dict=1)
 	)
-
-    raw_data = query.run(as_dict=1)
-    
-    for d in raw_data:
-        departure_time = get_datetime(d["departure_time"])
-        duration_delta = timedelta(seconds=d["duration"] or 0)
-        arrival_time = departure_time + duration_delta
-        d["arrival_time"] = arrival_time
-    
-    return raw_data
-
-
-# def get_data(filters: dict | None = None) -> list[dict]:
-
-#     ref_date = filters.get("reference_date") if filters and filters.get("reference_date") else now()
-#     ref_date = get_datetime(ref_date)
-
-#     CrewsOnBoard = frappe.qb.DocType("Flight Crew On Board")
-#     Flights = frappe.qb.DocType("Airplane Flight")
-#     crew_list = frappe.db.get_list("Flight Crew Member", pluck="name")
-#     data = []
-#     for row in crew_list:
-#         onboard_flights = (
-# 			frappe.qb.from_(CrewsOnBoard)
-# 			.inner_join(Flights).on(Flights.name == CrewsOnBoard.parent)
-# 			.select(
-#                 CrewsOnBoard.flight_crew_member.as_("crew_name"),
-#                 CrewsOnBoard.parent.as_("flight"),
-#                 Flights.destination_airport_code.as_("destination_code"),
-# 				Flights.date_of_departure.as_("departure_time"),
-# 				Flights.duration.as_("duration")
-# 			)
-#             .where(CrewsOnBoard.flight_crew_member == row)
-# 			.orderby(Flights.date_of_departure, order=frappe.qb.desc)
-# 			.run(as_dict=1)
-# 		)
-#         for flight in onboard_flights:
-#             departure_time = get_datetime(flight["departure_time"])
-#             duration_delta = timedelta(seconds=flight["duration"] or 0)
-#             arrival_time = departure_time + duration_delta
-#             flight["arrival_time"] = arrival_time
-#             last_flight = flight
-#             break
-#             if arrival_time > ref_date:
-#                 last_flight = flight
-#                 break
-#         if not last_flight:
-#             last_flight = {
-# 				"crew_name": flight["crew_name"],
-# 				"flight": None,
-# 				"destination_code": None,
-# 				"arrival_time": None,
-# 			}
-#         data.append(last_flight)
-#     return onboard_flights
+    data = []
+    crew_list = frappe.db.get_list("Flight Crew Member", pluck="name")
+    for row in crew_list:
+        last_flight = {
+			"crew_name": row,
+			"flight": None,
+			"destination_code": None,
+			"arrival_time": None,
+		}
+        for flight in onboard_flights:
+            if flight["crew_name"] != row:
+                continue
+            departure_time = get_datetime(flight["departure_time"])
+            duration_delta = timedelta(seconds=flight["duration"] or 0)
+            arrival_time = departure_time + duration_delta
+            flight["arrival_time"] = arrival_time
+            if arrival_time < ref_date and departure_time < ref_date:
+                last_flight = flight
+            if arrival_time > ref_date:
+                break
+        
+        data.append(last_flight)
+    return data
