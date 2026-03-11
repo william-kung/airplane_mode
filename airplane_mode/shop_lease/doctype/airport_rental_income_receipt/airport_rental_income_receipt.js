@@ -1,7 +1,7 @@
 // Copyright (c) 2026, DDR and contributors
 // For license information, please see license.txt
 
-frappe.ui.form.on("Airport Rental Income Log", {
+frappe.ui.form.on("Airport Rental Income Receipt", {
 	shop_rental_contract(frm) {
 		if (frm.doc.shop_rental_contract) {
 			frm.call({

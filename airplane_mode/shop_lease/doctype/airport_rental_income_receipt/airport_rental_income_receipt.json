@@ -86,7 +86,7 @@
  "modified": "2026-03-09 00:16:13.680953",
  "modified_by": "Administrator",
  "module": "Shop Lease",
- "name": "Airport Rental Income Log",
+ "name": "Airport Rental Income Receipt",
  "naming_rule": "Expression",
  "owner": "Administrator",
  "permissions": [

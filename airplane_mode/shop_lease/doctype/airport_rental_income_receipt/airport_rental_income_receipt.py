@@ -7,7 +7,7 @@ from frappe.model.document import Document
 from frappe.utils import add_days, add_months
 
 
-class AirportRentalIncomeLog(Document):
+class AirportRentalIncomeReceipt(Document):
 	def before_submit(self):
 		if self.status != "Received":
 			frappe.throw(_('Document can only be submitted after payment received.'))
