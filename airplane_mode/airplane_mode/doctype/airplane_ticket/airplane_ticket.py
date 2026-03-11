@@ -23,9 +23,12 @@ class AirplaneTicket(Document):
 		self.assign_seat()
 
 	def autoname(self):
-		self.prefix()
-		index = getseries(self.prefix, 3)
-		self.name = f"{self.prefix}{index}"
+		flight = self.flight
+		source_airport_code = self.source_airport_code
+		destination_airport_code = self.destination_airport_code
+		prefix = f'{flight}-{source_airport_code}-to-{destination_airport_code}'
+		index = getseries(prefix, 3)
+		self.name = f"{prefix}-{index}"
 	
 	def on_update(self):
 		# if flight is changed, change doc id too.
@@ -35,14 +38,7 @@ class AirplaneTicket(Document):
 				self.prefix()
 				index = getseries(self.prefix, 3)
 				new_name = f"{self.prefix}{index}"
-				frappe.rename_doc(self.doctype, old_doc.name, new_name)
-
-	def prefix(self):
-		flight = self.flight
-		source_airport_code = self.source_airport_code
-		destination_airport_code = self.destination_airport_code
-		self.prefix = f'{flight}-{source_airport_code}-to-{destination_airport_code}-'
-		
+				frappe.rename_doc(self.doctype, old_doc.name, new_name)		
 
 	def assign_seat(self):
 		number = random.randint(0, 99)
