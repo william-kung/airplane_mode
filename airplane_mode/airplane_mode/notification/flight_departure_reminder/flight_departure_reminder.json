@@ -1,0 +1,32 @@
+{
+ "attach_files": "",
+ "attach_print": 0,
+ "channel": "System Notification",
+ "condition_type": "Python",
+ "creation": "2026-03-11 12:07:16.069499",
+ "date_changed": "date_of_departure",
+ "days_in_advance": 1,
+ "docstatus": 0,
+ "doctype": "Notification",
+ "document_type": "Airplane Flight",
+ "enabled": 1,
+ "event": "Days Before",
+ "idx": 0,
+ "is_standard": 1,
+ "message": "<p>The following flight is going to depart in 24 hours:\n<p>{{ doc.name |e }}</p>\n<p>From {{ doc.source_airport_code}} to {{ doc.destination_airport_code}}</p>\n<p>Datetime: {{ doc.date_of_departure }}</p>\n<p>Departure Gate: {{ doc.source_gate_number }}</p>",
+ "message_type": "HTML",
+ "minutes_offset": 0,
+ "modified": "2026-03-11 12:27:22.089646",
+ "modified_by": "Administrator",
+ "module": "Airplane Mode",
+ "name": "Flight Departure Reminder",
+ "owner": "Administrator",
+ "recipients": [
+  {
+   "receiver_by_role": "System Manager"
+  }
+ ],
+ "send_system_notification": 0,
+ "send_to_all_assignees": 0,
+ "subject": "{{ doc.name }} is departing in 24 hours!"
+}
