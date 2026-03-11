@@ -48,8 +48,7 @@
    "fieldname": "amount",
    "fieldtype": "Currency",
    "label": "Amount",
-   "read_only": 1,
-   "reqd": 1
+   "read_only": 1
   },
   {
    "fieldname": "status",
@@ -73,7 +72,7 @@
    "fieldtype": "Link",
    "label": "Amended From",
    "no_copy": 1,
-   "options": "Airport Rental Income Log",
+   "options": "Airport Rental Income Receipt",
    "print_hide": 1,
    "read_only": 1,
    "search_index": 1
@@ -83,7 +82,7 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2026-03-09 00:16:13.680953",
+ "modified": "2026-03-11 14:37:00.900799",
  "modified_by": "Administrator",
  "module": "Shop Lease",
  "name": "Airport Rental Income Receipt",
