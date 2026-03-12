@@ -20,6 +20,11 @@ frappe.ready(function() {
 			const field = frappe.web_form.get_field('phone_number');
 			if (field && field.$wrapper) {
 				field.set_value(prefix);
+				//Trigger the refresh to render the correct SVG/Flag
+				if (field.refresh) {
+					field.refresh();  
+				}
+				// Manually trigger a change event so Frappe's internal listeners pick up the new value
 				field.$wrapper.find('input').trigger('change');
 			}
 		}
