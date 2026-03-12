@@ -5,7 +5,7 @@
 <p>{{ airport |e }}</p>
 <p>Area: {{ area |e }} sq meters</p>
 <div style="margin-top: 3rem; margin-bottom: 3rem">
-    <button class="btn btn-info btn-md">Ask for quotation</button>
+    <button class="btn btn-info btn-md" onclick="window.location.href='../shop-inquiry/new?airport_shop={{ doc.name }}'">Ask for quotation</button>
 </div>
 <div style="margin-top: 3rem; margin-bottom: 3rem">
     {% if image != None %}
