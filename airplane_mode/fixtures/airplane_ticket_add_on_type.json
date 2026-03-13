@@ -1,0 +1,37 @@
+[
+ {
+  "description": "Seats with extra leg space, mostly on first and exit rows.",
+  "docstatus": 0,
+  "doctype": "Airplane Ticket Add-on Type",
+  "modified": "2026-03-04 22:36:07.033282",
+  "name": "Extra leg space"
+ },
+ {
+  "description": "Better food and drink offerings",
+  "docstatus": 0,
+  "doctype": "Airplane Ticket Add-on Type",
+  "modified": "2026-03-04 22:36:51.184149",
+  "name": "Meal Upgrade"
+ },
+ {
+  "description": "Extra check-in luggage",
+  "docstatus": 0,
+  "doctype": "Airplane Ticket Add-on Type",
+  "modified": "2026-03-04 22:38:00.514036",
+  "name": "Extra check-in luggage"
+ },
+ {
+  "description": "Wifi access on flight, except 30 mins after take off and before landing",
+  "docstatus": 0,
+  "doctype": "Airplane Ticket Add-on Type",
+  "modified": "2026-03-06 14:19:21.717110",
+  "name": "Wifi Access"
+ },
+ {
+  "description": "1:200 toy size plane model of the onboarding flight",
+  "docstatus": 0,
+  "doctype": "Airplane Ticket Add-on Type",
+  "modified": "2026-03-05 19:13:15.873369",
+  "name": "1:200 Plane Model"
+ }
+]
