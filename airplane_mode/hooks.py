@@ -33,11 +33,11 @@ fixtures = [
 # ------------------
 
 # include js, css files in header of desk.html
-# app_include_css = "/assets/airplane_mode/css/airplane_mode.css"
+# app_include_css = "/assets/airplane_mode/css/picnic.css"
 # app_include_js = "/assets/airplane_mode/js/airplane_mode.js"
 
 # include js, css files in header of web template
-# web_include_css = "/assets/airplane_mode/css/airplane_mode.css"
+web_include_css = "/assets/airplane_mode/css/picnic.css"
 # web_include_js = "/assets/airplane_mode/js/airplane_mode.js"
 
 # include custom scss in every website theme (without file extension ".scss")
