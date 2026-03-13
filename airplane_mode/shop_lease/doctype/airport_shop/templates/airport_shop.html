@@ -5,14 +5,15 @@
 <p>{{ airport |e }}</p>
 <p>Area: {{ area |e }} sq meters</p>
 <div style="margin-top: 3rem; margin-bottom: 3rem">
-    <button class="btn btn-info btn-md" onclick="window.location.href='../shop-inquiry/new?airport_shop={{ doc.name }}'">Ask for quotation</button>
+    <button class="btn btn-info btn-md"
+        onclick="window.location.href='../shop-inquiry/new?airport_shop={{ doc.name }}'">Ask for quotation</button>
 </div>
 <div style="margin-top: 3rem; margin-bottom: 3rem">
     {% if image != None %}
-        <img src="{{ image }}" alt="shop image" width="350" height="260">
-        {% else %}
-        <img src="https://picsum.photos/350/200" alt="Image Placeholder">
-        <div style="font-size: small; color:gray">Placeholder Image Above</div>
+    <img src="{{ image }}" alt="shop image" width="350" height="260">
+    {% else %}
+    <img src="https://picsum.photos/350/200" alt="Image Placeholder">
+    <div style="font-size: small; color:gray">Placeholder Image Above</div>
     {% endif %}
 </div>
 {% endblock %}
