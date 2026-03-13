@@ -1,4 +1,4 @@
-frappe.ready(function() {
+frappe.ready(function () {
 	// validate if phone number or email exists
 	frappe.web_form.validate = () => {
 		let data = frappe.web_form.get_values();
@@ -7,6 +7,7 @@ frappe.ready(function() {
 			return false;
 		}
 	};
+
 	// set airport_shop field
 	const url_params = new URLSearchParams(window.location.search);
 	if (url_params.has('airport_shop')) {
@@ -14,23 +15,20 @@ frappe.ready(function() {
 	}
 
 	// TODO: lookup location based on user's IP and set phone country code
-	$.getJSON('https://ipapi.co/json/', function(data) {
+	$.getJSON('https://ipapi.co/json/', function (data) {
 		if (data && data.country_calling_code) {
 			const prefix = data.country_calling_code + "-";  // e.g. "+886"
 			const field = frappe.web_form.get_field('phone_number');
 			if (field && field.$wrapper) {
 				field.set_value(prefix);
-				//Trigger the refresh to render the correct SVG/Flag
-				if (field.refresh) {
-					field.refresh();  
-				}
 				// Manually trigger a change event so Frappe's internal listeners pick up the new value
-				field.$wrapper.find('input').trigger('change');
+				field.$input.trigger('change');
 			}
 		}
-	}).fail(function(){
+	}).fail(function () {
 		console.log("Phone country code lookup failed. Defaulting to manual entry.");
 	});
+
 })
 
 
