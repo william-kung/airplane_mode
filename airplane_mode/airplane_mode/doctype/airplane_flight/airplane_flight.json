@@ -170,7 +170,6 @@
  ],
  "grid_page_length": 50,
  "has_web_view": 1,
- "index_web_pages_for_search": 1,
  "is_calendar_and_gantt": 1,
  "is_published_field": "is_published",
  "is_submittable": 1,
@@ -180,7 +179,7 @@
    "link_fieldname": "flight"
   }
  ],
- "modified": "2026-03-08 18:40:53.915648",
+ "modified": "2026-03-13 15:35:00.877405",
  "modified_by": "Administrator",
  "module": "Airplane Mode",
  "name": "Airplane Flight",

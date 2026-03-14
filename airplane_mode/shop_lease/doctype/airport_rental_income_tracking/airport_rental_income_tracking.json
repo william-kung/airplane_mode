@@ -1,7 +1,6 @@
 {
  "actions": [],
  "allow_rename": 1,
- "autoname": "RR-{shop_rental_contract}-.###",
  "creation": "2026-03-08 16:41:09.756322",
  "doctype": "DocType",
  "engine": "InnoDB",
@@ -47,8 +46,7 @@
    "fetch_from": "shop_rental_contract.rent_amount",
    "fieldname": "amount",
    "fieldtype": "Currency",
-   "label": "Amount",
-   "read_only": 1
+   "label": "Amount"
   },
   {
    "fieldname": "status",
@@ -72,7 +70,7 @@
    "fieldtype": "Link",
    "label": "Amended From",
    "no_copy": 1,
-   "options": "Airport Rental Income Receipt",
+   "options": "Airport Rental Income Tracking",
    "print_hide": 1,
    "read_only": 1,
    "search_index": 1
@@ -82,11 +80,11 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2026-03-11 14:37:00.900799",
+ "modified": "2026-03-14 10:52:13.215309",
  "modified_by": "Administrator",
  "module": "Shop Lease",
- "name": "Airport Rental Income Receipt",
- "naming_rule": "Expression",
+ "name": "Airport Rental Income Tracking",
+ "naming_rule": "By script",
  "owner": "Administrator",
  "permissions": [
   {

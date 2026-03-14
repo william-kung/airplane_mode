@@ -3,13 +3,13 @@
 
 import frappe
 from frappe import _
-from frappe.model.document import Document
+from frappe.website.website_generator import WebsiteGenerator
 from frappe.utils import get_datetime, add_to_date
 
 
 
 
-class AirplaneFlight(Document):
+class AirplaneFlight(WebsiteGenerator):
 	# @property
 	# def datetime_of_arrival(self):
 	# 	start = get_datetime(self.date_of_departure)
@@ -22,12 +22,13 @@ class AirplaneFlight(Document):
 
 
 	def on_update(self):
-		if self.is_ticket_related():
-			frappe.enqueue(
-				'airplane_mode.airplane_mode.doctype.airplane_flight.airplane_flight.push_to_ticket',
-				queue='short',
-				flight = self
-			)
+		if self.is_new():
+			if self.is_ticket_related():
+				frappe.enqueue(
+					'airplane_mode.airplane_mode.doctype.airplane_flight.airplane_flight.push_to_ticket',
+					queue='short',
+					flight = self
+				)
 
 
 	def is_ticket_related(self):
