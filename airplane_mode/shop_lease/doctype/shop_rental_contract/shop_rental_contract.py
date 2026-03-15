@@ -9,27 +9,49 @@ from frappe.utils import getdate, add_days, add_months
 
 class ShopRentalContract(Document):
 	def validate(self):
-		self.check_rent_amount()
-		self.check_dates()
+		self.verify_rent_amount()
+		self.check_overlap_dates()
 
 	def on_submit(self):
 		self.create_income_tracking()
 
 
-	def check_dates(self):
-		effective_date_status = is_overlap(self.effective_date, self.airport_shop),
-		expiry_date_status = is_overlap(self.expiry_date, self.airport_shop)
-		if effective_date_status == "Deny" or expiry_date_status == "Deny":
-			frappe.throw(
-				title=_("Error"),
-				msg=_("Request denied.  This period is overlapping with another lease.  Please select another Airport Shop or amend Effective Date and Expiry Date")
-			)
-		if effective_date_status == "Warning" or expiry_date_status == "Warning":
-			frappe.msgprint(
-				title=_("Warning"),
-				msg=_("⚠️There is another potential contract overlapping this period.  Please resolve conflict before submit!"),
-				indicator="orange"
-			)
+	
+	def check_overlap_dates(self):
+		
+		effective_date = getdate(self.effective_date)
+		expiry_date = getdate(self.expiry_date)
+
+
+		contracts = frappe.db.get_list("Shop Rental Contract",
+			filters={
+				'airport_shop': self.airport_shop,
+			},
+			fields=['name', 'effective_date', 'expiry_date', 'docstatus']
+		)
+
+		for c in contracts:
+			if self.name == c.name:
+				continue
+			c_start = getdate(c.effective_date)
+			c_end = getdate(c.expiry_date)
+			
+			if (effective_date >= c_start and effective_date <= c_end) or (expiry_date >= c_start and expiry_date <= c_end):
+				if c.docstatus == 1:
+					frappe.throw(
+					title=_("Error"),
+					msg=_("Request denied.  This period is overlapping with another lease.  Please select another Airport Shop or amend Effective Date and Expiry Date")
+				)
+				elif c.docstatus == 0:
+					frappe.msgprint(
+						title=_("Warning"),
+						msg=_("⚠️There is another potential contract overlapping this period.  Please make sure you resolve conflict before submit."),
+						indicator="orange"
+					)
+					break
+				else:
+					continue
+
 	
 	def create_income_tracking(self):
 		doc = frappe.new_doc('Airport Rental Income Tracking')
@@ -43,7 +65,7 @@ class ShopRentalContract(Document):
 
 
 	# make sure rental amount equals rate * area
-	def check_rent_amount(self):
+	def verify_rent_amount(self):
 		rate = self.rent_per_square_meter
 		area = self.area
 
@@ -54,28 +76,4 @@ class ShopRentalContract(Document):
 				msg="Please check Rent Amount."
 			)
 	
-
-@frappe.whitelist()
-def is_overlap(date, airport_shop):
-	date = getdate(date)
-	contracts = frappe.db.get_list("Shop Rental Contract",
-		filters={
-			'airport_shop': airport_shop,
-		},
-		fields=['effective_date', 'expiry_date', 'docstatus']
-	)
-	for contract in contracts:
-		
-		start_date = getdate(contract.effective_date)
-		end_date = getdate(contract.expiry_date)
-		
-		if date >= start_date and date <= end_date:
-			if contract.docstatus == 1:
-				return "Deny"
-			if contract.docstatus == 0:		
-				return "Warning"
-		else:
-			return "Pass"
-
-
 

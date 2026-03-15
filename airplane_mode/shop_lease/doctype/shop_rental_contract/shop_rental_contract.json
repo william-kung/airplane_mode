@@ -58,6 +58,7 @@
   {
    "fieldname": "effective_date",
    "fieldtype": "Date",
+   "in_list_view": 1,
    "label": "Effective Date",
    "reqd": 1
   },
@@ -140,7 +141,7 @@
  "is_calendar_and_gantt": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2026-03-09 15:40:30.746046",
+ "modified": "2026-03-15 15:00:45.745152",
  "modified_by": "Administrator",
  "module": "Shop Lease",
  "name": "Shop Rental Contract",
