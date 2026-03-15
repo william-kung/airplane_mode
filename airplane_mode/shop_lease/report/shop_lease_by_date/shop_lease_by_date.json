@@ -1,0 +1,29 @@
+{
+ "add_total_row": 0,
+ "add_translate_data": 0,
+ "columns": [],
+ "creation": "2026-03-15 18:07:07.338522",
+ "disabled": 0,
+ "docstatus": 0,
+ "doctype": "Report",
+ "filters": [],
+ "idx": 0,
+ "is_standard": "Yes",
+ "letter_head": null,
+ "modified": "2026-03-15 20:18:20.552442",
+ "modified_by": "Administrator",
+ "module": "Shop Lease",
+ "name": "Shop Lease by Date",
+ "owner": "Administrator",
+ "prepared_report": 0,
+ "query": "SELECT\n    `tabAirport Shop`.name AS \"Shop:Link/Airport Shop:120\",\n    IFNULL(`tabShop Rental Contract`.tenant, 'No Contract') AS \"Tenant:Text:150\",\n    `tabShop Rental Contract`.effective_date AS \"Effective Date:Date:120\",\n    `tabShop Rental Contract`.expiry_date AS \"Expiry Date:Date:120\",\n    `tabShop Rental Contract`.docstatus AS \"DocStatus:Int:50\",\n    `tabShop Rental Contract`.name AS \"Contract:Link/Shop Rental Contract:120\"\nFROM \n    `tabAirport Shop`\nLEFT JOIN \n    `tabShop Rental Contract` ON `tabShop Rental Contract`.airport_shop = `tabAirport Shop`.name\nORDER BY \n    `tabAirport Shop`.name ASC, \n    `tabShop Rental Contract`.expiry_date ASC",
+ "ref_doctype": "Airport Shop",
+ "report_name": "Shop Lease by Date",
+ "report_type": "Query Report",
+ "roles": [
+  {
+   "role": "System Manager"
+  }
+ ],
+ "timeout": 0
+}
