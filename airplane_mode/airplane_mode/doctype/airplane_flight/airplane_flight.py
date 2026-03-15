@@ -4,7 +4,7 @@
 import frappe
 from frappe import _
 from frappe.website.website_generator import WebsiteGenerator
-from frappe.utils import get_datetime, add_to_date
+from frappe.utils import getdate, add_to_date
 
 
 
@@ -79,7 +79,7 @@ def get_events():
 	processed_events = []
 	for event in events:
 		if event.date_of_departure and event.duration:
-			start_datetime = get_datetime(f"{event.date_of_departure}")
+			start_datetime = getdate(f"{event.date_of_departure}")
 			end_datetime = add_to_date(start_datetime, seconds=event.duration)			
 			processed_events.append({
 				"name": event.name,

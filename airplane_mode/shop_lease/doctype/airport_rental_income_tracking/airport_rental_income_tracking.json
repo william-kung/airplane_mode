@@ -27,12 +27,14 @@
   {
    "fieldname": "period_start",
    "fieldtype": "Date",
-   "label": "Period Start"
+   "label": "Period Start",
+   "reqd": 1
   },
   {
    "fieldname": "period_end",
    "fieldtype": "Date",
-   "label": "Period End"
+   "label": "Period End",
+   "reqd": 1
   },
   {
    "fetch_from": "shop_rental_contract.tenant",
@@ -46,9 +48,11 @@
    "fetch_from": "shop_rental_contract.rent_amount",
    "fieldname": "amount",
    "fieldtype": "Currency",
-   "label": "Amount"
+   "label": "Amount",
+   "reqd": 1
   },
   {
+   "default": "Pending",
    "fieldname": "status",
    "fieldtype": "Select",
    "label": "Status",
@@ -63,6 +67,7 @@
    "fieldname": "payment_received_date",
    "fieldtype": "Date",
    "label": "Payment Received Date",
+   "mandatory_depends_on": "eval:doc.status == \"Received\"",
    "print_hide": 1
   },
   {
@@ -80,7 +85,7 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2026-03-14 10:52:13.215309",
+ "modified": "2026-03-14 12:15:29.530436",
  "modified_by": "Administrator",
  "module": "Shop Lease",
  "name": "Airport Rental Income Tracking",

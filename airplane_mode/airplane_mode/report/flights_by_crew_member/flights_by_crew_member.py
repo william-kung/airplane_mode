@@ -3,7 +3,7 @@
 
 import frappe
 from frappe import _
-from frappe.utils import get_datetime
+from frappe.utils import getdate
 from datetime import timedelta
 
 def execute(filters: dict | None = None):
@@ -76,7 +76,7 @@ def get_data() -> list[list]:
 		.run(as_dict=1)
 	)
 	for row in query:
-		departure_time = get_datetime(row["departure_time"])
+		departure_time = getdate(row["departure_time"])
 		duration_delta = timedelta(seconds=row["duration"] or 0)
 		row["arrival_time"] = departure_time + duration_delta
 	return query

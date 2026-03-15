@@ -1,6 +1,6 @@
 import frappe
 from frappe import _
-from frappe.utils import get_datetime, now
+from frappe.utils import getdate, now
 from datetime import timedelta
 
 def execute(filters: dict | None = None):
@@ -69,7 +69,7 @@ def get_columns() -> list[dict]:
 def get_data(filters: dict | None = None) -> list[dict]:
 
     ref_date = filters.get("reference_date") if filters and filters.get("reference_date") else now()
-    ref_date = get_datetime(ref_date)
+    ref_date = getdate(ref_date)
 
 
     CrewsOnBoard = frappe.qb.DocType("Flight Crew On Board")
@@ -101,7 +101,7 @@ def get_data(filters: dict | None = None) -> list[dict]:
         for flight in onboard_flights:
             if flight["crew_name"] != row:
                 continue
-            departure_time = get_datetime(flight["departure_time"])
+            departure_time = getdate(flight["departure_time"])
             duration_delta = timedelta(seconds=flight["duration"] or 0)
             arrival_time = departure_time + duration_delta
             flight["arrival_time"] = arrival_time
