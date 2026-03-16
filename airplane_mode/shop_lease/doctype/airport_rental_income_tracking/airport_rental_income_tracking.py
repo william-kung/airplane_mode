@@ -63,11 +63,6 @@ class AirportRentalIncomeTracking(Document):
 			return False
 
 
-
-
-
-
-
 	## get
 	@frappe.whitelist()
 	def get_dates(self):
