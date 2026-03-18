@@ -16,5 +16,14 @@ frappe.ui.form.on("Shop Rental Contract", {
         const area = frm.doc.area;
         const rent_amount = rent_per_square_meter * area;
         frm.set_value("rent_amount", rent_amount);
+    },
+    effective_date(frm){
+        if (!frm.doc.expiry_date) {
+            const d = new Date(frm.doc.effective_date);
+            d.setYear(d.getFullYear() + 1);
+            d.setDate(d.getDate() - 1);
+            console.log('d', d)
+            frm.set_value("expiry_date", d);
+        }
     }
 });
