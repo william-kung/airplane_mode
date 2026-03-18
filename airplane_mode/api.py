@@ -1,6 +1,5 @@
 import frappe
-from frappe.utils import today
-from frappe.utils import add_to_date, date_diff
+from frappe.utils import today, add_to_date, date_diff, get_filtered_list_link
 from frappe import _
 
 
@@ -13,7 +12,8 @@ def validate_shop_rental_tracking():
         "expiry_date": ['>=', today()],
         "docstatus": 1
     },
-    pluck="name")
+    fields=['name', 'tenant']
+    )
     if not active_contracts:
         return
 
@@ -25,42 +25,58 @@ def validate_shop_rental_tracking():
         fields=['shop_rental_contract'],
         pluck="shop_rental_contract"
     )
+
+    tracking_set = set(tracking_contracts)
+    missing_contracts= [c for c in active_contracts if c['name'] not in tracking_set]
     
-    missing_contracts = list(set(active_contracts) - set(tracking_contracts))
-
     if missing_contracts:
-        send_tracking_alert_email(missing_contracts)
+        add_tracking_record(missing_contracts)
+        # send_tracking_alert_email(missing_contracts)
 
-def send_tracking_alert_email(missing_list):
-    # Define who should receive the alert here.
-    roles = ("Airport Authority Personnel", "System Manager")
+def add_tracking_record(contracts):
+    for c in contracts:
+        doc = frappe.new_doc("Airport Rental Income Tracking")
+        doc.shop_rental_contract = c.name
+        doc.tenant = c.tenant
+        dates = doc.get_dates()
+        doc.period_start = dates.get("period_start")
+        doc.period_end = dates.get("period_end")
+        doc.insert()
 
-    recipients = frappe.db.sql(f"""
-        SELECT DISTINCT `tabUser`.email, `tabUser`.first_name, `tabUser`.name FROM `tabUser`
-        JOIN `tabHas Role`
-        ON `tabHas Role`.parent = `tabUser`.name
-        WHERE `tabHas Role`.parenttype = "User"
-        && `tabHas Role`.role IN {roles}
-        """,as_dict=1)
-    if recipients:
-        recipient_list = [r.email for r in recipients]
-        items_html = "".join([f"<li>{i}</li>" for i in missing_list])
-        message = f"""
-            <h3>Action Required: Missing Rental Tracking</h3>
-            <p>The following active contracts currently have no recorded income tracking:</p>
-            <ul>{items_html}</ul>
-            <p>Please create a record in <b>Airport Rental Income Tracking</b> immediately
-            or update the contract expiry date, so as to make sure it is expired.</p>
-            <p>This is a system notification.  Do not reply to this email.</p>
-        """
-        subject = f"Missing Income Tracking: {len(missing_list)} Contracts"
-        frappe.sendmail(
-            recipients=recipient_list,
-            subject=subject,
-            message=message,
-            now=False,
-            header=["Tracking Compliance Alert", "red"]
-        )
+        
+
+
+# def send_tracking_alert_email(missing_list):
+#     # Define who should receive the alert here.
+#     roles = ("Airport Authority Personnel", "System Manager")
+
+#     recipients = frappe.db.sql(f"""
+#         SELECT DISTINCT `tabUser`.email, `tabUser`.first_name, `tabUser`.name FROM `tabUser`
+#         JOIN `tabHas Role`
+#         ON `tabHas Role`.parent = `tabUser`.name
+#         WHERE `tabHas Role`.parenttype = "User"
+#         && `tabHas Role`.role IN {roles}
+#         """,as_dict=1)
+#     if recipients:
+#         list_link = get_filtered_list_link("Shop Rental Contract", missing_list)
+#         recipient_list = [r.email for r in recipients]
+#         items_html = "".join([f"<li>{i}</li>" for i in missing_list])
+#         message = f"""
+#             <h3>Action Required: Missing Rental Tracking</h3>
+#             <p>The following active contracts currently have no recorded income tracking:</p>
+#             <ul>{items_html}</ul>
+#             <p>Please create a tracking record from <b>{list_link}</b> immediately
+#             or update the contract expiry date, so as to make sure the contract is expired.</p>
+#             <p>This is a system notification.  Do not reply to this email.</p>
+#         """
+#         subject = f"Missing Income Tracking: {len(missing_list)} Contracts"
+#         frappe.sendmail(
+#             recipients=recipient_list,
+#             subject=subject,
+#             message=message,
+#             now=False,
+#             header=["Tracking Compliance Alert", "red"]
+#         )
 
 
 def set_pending_to_overdue():

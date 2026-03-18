@@ -4,7 +4,8 @@
 import frappe
 from frappe import _
 from frappe.model.document import Document
-from frappe.utils import add_days, add_months, getdate
+from frappe.utils import add_to_date, days_diff
+from datetime import datetime 
 
 
 class AirportRentalIncomeTracking(Document):
@@ -41,9 +42,9 @@ class AirportRentalIncomeTracking(Document):
 
 
 	def create_next_period(self):
-		next_period_start = add_days(self.period_end, 1)
-		next_month = add_months(next_period_start, 1)
-		next_period_end = add_days(next_month, -1)
+		next_period_start = add_to_date(self.period_end, days=1, as_string=True)
+		next_month = add_to_date(next_period_start, months=1, as_string=True)
+		next_period_end = add_to_date(next_month, days=-1, as_string=True)
 		doc = frappe.new_doc('Airport Rental Income Tracking')
 		doc.shop_rental_contract = self.shop_rental_contract
 		doc.period_start = next_period_start
@@ -51,13 +52,12 @@ class AirportRentalIncomeTracking(Document):
 		doc.insert()
 
 	def is_expired(self):
-		next_period_start = add_days(self.period_end, 1)
-		period_start = getdate(next_period_start)
-		expiry_date = getdate(frappe.db.get_value('Shop Rental Contract', 
+		period_start = add_to_date(self.period_end, days=1, as_string=True)
+		expiry_date = frappe.db.get_value('Shop Rental Contract', 
 			self.shop_rental_contract,
 			'expiry_date',
-		))
-		if period_start >= expiry_date:
+		)
+		if days_diff(period_start, expiry_date) >= 0:
 			return True
 		else:
 			return False
@@ -67,17 +67,20 @@ class AirportRentalIncomeTracking(Document):
 	@frappe.whitelist()
 	def get_dates(self):
 		dates = {}
-		last_period_end = frappe.db.get_value(self.doctype,
+		last_period_end = frappe.db.get_all(self.doctype,
 			filters={
 				'shop_rental_contract' : self.shop_rental_contract,
 				'docstatus' : 1,
 				'name': ['!=', self.name]
 			},
-			fieldname='period_end',
+			fields=['period_end'],
 			order_by='period_end DESC'
 		)
-		if last_period_end:
-			start_date = add_days(last_period_end, 1)
+		# if there were submitted tracking doc (paid)
+		if len(last_period_end) > 0:
+			last_period_end = last_period_end[0].period_end
+			start_date = add_to_date(last_period_end, days=1, as_string=True)
+		# contract effective date as start day.
 		else:
 			start_date = frappe.db.get_value(
 				'Shop Rental Contract',
@@ -85,10 +88,10 @@ class AirportRentalIncomeTracking(Document):
 				'effective_date'
 			)
 		
-		next_month = add_months(start_date, 1)
-		end_date = add_days(next_month, -1)
+		next_month = add_to_date(start_date, months=1, as_string=True)
+		end_date = add_to_date(next_month, days=-1, as_string=True)
 		dates = {
-			'period_start': start_date,
+			'period_start': start_date.strftime('%Y-%m-%d'),
 			'period_end': end_date
 		}
 		return dates
