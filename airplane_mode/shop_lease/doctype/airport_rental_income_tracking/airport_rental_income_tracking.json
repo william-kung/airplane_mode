@@ -55,6 +55,8 @@
    "default": "Pending",
    "fieldname": "status",
    "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
    "label": "Status",
    "options": "Pending\nOverdue\nReceived"
   },
@@ -85,7 +87,7 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2026-03-14 12:15:29.530436",
+ "modified": "2026-03-18 12:36:51.984562",
  "modified_by": "Administrator",
  "module": "Shop Lease",
  "name": "Airport Rental Income Tracking",
@@ -109,6 +111,19 @@
  "rows_threshold_for_grid_search": 20,
  "sort_field": "creation",
  "sort_order": "DESC",
- "states": [],
+ "states": [
+  {
+   "color": "Orange",
+   "title": "Pending"
+  },
+  {
+   "color": "Red",
+   "title": "Overdue"
+  },
+  {
+   "color": "Green",
+   "title": "Received"
+  }
+ ],
  "track_changes": 1
 }

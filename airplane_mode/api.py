@@ -66,7 +66,7 @@ def send_tracking_alert_email(missing_list):
 def set_pending_to_overdue():
     filters = {
         "status": "Pending",
-        "period_start": ["<=", today]
+        "period_start": ["<=", today()]
     }
     pendings = get_tracking_records(filters)
     for p in pendings:

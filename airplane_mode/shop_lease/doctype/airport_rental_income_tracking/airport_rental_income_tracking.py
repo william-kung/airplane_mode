@@ -29,10 +29,10 @@ class AirportRentalIncomeTracking(Document):
 			self.period_end = dates.get("period_end")
 
 	def on_submit(self):
-		if self.if_expired():
+		if self.is_expired():
 			frappe.msgprint(
 				msg="No new income tracking period was created.", 
-				title="Contract Expired Next Month",
+				title="Contract will expire in next month",
 				indicator="red"
 			)
 			return	
