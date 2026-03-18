@@ -15,10 +15,9 @@ fixtures = [
 # Scheduled Tasks
 scheduler_events = {
     "daily_long":  [
-        "airplane_mode.api.pending_to_overdue",
-        "airplane_mode.api.send_7_day_rental_payment_reminder_email",
-        "airplane_mode.api.send_3_day_rental_payment_reminder_email",
-        "airplane_mode.api.send_1_day_rental_payment_reminder_email",
+        "airplane_mode.api.validate_shop_rental_tracking_email",
+        "airplane_mode.api.set_pending_to_overdue",
+        "airplane_mode.api.send_rental_payment_reminder_email",
         "airplane.mode.api.send_overdue_rental_payment_reminder_email"
     ]
 }
