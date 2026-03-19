@@ -10,15 +10,30 @@ from frappe.utils import getdate, add_to_date
 
 
 class AirplaneFlight(WebsiteGenerator):
-	# @property
-	# def datetime_of_arrival(self):
-	# 	start = get_datetime(self.date_of_departure)
-	# 	if start and self.duration:
-	# 		flight_end = add_to_date(start, seconds=self.duration)
-	# 	return flight_end
 	
 	def before_submit(self):
 		self.status = "Completed"
+
+	def validate(self):
+		self.remove_duplcate_crew()
+
+	def remove_duplcate_crew(self):
+		seen_names = set()
+		unique_names = []
+		has_duplicates = False
+		for crew in self.crew_on_board:
+			if crew.flight_crew_member not in seen_names:
+				seen_names.add(crew.flight_crew_member)
+				unique_names.append(crew)
+			else:
+				has_duplicates = True
+		if has_duplicates:
+			self.crew_on_board = unique_names
+			frappe.msgprint(
+				msg=_("Duplicated crew members were removed."),
+				title=_("Notice"),
+				indicator="blue",
+			)
 
 
 	def on_update(self):
