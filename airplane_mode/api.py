@@ -67,6 +67,7 @@ def add_missing_shop_rental_tracking():
     if not active_contracts:
         return
     filters={
+            'docstatus':  ['!=', '2'],
             'period_start': ['<=', today()],
             'period_end': ['>=', today()]
         },
@@ -84,6 +85,7 @@ def add_missing_shop_rental_tracking():
 
 def set_pending_to_overdue():
     filters = {
+        'docstatus':  ['!=', '2'],
         "status": "Pending",
         "period_start": ["<=", today()]
     }
@@ -97,9 +99,9 @@ def set_pending_to_overdue():
 def get_active_contracts():
     return frappe.get_all("Shop Rental Contract",
         filters={
+            'docstatus':  ['!=', '2'],
             "effective_date": ['<=', today()],
             "expiry_date": ['>=', today()],
-            "docstatus": 1
         },
         fields=['name', 'tenant', 'rent_amount']
     )
