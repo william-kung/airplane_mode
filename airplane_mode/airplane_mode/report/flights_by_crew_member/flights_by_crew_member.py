@@ -3,7 +3,7 @@
 
 import frappe
 from frappe import _
-from frappe.utils import getdate
+from frappe.utils import add_to_date
 from datetime import timedelta
 
 def execute(filters: dict | None = None):
@@ -14,7 +14,7 @@ def execute(filters: dict | None = None):
 	every time the report is refreshed or a filter is updated.
 	"""
 	columns = get_columns()
-	data = get_data()
+	data = get_data(filters)
 
 	return columns, data
 
@@ -28,7 +28,9 @@ def get_columns() -> list[dict]:
 		{
 			"label": _("Crew"),
 			"fieldname": "crew_name",
-			"fieldtype": "Data",
+			"fieldtype": "Link",
+            "options": "Flight Crew Member",
+            "width": 190
 		},
 		{
 			"label": _("Flight"),
@@ -44,39 +46,61 @@ def get_columns() -> list[dict]:
 		{
 			"label": _("From"),
 			"fieldname": "source_code",
-			"fieldtype": "Data",		
+			"fieldtype": "Data",
+            "width": 70
 		},
 		{
 			"label": _("To"),
 			"fieldname": "destination_code",
 			"fieldtype": "Data",
+            "width": 70
 		}
 	]
 
 
-# def get_data(filters: dict | None = None) -> list[list]:
-def get_data() -> list[list]:
+def get_data(filters) -> list[dict]:
+    if not filters:
+        filters = {}
 
+    CrewsOnBoard = frappe.qb.DocType("Flight Crew On Board")
+    Flights = frappe.qb.DocType("Airplane Flight")
 
-	# crew = filters.get('crew_name') if filters and filters.get('crew_name') else "C-Susanna-Wong-001"
+    # Initialize the query
+    query = (
+        frappe.qb.from_(CrewsOnBoard)
+        .inner_join(Flights)
+        .on(Flights.name == CrewsOnBoard.parent)
+        .select(
+            CrewsOnBoard.flight_crew_member.as_("crew_name"),
+            CrewsOnBoard.parent.as_("flight"),
+            Flights.source_airport_code.as_("source_code"),
+            Flights.destination_airport_code.as_("destination_code"),
+            Flights.date_of_departure.as_("departure_time"),
+            Flights.duration.as_("duration")
+        )
+    )
 
-	CrewsOnBoard = frappe.qb.DocType("Flight Crew On Board")
-	Flights = frappe.qb.DocType("Airplane Flight")
-	query = (frappe.qb.from_(CrewsOnBoard).inner_join(Flights).on(Flights.name == CrewsOnBoard.parent)
-		.select(
-			CrewsOnBoard.flight_crew_member.as_("crew_name"),
-			CrewsOnBoard.parent.as_("flight"),
-			Flights.source_airport_code.as_("source_code"),
-			Flights.destination_airport_code.as_("destination_code"),
-			Flights.date_of_departure.as_("departure_time"),
-			Flights.duration.as_("duration")
-		)
-		.orderby(CrewsOnBoard.flight_crew_member, order=frappe.qb.asc)
-		.orderby(Flights.date_of_departure, order=frappe.qb.asc)
-		.run(as_dict=1)
-	)
-	for row in query:
-		departure_time = getdate(row["departure_time"])
-		duration_delta = timedelta(seconds=row["duration"] or 0)
-		row["arrival_time"] = departure_time + duration_delta
-	return query
+    # 1. Apply Filter conditionally to avoid errors
+    if filters.get("crew_name"):
+        query = query.where(CrewsOnBoard.flight_crew_member == filters.get("crew_name"))
+
+    # 2. Apply Ordering
+    query = (
+        query.orderby(CrewsOnBoard.flight_crew_member, order=frappe.qb.asc)
+        .orderby(Flights.date_of_departure, order=frappe.qb.desc)
+    )
+
+    # Execute query
+    data = query.run(as_dict=1)
+
+    # 3. Data Processing
+    # In V16, prefer using frappe.utils for date manipulations
+    for row in data:
+        if row.get("departure_time") and row.get("duration"):
+            # Assuming duration is in seconds
+            row["arrival_time"] = add_to_date(row["departure_time"], seconds=row["duration"])
+        else:
+            row["arrival_time"] = None
+
+    return data
+

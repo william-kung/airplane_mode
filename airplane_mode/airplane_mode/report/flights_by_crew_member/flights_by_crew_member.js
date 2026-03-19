@@ -3,11 +3,12 @@
 
 frappe.query_reports["Flights by Crew Member"] = {
 	filters: [
-		// {
-		// 	"fieldname": "crew",
-		// 	"label": __("Crew Member"),
-		// 	"fieldtype": "Data",
-		// 	"reqd": 1,
-		// },
+		{
+			"fieldname": "crew_name",
+			"label": __("Crew Member"),
+			"options": "Flight Crew Member",
+			"fieldtype": "Link",
+			"mandatory": 0,
+		},
 	],
 };
