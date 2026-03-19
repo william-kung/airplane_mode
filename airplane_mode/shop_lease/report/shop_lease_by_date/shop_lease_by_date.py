@@ -61,8 +61,6 @@ def get_columns() -> list[dict]:
 def get_data(filters: dict | None = None) -> list[list]:
 	if not filters:
 		filters = {}
-	else:
-		filters = {"airport_shop": filters.get("airport_shop")}
     
 	query = frappe.qb.get_query("Shop Rental Contract",
         fields=[
@@ -74,7 +72,13 @@ def get_data(filters: dict | None = None) -> list[list]:
             "name as contract"
         ],
 		filters=filters,
-		order_by="airport_shop asc, effective_date desc"
+		order_by="airport_shop asc, expiry_date desc"
     )
+
+	data = query.run(as_dict=True)
+
+	if data == []:
+		return [{"shop": filters.get("airport_shop"), "tenant": "n/a", "effective_date": None, "expiry_date": None, "docstatus": "n/a", "contract": "No Contract Found"}]
+
 
 	return query.run(as_dict=1)
