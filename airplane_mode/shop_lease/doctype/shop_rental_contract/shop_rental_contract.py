@@ -5,7 +5,7 @@ import frappe
 from frappe import _
 from frappe.model.document import Document
 from frappe.model.naming import getseries
-from frappe.utils import add_days, add_months, get_link_to_form, getdate, today
+from frappe.utils import add_days, add_months, get_link_to_form, getdate
 
 
 class ShopRentalContract(Document):

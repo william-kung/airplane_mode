@@ -15,7 +15,8 @@ frappe.ui.form.on("Shop Rental Contract", {
                 "shop_rental_contract": frm.doc.name
             });
         })
-	},
+    },
+
     calculate_rent_amount(frm){      
         const rent_per_square_meter = frm.doc.rent_per_square_meter;
         const area = frm.doc.area;

@@ -1,95 +1,8 @@
 import frappe
-from frappe.utils import today, add_to_date, date_diff, get_filtered_list_link
+from frappe.utils import today, add_to_date, date_diff
 from frappe import _
 
 
-
-def validate_shop_rental_tracking():
-
-    active_contracts = frappe.get_all("Shop Rental Contract",
-    filters={
-        "effective_date": ['<=', today()],
-        "expiry_date": ['>=', today()],
-        "docstatus": 1
-    },
-    fields=['name', 'tenant']
-    )
-    if not active_contracts:
-        return
-
-    tracking_contracts = frappe.get_all("Airport Rental Income Tracking",
-        filters={
-            'period_start': ['<=', today()],
-            'period_end': ['>=', today()]
-        },
-        fields=['shop_rental_contract'],
-        pluck="shop_rental_contract"
-    )
-
-    tracking_set = set(tracking_contracts)
-    missing_contracts= [c for c in active_contracts if c['name'] not in tracking_set]
-    
-    if missing_contracts:
-        add_tracking_record(missing_contracts)
-        # send_tracking_alert_email(missing_contracts)
-
-def add_tracking_record(contracts):
-    for c in contracts:
-        doc = frappe.new_doc("Airport Rental Income Tracking")
-        doc.shop_rental_contract = c.name
-        doc.tenant = c.tenant
-        dates = doc.get_dates()
-        doc.period_start = dates.get("period_start")
-        doc.period_end = dates.get("period_end")
-        doc.insert()
-
-        
-
-
-# def send_tracking_alert_email(missing_list):
-#     # Define who should receive the alert here.
-#     roles = ("Airport Authority Personnel", "System Manager")
-
-#     recipients = frappe.db.sql(f"""
-#         SELECT DISTINCT `tabUser`.email, `tabUser`.first_name, `tabUser`.name FROM `tabUser`
-#         JOIN `tabHas Role`
-#         ON `tabHas Role`.parent = `tabUser`.name
-#         WHERE `tabHas Role`.parenttype = "User"
-#         && `tabHas Role`.role IN {roles}
-#         """,as_dict=1)
-#     if recipients:
-#         list_link = get_filtered_list_link("Shop Rental Contract", missing_list)
-#         recipient_list = [r.email for r in recipients]
-#         items_html = "".join([f"<li>{i}</li>" for i in missing_list])
-#         message = f"""
-#             <h3>Action Required: Missing Rental Tracking</h3>
-#             <p>The following active contracts currently have no recorded income tracking:</p>
-#             <ul>{items_html}</ul>
-#             <p>Please create a tracking record from <b>{list_link}</b> immediately
-#             or update the contract expiry date, so as to make sure the contract is expired.</p>
-#             <p>This is a system notification.  Do not reply to this email.</p>
-#         """
-#         subject = f"Missing Income Tracking: {len(missing_list)} Contracts"
-#         frappe.sendmail(
-#             recipients=recipient_list,
-#             subject=subject,
-#             message=message,
-#             now=False,
-#             header=["Tracking Compliance Alert", "red"]
-#         )
-
-
-def set_pending_to_overdue():
-    filters = {
-        "status": "Pending",
-        "period_start": ["<=", today()]
-    }
-    pendings = get_tracking_records(filters)
-    for p in pendings:
-        doc = frappe.get_doc("Airport Rental Income Tracking", p.name)
-        doc.status = "Overdue"
-        doc.save()
-    
 
 def send_rental_payment_reminder_email():
     doc = frappe.get_doc("Airport Shop Rental Settings")
@@ -98,22 +11,23 @@ def send_rental_payment_reminder_email():
             "status": "Pending",
         }
         pendings = get_tracking_records(filters)
+        # only send emails for 7, 3, and 1 days before due.
         seven_days = add_to_date(today(), days=7)
         three_days = add_to_date(today(), days=3)
         one_day = add_to_date(today(), days=1)
         for p in pendings:
             if p.period_start == seven_days or p.period_start == three_days or p.period_start == one_day:
                 days = date_diff(p.period_start, today())
-                p.email = frappe.get_value("Airport Tenant", p.tenant, "email")
+                p.email = frappe.db.get_value("Airport Tenant", p.tenant, "email")
                 frappe.sendmail(
                     recipients=[p.email],
                     subject=_(f"REMINDER: Rental Payment due in {days} day(s)"),
                     message=_(f"""
                         <p>Dear Sir/Madam,<p>
                         <p>Please be reminded that the rental payment of the following contract is overdue in {days} day(s):</p>
-                        <p><b>Contact Number</b>: {p.shop_rental_contract}<br>
-                        <b>Due Date</b>: {p.period_start}<br>
-                        <b>Amount</b>: {p.amount}</p>
+                        <p><b>Contact Number</b>: {p['shop_rental_contract']}<br>
+                        <b>Due Date</b>: {p['period_start']}<br>
+                        <b>Amount</b>: {p['amount']}</p>
                         <p>Please settle the above at your earliest convenience.  If you have already done so, please neglect this email.</p>
                         <p>Thank you for your attention.</p>
                         <p>Best regards,</p>
@@ -128,26 +42,91 @@ def send_overdue_rental_payment_reminder_email():
         "status": "Overdue",
     }
     overdues = get_tracking_records(filters)
-    for o in overdues:
-        o.email = frappe.get_value("Airport Tenant", o.tenant, "email" )
-        frappe.sendmail(
-            recipients=[o.email],
-            subject="REMINDER: Rental Payment Overdue",
-            message=f"""
-                <p>Dear Sir/Madam,<p>
-                <p>Please be reminded that the following rental payment is overdue:</p>
-                <p><b>Contact Number</b>: {o.shop_rental_contract}<br>
-                <b>Due Date</b>: {o.period_start}<br>
-                <b>Amount</b>: {o.amount}</p>
-                <p>Please settle the above immediately.  If you have already done so, please neglect this email.</p>
-                <p>Thank you for your attention.</p>
-                <p>Best regards,</p>
-                <p>DDR Aiport Management Team</p>
-            """
-        )
+    if len(overdues)>0:
+        for o in overdues:
+            email = frappe.db.get_value("Airport Tenant", o['tenant'], "email" )
+            frappe.sendmail(
+                recipients=[email],
+                subject=_("REMINDER: Rental Payment Overdue"),
+                message=_(f"""
+                    <p>Dear Sir/Madam,<p>
+                    <p>Please be reminded that the following rental payment is overdue:</p>
+                    <p><b>Contact Number</b>: {o['shop_rental_contract']}<br>
+                    <b>Due Date</b>: {o['period_start']}<br>
+                    <b>Amount</b>: {o['amount']}</p>
+                    <p>Please settle the above immediately.  If you have already done so, please neglect this email.</p>
+                    <p>Thank you for your attention.</p>
+                    <p>Best regards,</p>
+                    <p>DDR Aiport Management Team</p>
+                """)
+            )
+
+def add_missing_shop_rental_tracking():
+
+    active_contracts = get_active_contracts()
+    if not active_contracts:
+        return
+    filters={
+            'period_start': ['<=', today()],
+            'period_end': ['>=', today()]
+        },
+    tracking_records = get_tracking_records(filters)
+    if tracking_records:
+        tracking_records = [r.shop_rental_contract for r in tracking_records]
+    
+    tracking_set = set(tracking_records)
+    
+    missing_contracts= [c for c in active_contracts if c['name'] not in tracking_set]
+    
+    if missing_contracts:
+        add_tracking_records(missing_contracts)
+
+
+def set_pending_to_overdue():
+    filters = {
+        "status": "Pending",
+        "period_start": ["<=", today()]
+    }
+    pendings = get_tracking_records(filters)
+    for p in pendings:
+        doc = frappe.get_doc("Airport Rental Income Tracking", p.name)
+        doc.status = "Overdue"
+        doc.save()
+    
+
+def get_active_contracts():
+    return frappe.get_all("Shop Rental Contract",
+        filters={
+            "effective_date": ['<=', today()],
+            "expiry_date": ['>=', today()],
+            "docstatus": 1
+        },
+        fields=['name', 'tenant', 'rent_amount']
+    )
 
 def get_tracking_records(filters: dict):
     return frappe.get_all("Airport Rental Income Tracking",
         filters = filters,
         fields = ['name','shop_rental_contract', 'period_start', 'amount', 'tenant', 'status']
     )
+
+
+def add_tracking_records(contracts):
+    for c in contracts:
+        doc = frappe.new_doc("Airport Rental Income Tracking")
+        doc.shop_rental_contract = c.name
+        doc.tenant = c.tenant
+        doc.amount = c.rent_amount
+        dates = doc.get_dates()
+        doc.period_start = dates.get("period_start")
+        doc.period_end = dates.get("period_end")
+        if date_diff(doc.period_start, today()) >0:
+            doc.status = "Pending"
+        else:
+            doc.status = "Overdue"
+        doc.insert()
+
+
+
+
+
