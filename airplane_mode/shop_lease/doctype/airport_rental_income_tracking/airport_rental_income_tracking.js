@@ -35,5 +35,16 @@ frappe.ui.form.on("Airport Rental Income Tracking", {
 				})
 			});
 		}
+		frm.page.set_indicator(`${frm.doc.status}`, get_status_color(frm.doc.status));
 	}
 });
+
+function get_status_color(status) {
+	const colors = {
+		"Pending": "orange",
+		"Overdue": "red",
+		"Received": "gray",  
+	};
+	return colors[status] || "gray";
+
+}

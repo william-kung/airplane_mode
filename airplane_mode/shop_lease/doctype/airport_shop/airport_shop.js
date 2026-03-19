@@ -4,13 +4,13 @@
 frappe.ui.form.on("Airport Shop", {
 	refresh(frm) {
         frm.add_custom_button(__('Check Availability'), function() {
-            // Define the report route and filters
-            frappe.set_route('query-report', 'Shop Lease by Date');
-        }, __("Leasing"));
+            frappe.route_options = {'airport_shop': frm.doc.name}
+            frappe.set_route('query-report', 'Shop Lease by Date')
+        }, __("Actions"));
         frm.add_custom_button(__('Add New Shop Lease'), function() {
             frappe.new_doc('Shop Rental Contract', {
                 airport_shop: frm.doc.name
             });
-        }, __("Leasing"));
+        }, __("Actions"));
     }
 });
