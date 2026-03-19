@@ -9,8 +9,18 @@ frappe.ui.form.on("Airplane Ticket", {
             // Call a helper function to keep the 'refresh' trigger clean
             show_seat_dialog(frm);
         }, __("Actions"));
+        frm.page.set_indicator(`${frm.doc.status}`, get_status_color(frm.doc.status));
     }
 });
+
+function get_status_color(status) {
+	const colors = {
+		"Booked": "gray",
+		"Checked-In": "purple",
+		"Boarded": "green",  
+	};
+	return colors[status] || "gray";
+}
 
 function show_seat_dialog(frm) {
     let d = new frappe.ui.Dialog({
