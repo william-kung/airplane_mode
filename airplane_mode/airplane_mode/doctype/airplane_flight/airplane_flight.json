@@ -179,7 +179,7 @@
    "link_fieldname": "flight"
   }
  ],
- "modified": "2026-03-13 15:35:00.877405",
+ "modified": "2026-03-20 09:27:55.211549",
  "modified_by": "Administrator",
  "module": "Airplane Mode",
  "name": "Airplane Flight",
@@ -246,6 +246,19 @@
  "rows_threshold_for_grid_search": 20,
  "sort_field": "creation",
  "sort_order": "DESC",
- "states": [],
+ "states": [
+  {
+   "color": "Green",
+   "title": "Scheduled"
+  },
+  {
+   "color": "Gray",
+   "title": "Completed"
+  },
+  {
+   "color": "Red",
+   "title": "Cancelled"
+  }
+ ],
  "track_changes": 1
 }
