@@ -16,16 +16,27 @@ frappe.listview_settings["Airplane Flight"] = {
     formatters: {
         date_of_departure(value, df, doc) {
             if (!value) return ""
-            const d = moment(value)
+            const  d = moment(value)
             const now = moment()
-            const color = d < now ? "red" : "green"
+            const buffer_before_departure = moment(value).subtract(1, 'days') 
+            const is_soon = now.isBetween(buffer_before_departure, d)
+            let color
+            switch (is_soon) {
+                case true:
+                    color = "red"
+                    break;
+                case false:
+                    color = d < now ? "gray" : "green"
+                    break;
+            }
+
             return `
                 <span 
                     class="pill" 
                     style="background-color: var(--bg-${color}); color: var(--text-on-${color}); font-weight: 500;"
                 >
                     ${d.fromNow()}
-                </span>
+                </span>            
             `
         },
     },
