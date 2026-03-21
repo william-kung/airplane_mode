@@ -1,7 +1,7 @@
 # Copyright (c) 2026, DDR and Contributors
 # See license.txt
 
-# import frappe
+import frappe
 from frappe.tests import IntegrationTestCase
 
 
@@ -14,9 +14,21 @@ IGNORE_TEST_RECORD_DEPENDENCIES = []  # eg. ["User"]
 
 
 class IntegrationTestFlightPassenger(IntegrationTestCase):
-	"""
-	Integration tests for FlightPassenger.
-	Use this class for testing interactions between multiple components.
-	"""
+	def test_full_name_correctly_set(self):
+		doc = frappe.get_doc({
+			"doctype": "Flight Passenger",
+			"first_name": "John",
+			"last_name": "Doe",
+			"date_of_birth": "1985-11-04"
+		})
+		doc.insert()
+		self.assertEqual(doc.full_name, "John Doe")
 
-	pass
+	def test_full_name_correctly_set_with_no_last_name(self):
+		doc = frappe.get_doc({
+			"doctype": "Flight Passenger",
+			"first_name": "John",
+			"date_of_birth": "1985-11-04"
+		})
+		doc.insert()
+		self.assertEqual(doc.full_name, "John")

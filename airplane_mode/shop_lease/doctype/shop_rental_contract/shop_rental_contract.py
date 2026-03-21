@@ -4,15 +4,14 @@
 import frappe
 from frappe import _
 from frappe.model.document import Document
-from frappe.model.naming import getseries
+from frappe.model.naming import getseries, make_autoname
 from frappe.utils import add_days, add_months, get_link_to_form, getdate
 
 
 class ShopRentalContract(Document):
 	def autoname(self):
 		prefix = f"{self.airport_code}-S{self.shop_number}"
-		series = getseries(prefix, 3)
-		self.name = f"{prefix}-{series}"
+		self.name = make_autoname(f"{prefix}-.###")
 
 	def validate(self):
 		self.verify_rent_amount()
@@ -59,8 +58,7 @@ class ShopRentalContract(Document):
 				
 	def rename(self):
 		new_prefix = f"{self.airport_code}-S{self.shop_number}"
-		new_series = getseries(new_prefix, 3)
-		new_name = f"{new_prefix}-{new_series}"
+		new_name = make_autoname(f"{new_prefix}-.###")
 		frappe.rename_doc(self.doctype, self.name, new_name)
 
 

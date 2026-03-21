@@ -139,8 +139,13 @@
  "index_web_pages_for_search": 1,
  "is_calendar_and_gantt": 1,
  "is_submittable": 1,
- "links": [],
- "modified": "2026-03-18 16:29:16.708688",
+ "links": [
+  {
+   "link_doctype": "Airport Rental Income Tracking",
+   "link_fieldname": "shop_rental_contract"
+  }
+ ],
+ "modified": "2026-03-21 15:36:13.984142",
  "modified_by": "Administrator",
  "module": "Shop Lease",
  "name": "Shop Rental Contract",

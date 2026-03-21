@@ -100,7 +100,7 @@ def get_active_contracts():
     return frappe.get_all("Shop Rental Contract",
         filters={
             'docstatus':  ['!=', '2'],
-            "effective_date": ['<=', today()],
+            "effective_date": ['<=', add_to_date(today(), days = -15)], # include contracts to be effective in 15 days
             "expiry_date": ['>=', today()],
         },
         fields=['name', 'tenant', 'rent_amount']
