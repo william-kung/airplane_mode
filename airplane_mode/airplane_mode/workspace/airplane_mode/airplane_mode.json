@@ -1,7 +1,7 @@
 {
  "app": "airplane_mode",
  "charts": [],
- "content": "[{\"id\":\"H93Ave-IJq\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\">Welcome to the Airplane Mode workspace</span>\",\"col\":12}},{\"id\":\"yGvkDy6Bc7\",\"type\":\"header\",\"data\":{\"text\":\"<br>\",\"col\":12}},{\"id\":\"H1uaaUlIzr\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"All Airlines\",\"col\":3}}]",
+ "content": "[{\"id\":\"H93Ave-IJq\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\">Welcome to the Airplane Mode workspace</span>\",\"col\":12}},{\"id\":\"yGvkDy6Bc7\",\"type\":\"header\",\"data\":{\"text\":\"<br>\",\"col\":12}},{\"id\":\"H1uaaUlIzr\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"All Airlines\",\"col\":3}},{\"id\":\"RrySqMVplD\",\"type\":\"paragraph\",\"data\":{\"text\":\"aadafd\",\"col\":12}},{\"id\":\"OHexsutNEm\",\"type\":\"paragraph\",\"data\":{\"text\":\"asdff\",\"col\":12}}]",
  "creation": "2026-02-22 20:52:24.049786",
  "custom_blocks": [],
  "docstatus": 0,
@@ -14,7 +14,7 @@
  "label": "Airplane Mode",
  "link_type": "DocType",
  "links": [],
- "modified": "2026-03-08 09:57:27.681549",
+ "modified": "2026-03-20 19:24:38.812342",
  "modified_by": "Administrator",
  "module": "Airplane Mode",
  "name": "Airplane Mode",

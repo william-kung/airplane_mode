@@ -61,24 +61,54 @@ def get_columns() -> list[dict]:
 def get_data(filters: dict | None = None) -> list[list]:
 	if not filters:
 		filters = {}
+
+	AirportShop = frappe.qb.DocType("Airport Shop")
+	ShopRentalContract = frappe.qb.DocType("Shop Rental Contract")
+
+	query = (
+		frappe.qb.from_(AirportShop)
+		.left_join(ShopRentalContract)
+		.on(AirportShop.name == ShopRentalContract.airport_shop)
+		.select(
+			AirportShop.name.as_("shop"),
+			ShopRentalContract.tenant.as_("tenant"),
+			ShopRentalContract.effective_date.as_("effective_date"),
+			ShopRentalContract.expiry_date.as_("expiry_date"),
+			ShopRentalContract.docstatus.as_("docstatus"),
+			ShopRentalContract.name.as_("contract"),
+		)
+	)
+
+	if filters.get("airport_shop"):
+		query = query.where(AirportShop.name == filters.get("airport_shop"))
+	
+	query = query.orderby(AirportShop.name, order=frappe.qb.asc).orderby(ShopRentalContract.expiry_date, order=frappe.qb.desc)
+
+	data = query.run(as_dict=1)
+
+	return data
+
+# def get_data(filters: dict | None = None) -> list[list]:
+# 	if not filters:
+# 		filters = {}
     
-	query = frappe.qb.get_query("Shop Rental Contract",
-        fields=[
-            "airport_shop as shop", 
-            "tenant as tenant",
-            "effective_date as effective_date",
-            "expiry_date as expiry_date",
-            "docstatus as docstatus",
-            "name as contract"
-        ],
-		filters=filters,
-		order_by="airport_shop asc, expiry_date desc"
-    )
+# 	query = frappe.qb.get_query("Airport Shop",
+#         fields=[
+#             "name as shop", 
+#             "Shop_Rental_Contract.tenant as tenant",
+#             "effective_date as effective_date",
+#             "expiry_date as expiry_date",
+#             "docstatus as docstatus",
+#             "name as contract"
+#         ],
+# 		filters=filters,
+# 		order_by="airport_shop asc, expiry_date desc"
+#     )
 
-	data = query.run(as_dict=True)
+# 	data = query.run(as_dict=True)
 
-	if data == []:
-		return [{"shop": filters.get("airport_shop"), "tenant": "n/a", "effective_date": None, "expiry_date": None, "docstatus": "n/a", "contract": "No Contract Found"}]
+# 	if data == []:
+# 		return [{"shop": filters.get("airport_shop"), "tenant": "n/a", "effective_date": None, "expiry_date": None, "docstatus": "n/a", "contract": "No Contract Found"}]
 
 
-	return query.run(as_dict=1)
+# 	return query.run(as_dict=1)
