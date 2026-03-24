@@ -2,8 +2,9 @@
 # See license.txt
 
 import frappe
-from frappe.utils import getdate, today, add_to_date
+from frappe.utils import today, add_to_date
 from frappe.tests import IntegrationTestCase
+from airplane_mode.api import add_missing_shop_rental_tracking
 
 
 # On IntegrationTestCase, the doctype test records and all
@@ -88,70 +89,63 @@ def create_contract ():
 		"effective_date": today(),
 		"expiry_date": add_to_date(today(), years=1),
 		"rent_per_square_meter": 5000,
-		"rent_amount": 250000
-	}).insert().submit()
+		"rent_amount": 250000,
+		"docstatus": 1
+	}).insert()
 	frappe.get_doc({
 		"doctype": "Shop Rental Contract",
 		"airport_shop": "S-ZZZ-000",
 		"tenant": frappe.db.get_value("Airport Tenant", {"tenant_name": "_test Tenant"}, ["name"]),
-		"effective_date": today(),
-		"expiry_date": add_to_date(today(), years=1),
+		"effective_date": add_to_date(today(), months=-12),
+		"expiry_date": add_to_date(today(), days=-1),
 		"rent_per_square_meter": 5000,
-		"rent_amount": 250000
-	}).insert().submit()
+		"rent_amount": 250000,
+		"docstatus": 1
+	}).insert()
 	frappe.flags.contract_created = True
 
 
-class IntegrationTestAirportRentalIncomeTracking(IntegrationTestCase):
-
-	def test_autocreate_income_tracking_on_submit(self):
+class IntegrationTestApi(IntegrationTestCase):
+		
+	def test_add_missing_shop_rental_tracking(self):
 		make_test_records()
+		doc = frappe.get_doc("Airport Rental Income Tracking",{
+			'docstatus': 0,
+			'shop_rental_contract': ['like', 'ZZZ-S999-_TEST%']
+		})
+		doc.delete()
+		self.assertFalse(frappe.db.exists("Airport Rental Income Tracking", {
+			'docstatus': 0,
+			'shop_rental_contract': ['like', 'ZZZ-S999-_TEST%']
+		}))
+		add_missing_shop_rental_tracking()
 		self.assertTrue(frappe.db.exists("Airport Rental Income Tracking", {
 			'docstatus': 0,
 			'shop_rental_contract': ['like', 'ZZZ-S999-_TEST%']
 		}))
 
-	def test_periods_before_and_after_submit(self):
+	def test_do_not_add_expired_missing_shop_rental_tracking(self):
 		make_test_records()
-		doc = frappe.get_doc("Airport Rental Income Tracking",{
-			'docstatus': 0,
-			'shop_rental_contract': ['like', 'ZZZ-S999-_TEST%']
-		})
-		self.assertEqual(getdate(doc.period_start), getdate(today()))
-		self.assertTrue(getdate(doc.period_end) == getdate(add_to_date(today(), months=1, days=-1)))
-
-		doc.status = "Received"
-		doc.payment_received_date = today()
-		doc.save().submit()
-		self.assertTrue(doc.docstatus == 1)
-		new_doc = frappe.get_doc("Airport Rental Income Tracking",{
-			'docstatus': 0,
-			'shop_rental_contract': ['like', 'ZZZ-S999-_TEST%']
-		})
-		self.assertTrue(getdate(new_doc.period_start) == getdate(add_to_date(doc.period_start, months=1)))
-		self.assertTrue(getdate(new_doc.period_end) == getdate(add_to_date(doc.period_start, months=2, days=-1)))
-
-	
-	def test_do_not_create_next_period_on_expiring_contract(self):
-		make_test_records()
-		doc = frappe.get_doc("Airport Rental Income Tracking",{
-			'docstatus': 0,
-			'shop_rental_contract': ['like', 'ZZZ-S000-_TEST%']
-		})
-		doc.period_start = add_to_date(doc.period_start, months = 12)
-		doc.period_end = add_to_date(doc.period_end, months = 13, days = -1)
-		doc.status = "Received"
-		doc.payment_received_date = doc.period_start
-		doc.save().submit()
-		self.assertFalse(frappe.db.exists("Airport Rental Income Tracking",{
+		doc = (frappe.get_doc("Airport Rental Income Tracking", {
 			'docstatus': 0,
 			'shop_rental_contract': ['like', 'ZZZ-S000-_TEST%']
 		}))
+		doc.delete()
+		self.assertFalse(frappe.db.exists("Airport Rental Income Tracking", {
+			'docstatus': 0,
+			'shop_rental_contract': ['like', 'ZZZ-S000-_TEST%']
+		}))
+		add_missing_shop_rental_tracking()
+		self.assertFalse(frappe.db.exists("Airport Rental Income Tracking", {
+			'docstatus': 0,
+			'shop_rental_contract': ['like', 'ZZZ-S000-_TEST%']
+		}))
+
+
+
 		
 
 
-
-	
 
 
 
