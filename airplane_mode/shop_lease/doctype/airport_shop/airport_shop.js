@@ -12,5 +12,10 @@ frappe.ui.form.on("Airport Shop", {
                 airport_shop: frm.doc.name
             });
         }, __("Actions"));
+    },
+    area(frm){
+        if ((frm.doc.area) <= 0) {
+            frappe.throw("Area must be greater than 0")
+        }
     }
 });

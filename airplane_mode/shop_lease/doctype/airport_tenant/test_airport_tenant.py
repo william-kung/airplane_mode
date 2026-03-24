@@ -1,7 +1,7 @@
 # Copyright (c) 2026, DDR and Contributors
 # See license.txt
 
-# import frappe
+import frappe
 from frappe.tests import IntegrationTestCase
 
 
@@ -14,9 +14,13 @@ IGNORE_TEST_RECORD_DEPENDENCIES = []  # eg. ["User"]
 
 
 class IntegrationTestAirportTenant(IntegrationTestCase):
+	
 	"""
 	Integration tests for AirportTenant.
 	Use this class for testing interactions between multiple components.
 	"""
 
-	pass
+	def tearDown():
+		frappe.db.rollback()
+
+

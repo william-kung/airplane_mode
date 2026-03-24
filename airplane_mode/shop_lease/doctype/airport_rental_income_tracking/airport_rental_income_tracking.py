@@ -4,7 +4,7 @@
 import frappe
 from frappe import _
 from frappe.model.document import Document
-from frappe.utils import add_to_date, days_diff
+from frappe.utils import add_to_date, days_diff, getdate
 from datetime import datetime 
 
 
@@ -15,9 +15,9 @@ class AirportRentalIncomeTracking(Document):
 			['airport_code', 'shop_number'],
 			as_dict=1
 		)
-		start_str = self.period_start.replace('-', '')
-		end_str = self.period_end.replace('-', '')
-		self.name = f"RIT-{contract.airport_code}-{contract.shop_number}-{start_str}{end_str}"
+		start_str = getdate(self.period_start).strftime('%Y%m%d')
+		end_str = getdate(self.period_end).strftime('%Y%m%d')
+		self.name = f"RIT-{contract.airport_code}-{str(contract.shop_number)}-{start_str}{end_str}"
 
 	def before_submit(self):
 		if self.status != "Received":

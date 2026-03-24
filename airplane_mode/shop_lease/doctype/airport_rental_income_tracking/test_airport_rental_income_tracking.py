@@ -1,7 +1,7 @@
 # Copyright (c) 2026, DDR and Contributors
 # See license.txt
 
-# import frappe
+import frappe
 from frappe.tests import IntegrationTestCase
 
 
@@ -10,6 +10,16 @@ from frappe.tests import IntegrationTestCase
 # Use these module variables to add/remove to/from that list
 EXTRA_TEST_RECORD_DEPENDENCIES = []  # eg. ["User"]
 IGNORE_TEST_RECORD_DEPENDENCIES = []  # eg. ["User"]
+
+def create_tracking_record():
+	if frappe.flags.shops_created:
+		pass
+
+
+def create_dependencies():
+	pass
+
+	
 
 
 

@@ -4,13 +4,14 @@
 import frappe
 from frappe import _
 from frappe.model.document import Document
-from frappe.model.naming import getseries, make_autoname
+from frappe.model.naming import make_autoname
 from frappe.utils import add_days, add_months, get_link_to_form, getdate
 
 
 class ShopRentalContract(Document):
 	def autoname(self):
-		prefix = f"{self.airport_code}-S{self.shop_number}"
+		tenant_str = self.tenant.upper().replace(" ", "").replace(".", "").replace("-", "").replace("/", "")[:5]
+		prefix = f"{self.airport_code}-S{self.shop_number}-{tenant_str}"
 		self.name = make_autoname(f"{prefix}-.###")
 
 	def validate(self):
@@ -22,7 +23,10 @@ class ShopRentalContract(Document):
 
 
 	def on_update(self):
-		if self.has_value_changed("airport_shop"):
+		old_doc = self.get_doc_before_save()
+		if not old_doc:
+			return
+		if old_doc.airport_shop != self.airport_shop or old_doc.tenant != self.tenant:
 			self.rename()
 	
 	def check_overlap_dates(self):
@@ -57,7 +61,8 @@ class ShopRentalContract(Document):
 			)
 				
 	def rename(self):
-		new_prefix = f"{self.airport_code}-S{self.shop_number}"
+		tenant_str = self.tenant[:5].upper().replace(" ", "")
+		new_prefix = f"{self.airport_code}-S{self.shop_number}-{tenant_str}"
 		new_name = make_autoname(f"{new_prefix}-.###")
 		frappe.rename_doc(self.doctype, self.name, new_name)
 
