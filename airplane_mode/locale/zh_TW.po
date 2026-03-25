@@ -1,0 +1,1283 @@
+# Chinese (Traditional, Taiwan) translations for Airplane Mode.
+# Copyright (C) 2026 DDR
+# This file is distributed under the same license as the Airplane Mode project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Airplane Mode VERSION\n"
+"Report-Msgid-Bugs-To: info@dotdotread.com\n"
+"POT-Creation-Date: 2026-03-25 14:21+0806\n"
+"PO-Revision-Date: 2026-03-25 14:24+0806\n"
+"Last-Translator: info@dotdotread.com\n"
+"Language-Team: info@dotdotread.com\n"
+"Language: zh_TW\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"Generated-By: Babel 2.16.0\n"
+
+#. Header text in the Airplane Mode Workspace
+#. AI-generated
+#: airplane_mode/airplane_mode/workspace/airplane_mode/airplane_mode.json
+msgid "<br>"
+msgstr "<br>"
+
+#. Introduction text of the book-flight-ticket-web-form Web Form
+#. AI-generated
+#: airplane_mode/airplane_mode/web_form/book_flight_ticket_web_form/book_flight_ticket_web_form.json
+msgid "<div class=\"ql-editor read-mode\"><p>Fly with us</p></div>"
+msgstr "<div class=\"ql-editor read-mode\"><p>與我們一起飛翔</p></div>"
+
+#. Introduction text of the shop-inquiry Web Form
+#. AI-generated
+#: airplane_mode/shop_lease/web_form/shop_inquiry/shop_inquiry.json
+msgid ""
+"<div class=\"ql-editor read-mode\"><p>Interested in setting up a shop in our"
+" one of our managed airports? &nbsp;Fill in the form, and we will get in "
+"touch with you soon.</p></div>"
+msgstr ""
+"<div class=\"ql-editor read-"
+"mode\"><p>有興趣在我們管理的機場設立商店嗎？&nbsp;填寫表格，我們將很快與您聯繫。</p></div>"
+
+#. Header text in the Airplane Mode Workspace
+#. AI-generated
+#: airplane_mode/airplane_mode/workspace/airplane_mode/airplane_mode.json
+msgid "<span class=\"h4\">Welcome to the Airplane Mode workspace</span>"
+msgstr "<span class=\"h4\">歡迎來到飛行模式工作區</span>"
+
+#. AI-generated
+#: airplane_mode/airplane_mode/doctype/airplane_ticket/airplane_ticket.js:11
+#: airplane_mode/shop_lease/doctype/airport_shop/airport_shop.js:9
+#: airplane_mode/shop_lease/doctype/airport_shop/airport_shop.js:14
+msgid "Actions"
+msgstr "操作"
+
+#. AI-generated
+#: airplane_mode/shop_lease/doctype/shop_rental_contract/shop_rental_contract.js:13
+msgid "Add Income Tracking Record"
+msgstr "新增收入追蹤紀錄"
+
+#. AI-generated
+#: airplane_mode/shop_lease/doctype/airport_shop/airport_shop.js:10
+msgid "Add New Shop Lease"
+msgstr "新增商店租約"
+
+#. Label of the add_ons_section (Section Break) field in DocType 'Airplane
+#. Ticket'
+#. AI-generated
+#: airplane_mode/airplane_mode/doctype/airplane_ticket/airplane_ticket.json
+msgid "Add Ons"
+msgstr "附加功能"
+
+#. Label of a Workspace Sidebar Item
+#. AI-generated
+#: airplane_mode/workspace_sidebar/airplane_mode.json
+msgid "Add-On Popularity Report"
+msgstr "附加功能流行報告"
+
+#. Label of the add_ons (Table) field in DocType 'Airplane Ticket'
+#. AI-generated
+#: airplane_mode/airplane_mode/doctype/airplane_ticket/airplane_ticket.json
+msgid "Add-Ons"
+msgstr "附加功能"
+
+#. Name of a report
+#. AI-generated
+#: airplane_mode/airplane_mode/report/add_on_popularity/add_on_popularity.json
+msgid "Add-on Popularity"
+msgstr "附加功能流行度"
+
+#. Name of a DocType
+#. Label of the airline (Link) field in DocType 'Airplane'
+#. Title of the airline Web Form
+#. AI-generated
+#: airplane_mode/airplane_mode/doctype/airline/airline.json
+#: airplane_mode/airplane_mode/doctype/airplane/airplane.json
+#: airplane_mode/airplane_mode/report/revenue_by_airline/revenue_by_airline.py:33
+#: airplane_mode/airplane_mode/web_form/airline/airline.json
+msgid "Airline"
+msgstr "航空公司"
+
+#. Label of a Workspace Sidebar Item
+#. AI-generated
+#: airplane_mode/workspace_sidebar/airplane_mode.json
+msgid "Airlines"
+msgstr "航空公司"
+
+#. Name of a DocType
+#. Label of the airplane (Link) field in DocType 'Airplane Flight'
+#. Label of a Workspace Sidebar Item
+#. AI-generated
+#: airplane_mode/airplane_mode/doctype/airplane/airplane.json
+#: airplane_mode/airplane_mode/doctype/airplane_flight/airplane_flight.json
+#: airplane_mode/workspace_sidebar/airplane_mode.json
+msgid "Airplane"
+msgstr "飛機"
+
+#. Name of a DocType
+#. AI-generated
+#: airplane_mode/airplane_mode/doctype/airplane_flight/airplane_flight.json
+msgid "Airplane Flight"
+msgstr "飛機航班"
+
+#. Name of a Workspace
+#. Label of a Desktop Icon
+#. Title of a Workspace Sidebar
+#. AI-generated
+#: airplane_mode/airplane_mode/workspace/airplane_mode/airplane_mode.json
+#: airplane_mode/desktop_icon/airplane_mode.json
+#: airplane_mode/workspace_sidebar/airplane_mode.json
+msgid "Airplane Mode"
+msgstr "飛行模式"
+
+#. Name of a DocType
+#. AI-generated
+#: airplane_mode/airplane_mode/doctype/airplane_ticket/airplane_ticket.json
+msgid "Airplane Ticket"
+msgstr "飛機票"
+
+#. Name of a DocType
+#. AI-generated
+#: airplane_mode/airplane_mode/doctype/airplane_ticket_add_on_item/airplane_ticket_add_on_item.json
+msgid "Airplane Ticket Add-on Item"
+msgstr "飛機票附加項目"
+
+#. Name of a DocType
+#. AI-generated
+#: airplane_mode/airplane_mode/doctype/airplane_ticket_add_on_type/airplane_ticket_add_on_type.json
+msgid "Airplane Ticket Add-on Type"
+msgstr "飛機票附加類型"
+
+#. Name of a report
+#. AI-generated
+#: airplane_mode/airplane_mode/report/airplanes_by_airline/airplanes_by_airline.json
+msgid "Airplanes by Airline"
+msgstr "按航空公司分類的飛機"
+
+#. Name of a DocType
+#. Label of the airport (Link) field in DocType 'Airport Shop'
+#. AI-generated
+#: airplane_mode/airplane_mode/doctype/airport/airport.json
+#: airplane_mode/shop_lease/doctype/airport_shop/airport_shop.json
+#: airplane_mode/shop_lease/report/airport_shop_occupancy_report/airport_shop_occupancy_report.py:27
+msgid "Airport"
+msgstr "機場"
+
+#. Name of a role
+#. AI-generated
+#: airplane_mode/airplane_mode/doctype/airline/airline.json
+#: airplane_mode/airplane_mode/doctype/airplane/airplane.json
+#: airplane_mode/airplane_mode/doctype/airplane_flight/airplane_flight.json
+#: airplane_mode/airplane_mode/doctype/airplane_ticket/airplane_ticket.json
+#: airplane_mode/airplane_mode/doctype/airplane_ticket_add_on_type/airplane_ticket_add_on_type.json
+#: airplane_mode/airplane_mode/doctype/airport/airport.json
+#: airplane_mode/airplane_mode/doctype/flight_crew_member/flight_crew_member.json
+msgid "Airport Authority Personnel"
+msgstr "機場管理局人員"
+
+#. Label of the airport_code (Data) field in DocType 'Airport Shop'
+#. Label of the airport_code (Data) field in DocType 'Shop Rental Contract'
+#. AI-generated
+#: airplane_mode/shop_lease/doctype/airport_shop/airport_shop.json
+#: airplane_mode/shop_lease/doctype/shop_rental_contract/shop_rental_contract.json
+msgid "Airport Code"
+msgstr "機場代碼"
+
+#. Label of the airport_details_section (Section Break) field in DocType
+#. 'Airplane Flight'
+#. AI-generated
+#: airplane_mode/airplane_mode/doctype/airplane_flight/airplane_flight.json
+msgid "Airport Details"
+msgstr "機場詳情"
+
+#. Name of a DocType
+#. AI-generated
+#: airplane_mode/shop_lease/doctype/airport_rental_income_tracking/airport_rental_income_tracking.json
+msgid "Airport Rental Income Tracking"
+msgstr "機場租金收入追蹤"
+
+#. Name of a DocType
+#. Label of the airport_shop (Link) field in DocType 'Shop Rental Contract'
+#. Label of the airport_shop (Link) field in DocType 'Shop Tenant Lead'
+#. AI-generated
+#: airplane_mode/shop_lease/doctype/airport_shop/airport_shop.json
+#: airplane_mode/shop_lease/doctype/shop_rental_contract/shop_rental_contract.json
+#: airplane_mode/shop_lease/doctype/shop_tenant_lead/shop_tenant_lead.json
+#: airplane_mode/shop_lease/report/shop_lease_by_date/shop_lease_by_date.js:5
+msgid "Airport Shop"
+msgstr "機場商店"
+
+#. Name of a report
+#. AI-generated
+#: airplane_mode/shop_lease/report/airport_shop_occupancy_report/airport_shop_occupancy_report.json
+msgid "Airport Shop Occupancy Report"
+msgstr "機場商店佔用報告"
+
+#. Name of a DocType
+#. AI-generated
+#: airplane_mode/shop_lease/doctype/airport_shop_rental_settings/airport_shop_rental_settings.json
+msgid "Airport Shop Rental Settings"
+msgstr "機場商店租金設置"
+
+#. Name of a DocType
+#. AI-generated
+#: airplane_mode/shop_lease/doctype/airport_tenant/airport_tenant.json
+msgid "Airport Tenant"
+msgstr "機場租戶"
+
+#. Label of a shortcut in the Airplane Mode Workspace
+#. AI-generated
+#: airplane_mode/airplane_mode/workspace/airplane_mode/airplane_mode.json
+msgid "All Airlines"
+msgstr "所有航空公司"
+
+#. AI-generated
+#: airplane_mode/shop_lease/report/airport_shop_occupancy_report/airport_shop_occupancy_report.py:34
+msgid "All Shops"
+msgstr "所有商店"
+
+#. Label of the amended_from (Link) field in DocType 'Airplane Flight'
+#. Label of the amended_from (Link) field in DocType 'Airplane Ticket'
+#. Label of the amended_from (Link) field in DocType 'Airport Rental Income
+#. Tracking'
+#. Label of the amended_from (Link) field in DocType 'Shop Rental Contract'
+#. AI-generated
+#: airplane_mode/airplane_mode/doctype/airplane_flight/airplane_flight.json
+#: airplane_mode/airplane_mode/doctype/airplane_ticket/airplane_ticket.json
+#: airplane_mode/shop_lease/doctype/airport_rental_income_tracking/airport_rental_income_tracking.json
+#: airplane_mode/shop_lease/doctype/shop_rental_contract/shop_rental_contract.json
+msgid "Amended From"
+msgstr "修訂自"
+
+#. Label of the amount (Currency) field in DocType 'Airplane Ticket Add-on
+#. Item'
+#. Label of the amount (Currency) field in DocType 'Airport Rental Income
+#. Tracking'
+#. AI-generated
+#: airplane_mode/airplane_mode/doctype/airplane_ticket_add_on_item/airplane_ticket_add_on_item.json
+#: airplane_mode/shop_lease/doctype/airport_rental_income_tracking/airport_rental_income_tracking.json
+msgid "Amount"
+msgstr "金額"
+
+#. Label of the area (Float) field in DocType 'Airport Shop'
+#. Label of the area (Float) field in DocType 'Shop Rental Contract'
+#. AI-generated
+#: airplane_mode/shop_lease/doctype/airport_shop/airport_shop.json
+#: airplane_mode/shop_lease/doctype/shop_rental_contract/shop_rental_contract.json
+msgid "Area"
+msgstr "區域"
+
+#. AI-generated
+#: airplane_mode/airplane_mode/report/flight_crew_location_by_date/flight_crew_location_by_date.py:24
+msgid "Arrival Time"
+msgstr "到達時間"
+
+#. AI-generated
+#: airplane_mode/shop_lease/report/airport_shop_occupancy_report/airport_shop_occupancy_report.js:8
+msgid "As at Date"
+msgstr "截至日期"
+
+#. AI-generated
+#: airplane_mode/airplane_mode/doctype/airplane_ticket/airplane_ticket.js:37
+msgid "Assign"
+msgstr "分配"
+
+#. AI-generated
+#: airplane_mode/airplane_mode/doctype/airplane_ticket/airplane_ticket.js:8
+msgid "Assign Seat"
+msgstr "分配座位"
+
+#. AI-generated
+#: airplane_mode/shop_lease/report/airport_shop_occupancy_report/airport_shop_occupancy_report.py:46
+msgid "Available"
+msgstr "可用"
+
+#. Option for the 'Status' (Select) field in DocType 'Airplane Ticket'
+#. AI-generated
+#: airplane_mode/airplane_mode/doctype/airplane_ticket/airplane_ticket.json
+msgid "Boarded"
+msgstr "登機"
+
+#. Title of the book-flight-ticket-web-form Web Form
+#. AI-generated
+#: airplane_mode/airplane_mode/web_form/book_flight_ticket_web_form/book_flight_ticket_web_form.json
+msgid "Book Flight Ticket Web Form"
+msgstr "預訂機票網頁表單"
+
+#. Option for the 'Status' (Select) field in DocType 'Airplane Ticket'
+#. AI-generated
+#: airplane_mode/airplane_mode/doctype/airplane_ticket/airplane_ticket.json
+msgid "Booked"
+msgstr "已預訂"
+
+#. Label of the calculate_rent_amount (Button) field in DocType 'Shop Rental
+#. Contract'
+#. AI-generated
+#: airplane_mode/shop_lease/doctype/shop_rental_contract/shop_rental_contract.json
+msgid "Calculate Rent Amount"
+msgstr "計算租金金額"
+
+#. Option for the 'Status' (Select) field in DocType 'Airplane Flight'
+#. AI-generated
+#: airplane_mode/airplane_mode/doctype/airplane_flight/airplane_flight.json
+msgid "Cancelled"
+msgstr "已取消"
+
+#. Label of the capacity (Int) field in DocType 'Airplane'
+#. AI-generated
+#: airplane_mode/airplane_mode/doctype/airplane/airplane.json
+msgid "Capacity"
+msgstr "容量"
+
+#. AI-generated
+#: airplane_mode/shop_lease/doctype/airport_shop/airport_shop.js:6
+msgid "Check Availability"
+msgstr "檢查可用性"
+
+#. Option for the 'Status' (Select) field in DocType 'Airplane Ticket'
+#. AI-generated
+#: airplane_mode/airplane_mode/doctype/airplane_ticket/airplane_ticket.json
+msgid "Checked-In"
+msgstr "已登記"
+
+#. Label of the city (Data) field in DocType 'Airport'
+#. AI-generated
+#: airplane_mode/airplane_mode/doctype/airport/airport.json
+msgid "City"
+msgstr "城市"
+
+#. Label of the code (Data) field in DocType 'Airport'
+#. AI-generated
+#: airplane_mode/airplane_mode/doctype/airport/airport.json
+msgid "Code"
+msgstr "代碼"
+
+#. Option for the 'Status' (Select) field in DocType 'Airplane Flight'
+#. AI-generated
+#: airplane_mode/airplane_mode/doctype/airplane_flight/airplane_flight.json
+msgid "Completed"
+msgstr "完成"
+
+#. Button label of the book-flight-ticket-web-form Web Form
+#. AI-generated
+#: airplane_mode/airplane_mode/web_form/book_flight_ticket_web_form/book_flight_ticket_web_form.json
+msgid "Confirm"
+msgstr "確認"
+
+#. Label of the contact_name (Data) field in DocType 'Shop Tenant Lead'
+#. Label of a field in the shop-inquiry Web Form
+#. AI-generated
+#: airplane_mode/shop_lease/doctype/shop_tenant_lead/shop_tenant_lead.json
+#: airplane_mode/shop_lease/web_form/shop_inquiry/shop_inquiry.json
+msgid "Contact Name"
+msgstr "聯絡人姓名"
+
+#. AI-generated
+#: airplane_mode/shop_lease/report/shop_lease_by_date/shop_lease_by_date.py:50
+msgid "Contract"
+msgstr "合約"
+
+#. Label of the country (Data) field in DocType 'Airport'
+#. AI-generated
+#: airplane_mode/airplane_mode/doctype/airport/airport.json
+msgid "Country"
+msgstr "國家"
+
+#. AI-generated
+#: airplane_mode/airplane_mode/report/flights_by_crew_member/flights_by_crew_member.py:29
+msgid "Crew"
+msgstr "船員"
+
+#. AI-generated
+#: airplane_mode/airplane_mode/report/flight_crew_location_by_date/flight_crew_location_by_date.py:12
+#: airplane_mode/airplane_mode/report/flights_by_crew_member/flights_by_crew_member.js:8
+msgid "Crew Member"
+msgstr "船員成員"
+
+#. Label of the crew_on_board (Table) field in DocType 'Airplane Flight'
+#. AI-generated
+#: airplane_mode/airplane_mode/doctype/airplane_flight/airplane_flight.json
+msgid "Crew On Board"
+msgstr "在艙船員"
+
+#. Label of the customer_care_number (Data) field in DocType 'Airline'
+#. Label of a field in the airline Web Form
+#. AI-generated
+#: airplane_mode/airplane_mode/doctype/airline/airline.json
+#: airplane_mode/airplane_mode/web_form/airline/airline.json
+msgid "Customer Care Number"
+msgstr "客戶服務電話"
+
+#. Label of a Workspace Sidebar Item
+#. AI-generated
+#: airplane_mode/workspace_sidebar/airplane_mode.json
+msgid "Database"
+msgstr "數據庫"
+
+#. Label of the date_of_birth (Date) field in DocType 'Flight Passenger'
+#. AI-generated
+#: airplane_mode/airplane_mode/doctype/flight_passenger/flight_passenger.json
+msgid "Date Of Birth"
+msgstr "出生日期"
+
+#. Label of the date_of_departure (Datetime) field in DocType 'Airplane
+#. Flight'
+#. AI-generated
+#: airplane_mode/airplane_mode/doctype/airplane_flight/airplane_flight.json
+msgid "Date of Departure"
+msgstr "出發日期"
+
+#. Label of the departure_date (Datetime) field in DocType 'Airplane Ticket'
+#. AI-generated
+#: airplane_mode/airplane_mode/doctype/airplane_ticket/airplane_ticket.json
+msgid "Departure Date"
+msgstr "出發日期"
+
+#. Label of the departure_details_section (Section Break) field in DocType
+#. 'Airplane Flight'
+#. 'Airplane Ticket'
+#. AI-generated
+#: airplane_mode/airplane_mode/doctype/airplane_flight/airplane_flight.json
+#: airplane_mode/airplane_mode/doctype/airplane_ticket/airplane_ticket.json
+msgid "Departure Details"
+msgstr "出發詳細信息"
+
+#. Label of the departure_time (Time) field in DocType 'Airplane Ticket'
+#. AI-generated
+#: airplane_mode/airplane_mode/doctype/airplane_ticket/airplane_ticket.json
+#: airplane_mode/airplane_mode/report/flights_by_crew_member/flights_by_crew_member.py:42
+msgid "Departure Time"
+msgstr "出發時間"
+
+#. Label of the description (Data) field in DocType 'Airplane Ticket Add-on
+#. Type'
+#. AI-generated
+#: airplane_mode/airplane_mode/doctype/airplane_ticket_add_on_type/airplane_ticket_add_on_type.json
+msgid "Description"
+msgstr "描述"
+
+#. Description of the 'Description' (Data) field in DocType 'Airplane Ticket
+#. Add-on Type'
+#. AI-generated
+#: airplane_mode/airplane_mode/doctype/airplane_ticket_add_on_type/airplane_ticket_add_on_type.json
+msgid "Description about the add-on"
+msgstr "關於附加選項的描述"
+
+#. AI-generated
+#: airplane_mode/airplane_mode/report/flight_crew_location_by_date/flight_crew_location_by_date.py:29
+msgid "Destination"
+msgstr "目的地"
+
+#. Label of the destination_airport (Link) field in DocType 'Airplane Flight'
+#. AI-generated
+#: airplane_mode/airplane_mode/doctype/airplane_flight/airplane_flight.json
+msgid "Destination Airport"
+msgstr "目的地機場"
+
+#. Label of the destination_airport_code (Data) field in DocType 'Airplane
+#. Flight'
+#. Ticket'
+#. AI-generated
+#: airplane_mode/airplane_mode/doctype/airplane_flight/airplane_flight.json
+#: airplane_mode/airplane_mode/doctype/airplane_ticket/airplane_ticket.json
+msgid "Destination Airport Code"
+msgstr "目的地機場代碼"
+
+#. Label of the destination_gate_number (Data) field in DocType 'Airplane
+#. Flight'
+#. Ticket'
+#. AI-generated
+#: airplane_mode/airplane_mode/doctype/airplane_flight/airplane_flight.json
+#: airplane_mode/airplane_mode/doctype/airplane_ticket/airplane_ticket.json
+msgid "Destination Gate Number"
+msgstr "目的地登機門號"
+
+#. AI-generated
+#: airplane_mode/shop_lease/report/shop_lease_by_date/shop_lease_by_date.py:44
+msgid "DocStatus"
+msgstr "文件狀態"
+
+#. AI-generated
+#: airplane_mode/shop_lease/doctype/airport_rental_income_tracking/airport_rental_income_tracking.py:24
+msgid "Document can only be submitted after payment received."
+msgstr "文件只有在收到付款後才能提交。"
+
+#. AI-generated
+#: airplane_mode/airplane_mode/doctype/airplane_flight/airplane_flight.py:33
+msgid "Duplicated crew members were removed."
+msgstr "重複的船員成員已被移除。"
+
+#. AI-generated
+#: airplane_mode/airplane_mode/doctype/airplane_ticket/airplane_ticket.py:66
+msgid "Duplicated items were removed."
+msgstr "重複的項目已被移除。"
+
+#. Label of the duration (Duration) field in DocType 'Airplane Flight'
+#. AI-generated
+#: airplane_mode/airplane_mode/doctype/airplane_flight/airplane_flight.json
+msgid "Duration"
+msgstr "持續時間"
+
+#. Label of the duration_of_flight (Duration) field in DocType 'Airplane
+#. Ticket'
+#. AI-generated
+#: airplane_mode/airplane_mode/doctype/airplane_ticket/airplane_ticket.json
+msgid "Duration Of Flight"
+msgstr "飛行持續時間"
+
+#. Label of the effective_date (Date) field in DocType 'Shop Rental Contract'
+#. AI-generated
+#: airplane_mode/shop_lease/doctype/shop_rental_contract/shop_rental_contract.json
+#: airplane_mode/shop_lease/report/shop_lease_by_date/shop_lease_by_date.py:32
+msgid "Effective Date"
+msgstr "生效日期"
+
+#. Label of the email (Data) field in DocType 'Airport Tenant'
+#. Label of the email (Data) field in DocType 'Shop Tenant Lead'
+#. Label of a field in the shop-inquiry Web Form
+#. AI-generated
+#: airplane_mode/shop_lease/doctype/airport_tenant/airport_tenant.json
+#: airplane_mode/shop_lease/doctype/shop_tenant_lead/shop_tenant_lead.json
+#: airplane_mode/shop_lease/web_form/shop_inquiry/shop_inquiry.json
+msgid "Email"
+msgstr "電子郵件"
+
+#. Label of the enable_rent_reminder (Check) field in DocType 'Airport Shop
+#. Rental Settings'
+#. AI-generated
+#: airplane_mode/shop_lease/doctype/airport_shop_rental_settings/airport_shop_rental_settings.json
+msgid "Enable Rent Reminder"
+msgstr "啟用租賃提醒"
+
+#. Label of the enabled (Check) field in DocType 'Shop Type'
+#. AI-generated
+#: airplane_mode/shop_lease/doctype/shop_type/shop_type.json
+msgid "Enabled?"
+msgstr "已啟用?"
+
+#. AI-generated
+#: airplane_mode/shop_lease/doctype/shop_rental_contract/shop_rental_contract.py:53
+#: airplane_mode/shop_lease/doctype/shop_rental_contract/shop_rental_contract.py:94
+#: airplane_mode/shop_lease/doctype/shop_tenant_lead/shop_tenant_lead.py:30
+msgid "Error"
+msgstr "錯誤"
+
+#. Label of the expiry_date (Date) field in DocType 'Shop Rental Contract'
+#. AI-generated
+#: airplane_mode/shop_lease/doctype/shop_rental_contract/shop_rental_contract.json
+#: airplane_mode/shop_lease/report/shop_lease_by_date/shop_lease_by_date.py:38
+msgid "Expiry Date"
+msgstr "到期日期"
+
+#. Label of the first_name (Data) field in DocType 'Flight Crew Member'
+#. Label of the first_name (Data) field in DocType 'Flight Passenger'
+#. AI-generated
+#: airplane_mode/airplane_mode/doctype/flight_crew_member/flight_crew_member.json
+#: airplane_mode/airplane_mode/doctype/flight_passenger/flight_passenger.json
+msgid "First Name"
+msgstr "名字"
+
+#. Name of a role
+#. AI-generated
+#: airplane_mode/airplane_mode/doctype/airline/airline.json
+#: airplane_mode/airplane_mode/doctype/airplane/airplane.json
+#: airplane_mode/airplane_mode/doctype/airplane_flight/airplane_flight.json
+#: airplane_mode/airplane_mode/doctype/airplane_ticket_add_on_type/airplane_ticket_add_on_type.json
+#: airplane_mode/airplane_mode/doctype/airport/airport.json
+#: airplane_mode/airplane_mode/doctype/flight_crew_member/flight_crew_member.json
+msgid "Fleet Manager"
+msgstr "艦隊經理"
+
+#. Label of the flight (Link) field in DocType 'Airplane Ticket'
+#. Label of a field in the book-flight-ticket-web-form Web Form
+#. AI-generated
+#: airplane_mode/airplane_mode/doctype/airplane_ticket/airplane_ticket.json
+#: airplane_mode/airplane_mode/report/flights_by_crew_member/flights_by_crew_member.py:36
+#: airplane_mode/airplane_mode/web_form/book_flight_ticket_web_form/book_flight_ticket_web_form.json
+msgid "Flight"
+msgstr "航班"
+
+#. Label of a Workspace Sidebar Item
+#. AI-generated
+#: airplane_mode/workspace_sidebar/airplane_mode.json
+msgid "Flight Crew"
+msgstr "航班船員"
+
+#. Name of a report
+#. AI-generated
+#: airplane_mode/airplane_mode/report/flight_crew_location_by_date/flight_crew_location_by_date.json
+msgid "Flight Crew Location by Date"
+msgstr "按日期分配的航班船員位置"
+
+#. Name of a role
+#. Name of a DocType
+#. Label of the flight_crew_member (Link) field in DocType 'Flight Crew On
+#. Board'
+#. AI-generated
+#: airplane_mode/airplane_mode/doctype/airline/airline.json
+#: airplane_mode/airplane_mode/doctype/airplane/airplane.json
+#: airplane_mode/airplane_mode/doctype/airplane_flight/airplane_flight.json
+#: airplane_mode/airplane_mode/doctype/airplane_ticket/airplane_ticket.json
+#: airplane_mode/airplane_mode/doctype/airplane_ticket_add_on_type/airplane_ticket_add_on_type.json
+#: airplane_mode/airplane_mode/doctype/airport/airport.json
+#: airplane_mode/airplane_mode/doctype/flight_crew_member/flight_crew_member.json
+#: airplane_mode/airplane_mode/doctype/flight_crew_on_board/flight_crew_on_board.json
+msgid "Flight Crew Member"
+msgstr "航班船員成員"
+
+#. Name of a DocType
+#. AI-generated
+#: airplane_mode/airplane_mode/doctype/flight_crew_on_board/flight_crew_on_board.json
+msgid "Flight Crew On Board"
+msgstr "在艙航班船員"
+
+#. Name of a DocType
+#. AI-generated
+#: airplane_mode/airplane_mode/doctype/flight_passenger/flight_passenger.json
+msgid "Flight Passenger"
+msgstr "航班乘客"
+
+#. Label of the flight_price (Currency) field in DocType 'Airplane Ticket'
+#. Label of a field in the book-flight-ticket-web-form Web Form
+#. AI-generated
+#: airplane_mode/airplane_mode/doctype/airplane_ticket/airplane_ticket.json
+#: airplane_mode/airplane_mode/web_form/book_flight_ticket_web_form/book_flight_ticket_web_form.json
+msgid "Flight Price"
+msgstr "航班價格"
+
+#. Label of a Workspace Sidebar Item
+#. AI-generated
+#: airplane_mode/workspace_sidebar/airplane_mode.json
+msgid "Flights"
+msgstr "航班"
+
+#. Name of a report
+#. AI-generated
+#: airplane_mode/airplane_mode/report/flights_by_crew_member/flights_by_crew_member.json
+msgid "Flights by Crew Member"
+msgstr "按船員成員的航班"
+
+#. Label of the founding_year (Int) field in DocType 'Airline'
+#. Label of a field in the airline Web Form
+#. AI-generated
+#: airplane_mode/airplane_mode/doctype/airline/airline.json
+#: airplane_mode/airplane_mode/web_form/airline/airline.json
+msgid "Founding Year"
+msgstr "創立年份"
+
+#. AI-generated
+#: airplane_mode/airplane_mode/report/flights_by_crew_member/flights_by_crew_member.py:47
+msgid "From"
+msgstr "從"
+
+#. Label of the full_name (Data) field in DocType 'Flight Passenger'
+#. AI-generated
+#: airplane_mode/airplane_mode/doctype/flight_passenger/flight_passenger.json
+msgid "Full Name"
+msgstr "全名"
+
+#. Name of a role
+#. AI-generated
+#: airplane_mode/shop_lease/doctype/shop_tenant_lead/shop_tenant_lead.json
+msgid "Guest"
+msgstr "客人"
+
+#. Label of the headquarters (Data) field in DocType 'Airline'
+#. Label of a field in the airline Web Form
+#. AI-generated
+#: airplane_mode/airplane_mode/doctype/airline/airline.json
+#: airplane_mode/airplane_mode/web_form/airline/airline.json
+msgid "Headquarters"
+msgstr "總部"
+
+#. Description of the 'Rent Per Square Meter' (Currency) field in DocType
+#. 'Shop
+#. Rental Contract'
+#. AI-generated
+#: airplane_mode/shop_lease/doctype/shop_rental_contract/shop_rental_contract.json
+msgid "In system currency"
+msgstr "系統貨幣"
+
+#. AI-generated
+#: airplane_mode/shop_lease/doctype/shop_rental_contract/shop_rental_contract.py:82
+msgid "Income Tracking Started"
+msgstr "收入追蹤已開始"
+
+#. Label of the initial_audit_completed (Check) field in DocType 'Airplane'
+#. AI-generated
+#: airplane_mode/airplane_mode/doctype/airplane/airplane.json
+msgid "Initial Audit Completed"
+msgstr "初始審核已完成"
+
+#. Label of the is_published (Check) field in DocType 'Airport Shop'
+#. AI-generated
+#: airplane_mode/shop_lease/doctype/airport_shop/airport_shop.json
+msgid "Is Published"
+msgstr "已發布"
+
+#. Label of the is_published (Check) field in DocType 'Airplane Flight'
+#. AI-generated
+#: airplane_mode/airplane_mode/doctype/airplane_flight/airplane_flight.json
+msgid "Is published"
+msgstr "已發布"
+
+#. AI-generated
+#: airplane_mode/shop_lease/doctype/airport_rental_income_tracking/airport_rental_income_tracking.js:29
+msgid "Issue Receipt"
+msgstr "發出收據"
+
+#. Label of the item (Link) field in DocType 'Airplane Ticket Add-on Item'
+#. AI-generated
+#: airplane_mode/airplane_mode/doctype/airplane_ticket_add_on_item/airplane_ticket_add_on_item.json
+msgid "Item"
+msgstr "項目"
+
+#. AI-generated
+#: airplane_mode/airplane_mode/report/flight_crew_location_by_date/flight_crew_location_by_date.py:18
+msgid "Last Flight"
+msgstr "最後航班"
+
+#. Label of the last_name (Data) field in DocType 'Flight Crew Member'
+#. Label of the last_name (Data) field in DocType 'Flight Passenger'
+#. AI-generated
+#: airplane_mode/airplane_mode/doctype/flight_crew_member/flight_crew_member.json
+#: airplane_mode/airplane_mode/doctype/flight_passenger/flight_passenger.json
+msgid "Last Name"
+msgstr "姓氏"
+
+#. AI-generated
+#: airplane_mode/shop_lease/report/airport_shop_occupancy_report/airport_shop_occupancy_report.py:40
+msgid "Leased"
+msgstr "租賃"
+
+#. Name of a role
+#. AI-generated
+#: airplane_mode/shop_lease/doctype/airport_rental_income_tracking/airport_rental_income_tracking.json
+#: airplane_mode/shop_lease/doctype/airport_shop/airport_shop.json
+#: airplane_mode/shop_lease/doctype/airport_shop_rental_settings/airport_shop_rental_settings.json
+#: airplane_mode/shop_lease/doctype/shop_tenant_lead/shop_tenant_lead.json
+msgid "Leasing Manager"
+msgstr "租賃經理"
+
+#. Description of the 'Message' (Text) field in DocType 'Shop Tenant Lead'
+#. Description of a field in the shop-inquiry Web Form
+#. AI-generated
+#: airplane_mode/shop_lease/doctype/shop_tenant_lead/shop_tenant_lead.json
+#: airplane_mode/shop_lease/web_form/shop_inquiry/shop_inquiry.json
+msgid "Let me you your questions."
+msgstr "讓我來你的問題。"
+
+#. Label of the message (Text) field in DocType 'Shop Tenant Lead'
+#. Label of a field in the shop-inquiry Web Form
+#. AI-generated
+#: airplane_mode/shop_lease/doctype/shop_tenant_lead/shop_tenant_lead.json
+#: airplane_mode/shop_lease/web_form/shop_inquiry/shop_inquiry.json
+msgid "Message"
+msgstr "訊息"
+
+#. Label of the model (Data) field in DocType 'Airplane'
+#. AI-generated
+#: airplane_mode/airplane_mode/doctype/airplane/airplane.json
+msgid "Model"
+msgstr "型號"
+
+#. AI-generated
+#: airplane_mode/shop_lease/doctype/shop_rental_contract/shop_rental_contract.py:80
+msgid "New Aiport Rental Income Tracking Document for {0} created."
+msgstr "為 {0} 創建的最新機場租金收入跟蹤文件。"
+
+#. AI-generated
+#: airplane_mode/airplane_mode/doctype/airplane_flight/airplane_flight.py:34
+#: airplane_mode/airplane_mode/doctype/airplane_ticket/airplane_ticket.py:67
+msgid "Notice"
+msgstr "通知"
+
+#. Label of the organisation_name (Data) field in DocType 'Shop Tenant Lead'
+#. Label of a field in the shop-inquiry Web Form
+#. AI-generated
+#: airplane_mode/shop_lease/doctype/shop_tenant_lead/shop_tenant_lead.json
+#: airplane_mode/shop_lease/web_form/shop_inquiry/shop_inquiry.json
+msgid "Organisation Name"
+msgstr "組織名稱"
+
+#. Success message of the shop-inquiry Web Form
+#. AI-generated
+#: airplane_mode/shop_lease/web_form/shop_inquiry/shop_inquiry.json
+msgid ""
+"Our customer service representative will contact you soon.  Stay tuned."
+msgstr "我們的客戶服務代表將很快與您聯繫。 請保持關注。"
+
+#. Option for the 'Status' (Select) field in DocType 'Airport Rental Income
+#. Tracking'
+#. AI-generated
+#: airplane_mode/shop_lease/doctype/airport_rental_income_tracking/airport_rental_income_tracking.json
+msgid "Overdue"
+msgstr "逾期"
+
+#. Label of the passenger (Link) field in DocType 'Airplane Ticket'
+#. Label of a field in the book-flight-ticket-web-form Web Form
+#. AI-generated
+#: airplane_mode/airplane_mode/doctype/airplane_ticket/airplane_ticket.json
+#: airplane_mode/airplane_mode/web_form/book_flight_ticket_web_form/book_flight_ticket_web_form.json
+msgid "Passenger"
+msgstr "乘客"
+
+#. Label of a Workspace Sidebar Item
+#. AI-generated
+#: airplane_mode/workspace_sidebar/airplane_mode.json
+msgid "Passengers"
+msgstr "乘客們"
+
+#. Label of the payment_received_date (Date) field in DocType 'Airport Rental
+#. Income Tracking'
+#. AI-generated
+#: airplane_mode/shop_lease/doctype/airport_rental_income_tracking/airport_rental_income_tracking.json
+msgid "Payment Received Date"
+msgstr "付款收到日期"
+
+#. Option for the 'Status' (Select) field in DocType 'Airport Rental Income
+#. Tracking'
+#. AI-generated
+#: airplane_mode/shop_lease/doctype/airport_rental_income_tracking/airport_rental_income_tracking.json
+msgid "Pending"
+msgstr "待處理"
+
+#. Label of the period_end (Date) field in DocType 'Airport Rental Income
+#. Tracking'
+#. AI-generated
+#: airplane_mode/shop_lease/doctype/airport_rental_income_tracking/airport_rental_income_tracking.json
+msgid "Period End"
+msgstr "期間結束"
+
+#. Label of the period_start (Date) field in DocType 'Airport Rental Income
+#. Tracking'
+#. AI-generated
+#: airplane_mode/shop_lease/doctype/airport_rental_income_tracking/airport_rental_income_tracking.json
+msgid "Period Start"
+msgstr "期間開始"
+
+#. Label of the phone_number (Phone) field in DocType 'Shop Tenant Lead'
+#. Label of a field in the shop-inquiry Web Form
+#. AI-generated
+#: airplane_mode/shop_lease/doctype/shop_tenant_lead/shop_tenant_lead.json
+#: airplane_mode/shop_lease/web_form/shop_inquiry/shop_inquiry.json
+msgid "Phone Number"
+msgstr "電話號碼"
+
+#. AI-generated
+#: airplane_mode/shop_lease/doctype/shop_rental_contract/shop_rental_contract.py:95
+msgid "Please check Rent Amount."
+msgstr "請檢查租金金額。"
+
+#. AI-generated
+#: airplane_mode/shop_lease/doctype/shop_tenant_lead/shop_tenant_lead.py:29
+msgid "Please enter at least either email or phone number."
+msgstr "請至少輸入電子郵件或電話號碼之一。"
+
+#. Description of the 'Is published' (Check) field in DocType 'Airplane
+#. Flight'
+#. AI-generated
+#: airplane_mode/airplane_mode/doctype/airplane_flight/airplane_flight.json
+msgid "Publish to web form?"
+msgstr "發布到網頁表單？"
+
+#. AI-generated
+#: airplane_mode/api.py:50
+msgid "REMINDER: Rental Payment Overdue"
+msgstr "提醒：租金付款逾期"
+
+#. Option for the 'Status' (Select) field in DocType 'Airport Rental Income
+#. Tracking'
+#. AI-generated
+#: airplane_mode/shop_lease/doctype/airport_rental_income_tracking/airport_rental_income_tracking.json
+msgid "Received"
+msgstr "已收到"
+
+#. Label of the rent_amount (Currency) field in DocType 'Shop Rental Contract'
+#. AI-generated
+#: airplane_mode/shop_lease/doctype/shop_rental_contract/shop_rental_contract.json
+msgid "Rent Amount"
+msgstr "租金金額"
+
+#. Label of the rent_per_square_meter (Currency) field in DocType 'Shop Rental
+#. Contract'
+#. AI-generated
+#: airplane_mode/shop_lease/doctype/shop_rental_contract/shop_rental_contract.json
+msgid "Rent Per Square Meter"
+msgstr "每平方米租金"
+
+#. Label of the rental_amount_section (Section Break) field in DocType 'Shop
+#. Rental Contract'
+#. AI-generated
+#: airplane_mode/shop_lease/doctype/shop_rental_contract/shop_rental_contract.json
+msgid "Rental Amount"
+msgstr "租賃金額"
+
+#. Label of a Workspace Sidebar Item
+#. AI-generated
+#: airplane_mode/workspace_sidebar/airplane_mode.json
+msgid "Report"
+msgstr "報告"
+
+#. AI-generated
+#: airplane_mode/shop_lease/doctype/shop_rental_contract/shop_rental_contract.py:54
+msgid ""
+"Request denied.  This period is overlapping with another lease.  Please "
+"select another Airport Shop or amend Effective Date and Expiry Date"
+msgstr "請求被拒絕。此期間與另一租約重疊。請選擇另一個機場商店或修改生效日期和到期日期"
+
+#. AI-generated
+#: airplane_mode/airplane_mode/report/revenue_by_airline/revenue_by_airline.py:40
+msgid "Revenue"
+msgstr "收入"
+
+#. Name of a report
+#. AI-generated
+#: airplane_mode/airplane_mode/report/revenue_by_airline/revenue_by_airline.json
+msgid "Revenue By Airline"
+msgstr "按航空公司收入"
+
+#. Label of a Workspace Sidebar Item
+#. AI-generated
+#: airplane_mode/workspace_sidebar/airplane_mode.json
+msgid "Revenue by Airline"
+msgstr "按航空公司收入"
+
+#. Label of the route (Data) field in DocType 'Airplane Flight'
+#. Label of the route (Data) field in DocType 'Airport Shop'
+#. AI-generated
+#: airplane_mode/airplane_mode/doctype/airplane_flight/airplane_flight.json
+#: airplane_mode/shop_lease/doctype/airport_shop/airport_shop.json
+msgid "Route"
+msgstr "航線"
+
+#. Button label of the airline Web Form
+#. AI-generated
+#: airplane_mode/airplane_mode/web_form/airline/airline.json
+msgid "Save"
+msgstr "保存"
+
+#. Option for the 'Status' (Select) field in DocType 'Airplane Flight'
+#. AI-generated
+#: airplane_mode/airplane_mode/doctype/airplane_flight/airplane_flight.json
+msgid "Scheduled"
+msgstr "已排定"
+
+#. Label of the seat (Data) field in DocType 'Airplane Ticket'
+#. AI-generated
+#: airplane_mode/airplane_mode/doctype/airplane_ticket/airplane_ticket.json
+msgid "Seat"
+msgstr "座位"
+
+#. AI-generated
+#: airplane_mode/airplane_mode/doctype/airplane_ticket/airplane_ticket.js:30
+msgid "Seat Number"
+msgstr "座位號"
+
+#. AI-generated
+#: airplane_mode/airplane_mode/doctype/airplane_ticket/airplane_ticket.js:47
+msgid "Seat {0} assigned"
+msgstr "座位 {0} 已分配"
+
+#. AI-generated
+#: airplane_mode/airplane_mode/doctype/airplane_ticket/airplane_ticket.js:27
+msgid "Select Seat"
+msgstr "選擇座位"
+
+#. Button label of the shop-inquiry Web Form
+#. AI-generated
+#: airplane_mode/shop_lease/web_form/shop_inquiry/shop_inquiry.json
+msgid "Send"
+msgstr "發送"
+
+#. AI-generated
+#: airplane_mode/shop_lease/report/shop_lease_by_date/shop_lease_by_date.py:18
+msgid "Shop"
+msgstr "商店"
+
+#. Label of a field in the shop-inquiry Web Form
+#. AI-generated
+#: airplane_mode/shop_lease/web_form/shop_inquiry/shop_inquiry.json
+msgid "Shop ID"
+msgstr "商店 ID"
+
+#. Title of the shop-inquiry Web Form
+#. AI-generated
+#: airplane_mode/shop_lease/web_form/shop_inquiry/shop_inquiry.json
+msgid "Shop Inquiry"
+msgstr "商店查詢"
+
+#. Name of a report
+#. AI-generated
+#: airplane_mode/shop_lease/report/shop_lease_by_date/shop_lease_by_date.json
+msgid "Shop Lease by Date"
+msgstr "按日期查詢商店租約"
+
+#. Label of the shop_name (Data) field in DocType 'Shop Rental Contract'
+#. AI-generated
+#: airplane_mode/shop_lease/doctype/shop_rental_contract/shop_rental_contract.json
+msgid "Shop Name"
+msgstr "商店名稱"
+
+#. Label of the shop_number (Data) field in DocType 'Airport Shop'
+#. Label of the shop_number (Data) field in DocType 'Shop Rental Contract'
+#. AI-generated
+#: airplane_mode/shop_lease/doctype/airport_shop/airport_shop.json
+#: airplane_mode/shop_lease/doctype/shop_rental_contract/shop_rental_contract.json
+msgid "Shop Number"
+msgstr "商店編號"
+
+#. Label of the shop_rental_contract (Link) field in DocType 'Airport Rental
+#. Income Tracking'
+#. Name of a DocType
+#. AI-generated
+#: airplane_mode/shop_lease/doctype/airport_rental_income_tracking/airport_rental_income_tracking.json
+#: airplane_mode/shop_lease/doctype/shop_rental_contract/shop_rental_contract.json
+msgid "Shop Rental Contract"
+msgstr "商店租賃合約"
+
+#. Name of a DocType
+#. AI-generated
+#: airplane_mode/shop_lease/doctype/shop_tenant_lead/shop_tenant_lead.json
+msgid "Shop Tenant Lead"
+msgstr "商店租戶負責人"
+
+#. Label of the shop_type (Link) field in DocType 'Airport Shop'
+#. Name of a DocType
+#. Label of the shop_type (Data) field in DocType 'Shop Type'
+#. AI-generated
+#: airplane_mode/shop_lease/doctype/airport_shop/airport_shop.json
+#: airplane_mode/shop_lease/doctype/shop_type/shop_type.json
+msgid "Shop Type"
+msgstr "商店類型"
+
+#. Label of the source_airport (Link) field in DocType 'Airplane Flight'
+#. AI-generated
+#: airplane_mode/airplane_mode/doctype/airplane_flight/airplane_flight.json
+msgid "Source Airport"
+msgstr "來源機場"
+
+#. Label of the source_airport_code (Data) field in DocType 'Airplane Flight'
+#. Label of the source_airport_code (Data) field in DocType 'Airplane Ticket'
+#. AI-generated
+#: airplane_mode/airplane_mode/doctype/airplane_flight/airplane_flight.json
+#: airplane_mode/airplane_mode/doctype/airplane_ticket/airplane_ticket.json
+msgid "Source Airport Code"
+msgstr "來源機場代碼"
+
+#. Label of the source_gate_number (Data) field in DocType 'Airplane Flight'
+#. Label of the source_gate_number (Data) field in DocType 'Airplane Ticket'
+#. AI-generated
+#: airplane_mode/airplane_mode/doctype/airplane_flight/airplane_flight.json
+#: airplane_mode/airplane_mode/doctype/airplane_ticket/airplane_ticket.json
+msgid "Source Gate Number"
+msgstr "來源登機門號"
+
+#. Description of the 'Area' (Float) field in DocType 'Shop Rental Contract'
+#. AI-generated
+#: airplane_mode/shop_lease/doctype/shop_rental_contract/shop_rental_contract.json
+msgid "Square Meter"
+msgstr "平方米"
+
+#. Label of the standard_rate (Currency) field in DocType 'Airport Shop Rental
+#. Settings'
+#. AI-generated
+#: airplane_mode/shop_lease/doctype/airport_shop_rental_settings/airport_shop_rental_settings.json
+msgid "Standard Rate"
+msgstr "標準費率"
+
+#. Description of the 'Standard Rate' (Currency) field in DocType 'Airport
+#. Shop
+#. Rental Settings'
+#. AI-generated
+#: airplane_mode/shop_lease/doctype/airport_shop_rental_settings/airport_shop_rental_settings.json
+msgid "Standard rental rate per square meter"
+msgstr "每平方米標準租金"
+
+#. Label of the status (Select) field in DocType 'Airplane Flight'
+#. Label of the status (Select) field in DocType 'Airplane Ticket'
+#. Label of the status (Select) field in DocType 'Airport Rental Income
+#. Tracking'
+#. AI-generated
+#: airplane_mode/airplane_mode/doctype/airplane_flight/airplane_flight.json
+#: airplane_mode/airplane_mode/doctype/airplane_ticket/airplane_ticket.json
+#: airplane_mode/shop_lease/doctype/airport_rental_income_tracking/airport_rental_income_tracking.json
+msgid "Status"
+msgstr "狀態"
+
+#. AI-generated
+#: airplane_mode/airplane_mode/doctype/airplane_ticket/airplane_ticket.py:76
+msgid "Status must be 'Boarded' before submission."
+msgstr "狀態必須在提交前為 '已登機'。"
+
+#. Name of a role
+#. AI-generated
+#: airplane_mode/airplane_mode/doctype/airline/airline.json
+#: airplane_mode/airplane_mode/doctype/airplane/airplane.json
+#: airplane_mode/airplane_mode/doctype/airplane_flight/airplane_flight.json
+#: airplane_mode/airplane_mode/doctype/airplane_ticket/airplane_ticket.json
+#: airplane_mode/airplane_mode/doctype/airplane_ticket_add_on_type/airplane_ticket_add_on_type.json
+#: airplane_mode/airplane_mode/doctype/airport/airport.json
+#: airplane_mode/airplane_mode/doctype/flight_crew_member/flight_crew_member.json
+#: airplane_mode/airplane_mode/doctype/flight_passenger/flight_passenger.json
+#: airplane_mode/shop_lease/doctype/airport_rental_income_tracking/airport_rental_income_tracking.json
+#: airplane_mode/shop_lease/doctype/airport_shop/airport_shop.json
+#: airplane_mode/shop_lease/doctype/airport_shop_rental_settings/airport_shop_rental_settings.json
+#: airplane_mode/shop_lease/doctype/airport_tenant/airport_tenant.json
+#: airplane_mode/shop_lease/doctype/shop_rental_contract/shop_rental_contract.json
+#: airplane_mode/shop_lease/doctype/shop_tenant_lead/shop_tenant_lead.json
+#: airplane_mode/shop_lease/doctype/shop_type/shop_type.json
+msgid "System Manager"
+msgstr "系統管理員"
+
+#. AI-generated
+#: airplane_mode/airplane_mode/report/flight_crew_location_by_date/flight_crew_location_by_date.js:8
+msgid "Target Datetime"
+msgstr "目標日期時間"
+
+#. Label of the tenant (Data) field in DocType 'Airport Rental Income
+#. Tracking'
+#. Label of the tenant (Link) field in DocType 'Shop Rental Contract'
+#. AI-generated
+#: airplane_mode/shop_lease/doctype/airport_rental_income_tracking/airport_rental_income_tracking.json
+#: airplane_mode/shop_lease/doctype/shop_rental_contract/shop_rental_contract.json
+#: airplane_mode/shop_lease/report/shop_lease_by_date/shop_lease_by_date.py:25
+msgid "Tenant"
+msgstr "租戶"
+
+#. Label of the tenant_name (Data) field in DocType 'Airport Tenant'
+#. AI-generated
+#: airplane_mode/shop_lease/doctype/airport_tenant/airport_tenant.json
+msgid "Tenant Name"
+msgstr "租戶姓名"
+
+#. Success title of the book-flight-ticket-web-form Web Form
+#. AI-generated
+#: airplane_mode/airplane_mode/web_form/book_flight_ticket_web_form/book_flight_ticket_web_form.json
+msgid "Ticket Booked"
+msgstr "票務已預訂"
+
+#. Label of a Workspace Sidebar Item
+#. AI-generated
+#: airplane_mode/workspace_sidebar/airplane_mode.json
+msgid "Tickets"
+msgstr "票券"
+
+#. Label of the time_of_departure (Time) field in DocType 'Airplane Flight'
+#. AI-generated
+#: airplane_mode/airplane_mode/doctype/airplane_flight/airplane_flight.json
+msgid "Time of Departure"
+msgstr "出發時間"
+
+#. AI-generated
+#: airplane_mode/airplane_mode/report/flights_by_crew_member/flights_by_crew_member.py:53
+msgid "To"
+msgstr "到"
+
+#. Label of the total_amount (Currency) field in DocType 'Airplane Ticket'
+#. AI-generated
+#: airplane_mode/airplane_mode/doctype/airplane_ticket/airplane_ticket.json
+msgid "Total Amount"
+msgstr "總金額"
+
+#. AI-generated
+#: airplane_mode/airplane_mode/report/revenue_by_airline/revenue_by_airline.py:108
+msgid "Total Revenue"
+msgstr "總收入"
+
+#. Name of a role
+#. AI-generated
+#: airplane_mode/airplane_mode/doctype/airline/airline.json
+#: airplane_mode/airplane_mode/doctype/airplane/airplane.json
+#: airplane_mode/airplane_mode/doctype/airplane_flight/airplane_flight.json
+#: airplane_mode/airplane_mode/doctype/airplane_ticket/airplane_ticket.json
+#: airplane_mode/airplane_mode/doctype/airplane_ticket_add_on_type/airplane_ticket_add_on_type.json
+#: airplane_mode/airplane_mode/doctype/airport/airport.json
+#: airplane_mode/airplane_mode/doctype/flight_crew_member/flight_crew_member.json
+msgid "Travel Agent"
+msgstr "旅行社"
+
+#. Description of the 'Area' (Float) field in DocType 'Airport Shop'
+#. AI-generated
+#: airplane_mode/shop_lease/doctype/airport_shop/airport_shop.json
+msgid "Unit: Square Meter"
+msgstr "單位：平方米"
+
+#. AI-generated
+#: airplane_mode/airplane_mode/doctype/airplane_flight/templates/airplane_flight_row.html:11
+msgid "View Flight"
+msgstr "查看航班"
+
+#. AI-generated
+#: airplane_mode/airplane_mode/doctype/airline/airline.js:7
+msgid "Visit Website"
+msgstr "訪問網站"
+
+#. AI-generated
+#: airplane_mode/shop_lease/doctype/shop_rental_contract/shop_rental_contract.py:81
+msgid "Visit {0} for details."
+msgstr "訪問 {0} 獲取詳情。"
+
+#. AI-generated
+#: airplane_mode/shop_lease/doctype/shop_rental_contract/shop_rental_contract.py:58
+msgid "Warning"
+msgstr "警告"
+
+#. Label of the website (Data) field in DocType 'Airline'
+#. Label of a field in the airline Web Form
+#. AI-generated
+#: airplane_mode/airplane_mode/doctype/airline/airline.json
+#: airplane_mode/airplane_mode/web_form/airline/airline.json
+msgid "Website"
+msgstr "網站"
+
+#. Success message of the book-flight-ticket-web-form Web Form
+#. AI-generated
+#: airplane_mode/airplane_mode/web_form/book_flight_ticket_web_form/book_flight_ticket_web_form.json
+msgid "You will receive the details in your email soon"
+msgstr "您將很快在您的電子郵件中收到詳細信息"
+
+#. Success title of the shop-inquiry Web Form
+#. AI-generated
+#: airplane_mode/shop_lease/web_form/shop_inquiry/shop_inquiry.json
+msgid "Your request was sent!"
+msgstr "您的請求已發送！"
+
+#. Paragraph text in the Airplane Mode Workspace
+#. AI-generated
+#: airplane_mode/airplane_mode/workspace/airplane_mode/airplane_mode.json
+msgid "aadafd"
+msgstr "aadafd"
+
+#. Paragraph text in the Airplane Mode Workspace
+#. AI-generated
+#: airplane_mode/airplane_mode/workspace/airplane_mode/airplane_mode.json
+msgid "asdff"
+msgstr "asdff"
+
+#. Description of the 'Rent Amount' (Currency) field in DocType 'Shop Rental
+#. Contract'
+#. AI-generated
+#: airplane_mode/shop_lease/doctype/shop_rental_contract/shop_rental_contract.json
+msgid "i.e. Rent Per Square Meter * Area"
+msgstr "即：每平方米租金 * 面積"
+
+#. Label of the image (Attach Image) field in DocType 'Airport Shop'
+#. AI-generated
+#: airplane_mode/shop_lease/doctype/airport_shop/airport_shop.json
+msgid "image"
+msgstr "圖片"
+
+#. AI-generated
+#: airplane_mode/api.py:25 airplane_mode/api.py:51
+msgid "shop_rental_contractperiod_startamount"
+msgstr "shop_rental_contractperiod_startamount"
+
+#. AI-generated
+#: airplane_mode/shop_lease/doctype/shop_rental_contract/shop_rental_contract.py:59
+msgid ""
+"⚠️There is another potential contract overlapping this period.  Please make "
+"sure you resolve conflict before submit."
+msgstr "⚠️此期間有另一份潛在合約重疊。請確保在提交前解決衝突。"
