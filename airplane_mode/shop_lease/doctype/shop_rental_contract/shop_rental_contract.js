@@ -10,11 +10,11 @@ frappe.ui.form.on("Shop Rental Contract", {
                 frm.set_value("rent_per_square_meter", standard_rate);
             });
         };
-        frm.add_custom_button(__("Add Income Tracking Record"),()=>{
+        frm.add_custom_button(__("Add Income Tracking Record"),function (){
             frappe.new_doc("Airport Rental Income Tracking", {
                 "shop_rental_contract": frm.doc.name
             });
-        })
+        }, __("Manual Actions"))
     },
 
     calculate_rent_amount(frm){      

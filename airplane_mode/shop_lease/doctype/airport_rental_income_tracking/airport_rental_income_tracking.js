@@ -26,9 +26,9 @@ frappe.ui.form.on("Airport Rental Income Tracking", {
 	},
 	refresh(frm) {
 		if (frm.doc.status == "Received" && frm.doc.docstatus == 0) {
-			frm.page.set_primary_action(__('Issue Receipt'), ()=> {
-				frappe.confirm('Confirm issuing receipt? This action cannot be undone.', () => {
-					frappe.msgprint('Receipt Issued & new tracking record for next month is created.')
+			frm.page.set_primary_action(__('Confirm Receipt'), ()=> {
+				frappe.confirm(__('Confirm payment was received? This action cannot be undone.'), () => {
+					frappe.msgprint(__('Tracking record for next month is created.'))
 					frm.save('Submit');
 				}, () => {
 					frm.save();
