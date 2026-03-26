@@ -10,7 +10,7 @@
  "idx": 0,
  "is_standard": "Yes",
  "letter_head": null,
- "modified": "2026-03-09 09:03:09.591640",
+ "modified": "2026-03-26 18:29:15.533625",
  "modified_by": "Administrator",
  "module": "Shop Lease",
  "name": "Airport Shop Occupancy Report",
@@ -22,6 +22,9 @@
  "roles": [
   {
    "role": "System Manager"
+  },
+  {
+   "role": "Leasing Manager"
   }
  ],
  "timeout": 0

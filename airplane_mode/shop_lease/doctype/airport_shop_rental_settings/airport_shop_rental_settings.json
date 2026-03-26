@@ -27,7 +27,7 @@
  "index_web_pages_for_search": 1,
  "issingle": 1,
  "links": [],
- "modified": "2026-03-25 11:11:15.339590",
+ "modified": "2026-03-26 18:36:03.339325",
  "modified_by": "Administrator",
  "module": "Shop Lease",
  "name": "Airport Shop Rental Settings",
@@ -40,16 +40,6 @@
    "print": 1,
    "read": 1,
    "role": "System Manager",
-   "share": 1,
-   "write": 1
-  },
-  {
-   "create": 1,
-   "delete": 1,
-   "email": 1,
-   "print": 1,
-   "read": 1,
-   "role": "Leasing Manager",
    "share": 1,
    "write": 1
   }

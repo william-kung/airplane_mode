@@ -41,7 +41,7 @@
    "link_fieldname": "airport"
   }
  ],
- "modified": "2026-03-23 12:20:22.066499",
+ "modified": "2026-03-26 18:54:05.912696",
  "modified_by": "Administrator",
  "module": "Airplane Mode",
  "name": "Airport",
@@ -87,7 +87,6 @@
    "read": 1,
    "report": 1,
    "role": "Airport Authority Personnel",
-   "select": 1,
    "share": 1,
    "write": 1
   },
@@ -99,6 +98,10 @@
    "report": 1,
    "role": "Flight Crew Member",
    "share": 1
+  },
+  {
+   "read": 1,
+   "role": "Leasing Manager"
   }
  ],
  "row_format": "Dynamic",
