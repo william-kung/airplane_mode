@@ -65,7 +65,6 @@ class AirportRentalIncomeTracking(Document):
 		else:
 			return False
 	
-
 	
 	@frappe.whitelist()
 	def get_dates(self):
@@ -91,13 +90,37 @@ class AirportRentalIncomeTracking(Document):
 				'effective_date'
 			)
 		
-		next_month = add_to_date(start_date, months=1, as_string=True)
-		end_date = add_to_date(next_month, days=-1, as_string=True)
+		end_date = add_to_date(start_date, months=1, days=-1, as_string=True)
 		dates = {
-			'period_start': start_date.strftime('%Y-%m-%d'),
+			'period_start': start_date,
 			'period_end': end_date
 		}
 		return dates
 	
+	@frappe.whitelist()
+	def send_receipt_email(self):
+		contract = frappe.get_doc("Shop Rental Contract", self.shop_rental_contract)
+		airport = frappe.get_doc("Airport", {"code": contract.airport_code})
+		recipient = frappe.db.get_value("Airport Tenant", self.tenant, "email")
+
+		if not recipient:
+			frappe.log_error(
+                title=_("Rental Receipt Email Failed"),
+                message=f"Could not find email address for Tenant: {self.tenant}. Receipt: {self.name}"
+            )
+			return
+
+		frappe.sendmail(
+			recipients=[recipient],
+			subject=_(f"Receipt for Rental Payment: {self.period_start} to {self.period_end}"),
+			template="Rental Payment Receipt", 
+			args={
+				"doc": self,           # The Receipt (Current Doc)
+				"contract": contract,  # The Shop Rental Contract Doc
+				"airport": airport     # The Airport Doc
+			}
+		)
+		
+
 
 	

@@ -26,14 +26,17 @@ frappe.ui.form.on("Airport Rental Income Tracking", {
 	},
 	refresh(frm) {
 		if (frm.doc.status == "Received" && frm.doc.docstatus == 0) {
-			frm.page.set_primary_action(__('Confirm Receipt'), ()=> {
-				frappe.confirm(__('Confirm payment was received? This action cannot be undone.'), () => {
-					frappe.msgprint(__('Tracking record for next month is created.'))
-					frm.save('Submit');
-				}, () => {
-					frm.save();
-				})
-			});
+			frappe.msgprint({
+				title: __("Confirmation"),
+				message: __('Are you sure the payment was received?  This cannot be undone.'),
+				primary_action: {
+					'label': "Confirm",
+					'server_action': 'airplane_mode.shop_lease.doctype.airport_rental_income_tracking.airport_rental_income_tracking.send_receipt_email',
+					action(){
+						frm.save("Submit");
+					}
+				}
+			})
 		}
 		frm.page.set_indicator(`${frm.doc.status}`, get_status_color(frm.doc.status));
 	}

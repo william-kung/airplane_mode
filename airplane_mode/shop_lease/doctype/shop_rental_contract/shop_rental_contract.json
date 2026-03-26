@@ -145,7 +145,7 @@
    "link_fieldname": "shop_rental_contract"
   }
  ],
- "modified": "2026-03-21 15:36:13.984142",
+ "modified": "2026-03-26 14:36:01.773069",
  "modified_by": "Administrator",
  "module": "Shop Lease",
  "name": "Shop Rental Contract",
@@ -161,6 +161,18 @@
    "read": 1,
    "report": 1,
    "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Leasing Manager",
    "share": 1,
    "write": 1
   }
