@@ -13,9 +13,11 @@
   "airport_details_section",
   "source_airport",
   "source_airport_code",
+  "source_gate_number",
   "column_break_ckqx",
   "destination_airport",
   "destination_airport_code",
+  "destination_gate_number",
   "departure_details_section",
   "date_of_departure",
   "duration",
@@ -38,7 +40,7 @@
   },
   {
    "fieldname": "date_of_departure",
-   "fieldtype": "Date",
+   "fieldtype": "Datetime",
    "in_list_view": 1,
    "label": "Date of Departure",
    "reqd": 1
@@ -46,8 +48,8 @@
   {
    "fieldname": "time_of_departure",
    "fieldtype": "Time",
-   "label": "Time of Departure",
-   "reqd": 1
+   "hidden": 1,
+   "label": "Time of Departure"
   },
   {
    "fieldname": "duration",
@@ -142,11 +144,21 @@
   {
    "fieldname": "column_break_dhxo",
    "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "source_gate_number",
+   "fieldtype": "Data",
+   "label": "Source Gate Number"
+  },
+  {
+   "fieldname": "destination_gate_number",
+   "fieldtype": "Data",
+   "label": "Destination Gate Number"
   }
  ],
  "grid_page_length": 50,
  "has_web_view": 1,
- "index_web_pages_for_search": 1,
+ "is_calendar_and_gantt": 1,
  "is_published_field": "is_published",
  "is_submittable": 1,
  "links": [
@@ -155,8 +167,8 @@
    "link_fieldname": "flight"
   }
  ],
- "modified": "2026-02-28 17:42:33.916063",
- "modified_by": "Administrator",
+ "modified": "2026-03-27 19:43:40.227983",
+ "modified_by": "william0129@gmail.com",
  "module": "Airplane Mode",
  "name": "Airplane Flight",
  "naming_rule": "Expression",
@@ -173,6 +185,48 @@
    "role": "System Manager",
    "share": 1,
    "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Fleet Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Travel Agent",
+   "share": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Airport Authority Personnel",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Flight Crew Member",
+   "share": 1
   }
  ],
  "route": "flights",
@@ -180,6 +234,19 @@
  "rows_threshold_for_grid_search": 20,
  "sort_field": "creation",
  "sort_order": "DESC",
- "states": [],
+ "states": [
+  {
+   "color": "Green",
+   "title": "Scheduled"
+  },
+  {
+   "color": "Gray",
+   "title": "Completed"
+  },
+  {
+   "color": "Red",
+   "title": "Cancelled"
+  }
+ ],
  "track_changes": 1
 }
