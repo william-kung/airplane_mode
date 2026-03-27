@@ -73,12 +73,12 @@ def make_test_records():
 			doc = frappe.get_doc(entry)
 			doc.insert()
 	
-	create_contract()
+	create_submittted_contracts()
 	frappe.flags.test_records_created = True
 
 
-def create_contract ():
-	if frappe.flags.contract_created:
+def create_submittted_contracts():
+	if frappe.flags.submitted_contracts_created:
 		return
 	
 	frappe.get_doc({
@@ -99,7 +99,7 @@ def create_contract ():
 		"rent_per_square_meter": 5000,
 		"rent_amount": 250000
 	}).insert().submit()
-	frappe.flags.contract_created = True
+	frappe.flags.submitted_contracts_created = True
 
 
 class IntegrationTestAirportRentalIncomeTracking(IntegrationTestCase):

@@ -77,7 +77,7 @@ class ShopRentalContract(Document):
 		doc.amount = self.rent_amount
 		doc.status =self.get_status()
 		doc.insert()
-		msg = _("New Aiport Rental Income Tracking Document for {0} created.").format(frappe.bold(self.name))
+		msg = _("New Aiport Rental Income Tracking Document for {0} created. ").format(frappe.bold(self.name))
 		msg += "<br><br>" + _("Visit {0} for details.").format(get_link_to_form("Airport Rental Income Tracking", doc.name))
 		title = _("Income Tracking Started")
 		frappe.msgprint(msg=msg, title=title, indicator="green")

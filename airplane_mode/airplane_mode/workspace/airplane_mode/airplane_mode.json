@@ -14,7 +14,7 @@
  "label": "Airplane Mode",
  "link_type": "DocType",
  "links": [],
- "modified": "2026-03-26 18:55:54.520049",
+ "modified": "2026-03-27 09:00:42.645565",
  "modified_by": "Administrator",
  "module": "Airplane Mode",
  "name": "Airplane Mode",
@@ -23,11 +23,7 @@
  "parent_page": "",
  "public": 1,
  "quick_lists": [],
- "roles": [
-  {
-   "role": "Leasing Manager"
-  }
- ],
+ "roles": [],
  "sequence_id": 2.0,
  "shortcuts": [
   {

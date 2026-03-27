@@ -1,7 +1,7 @@
 {
  "app": "airplane_mode",
  "charts": [],
- "content": "[{\"id\":\"per2Z1Jl-J\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\">Shop Lease</span>\",\"col\":12}}]",
+ "content": "[{\"id\":\"per2Z1Jl-J\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\">Shop Lease</span>\",\"col\":12}},{\"id\":\"rYXNQwrw7P\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Airport Rental Income Tracking\",\"col\":3}}]",
  "creation": "2026-03-26 19:43:47.153083",
  "custom_blocks": [],
  "docstatus": 0,
@@ -15,7 +15,7 @@
  "label": "Shop Lease",
  "link_type": "DocType",
  "links": [],
- "modified": "2026-03-26 19:46:19.630820",
+ "modified": "2026-03-27 08:59:02.757702",
  "modified_by": "Administrator",
  "module": "Shop Lease",
  "name": "Shop Lease",
@@ -30,7 +30,16 @@
   }
  ],
  "sequence_id": 23.0,
- "shortcuts": [],
+ "shortcuts": [
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "label": "Airport Rental Income Tracking",
+   "link_to": "Airport Rental Income Tracking",
+   "stats_filter": "[]",
+   "type": "DocType"
+  }
+ ],
  "title": "Shop Lease",
  "type": "Workspace"
 }

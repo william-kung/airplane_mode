@@ -4,11 +4,12 @@
 import frappe
 from frappe import _
 from frappe.model.document import Document
-from frappe.utils import add_to_date, days_diff, getdate
-from datetime import datetime 
+from frappe.utils import add_to_date, days_diff, getdate, today
+# from datetime import datetime 
 
 
 class AirportRentalIncomeTracking(Document):
+	
 	def autoname(self):
 		contract = frappe.db.get_value('Shop Rental Contract', 
 			self.shop_rental_contract,
@@ -29,14 +30,24 @@ class AirportRentalIncomeTracking(Document):
 			self.period_start = dates.get("period_start")
 			self.period_end = dates.get("period_end")
 
+	# def validate(self):
+	# 	if self.docstatus != 0 and self.status == "Received":
+
+	# 		self.submit()
+
+
 	def on_submit(self):
+		frappe.enqueue(
+			method=self.send_receipt_email,
+			queue='default'
+		)
 		frappe.msgprint(
-			_("Please be reminded to print the receipt and send to tenant as soon as possible.")
+			_("Receipt is being sent to the tenant.")
 		)
 		if self.is_expired():
 			frappe.msgprint(
 				msg=_("No new income tracking period was created."), 
-				title=_("Contract will expire in next month"),
+				title=_("Contract Expiring"),
 				indicator="red"
 			)
 			return	
@@ -99,26 +110,26 @@ class AirportRentalIncomeTracking(Document):
 	
 	@frappe.whitelist()
 	def send_receipt_email(self):
-		contract = frappe.get_doc("Shop Rental Contract", self.shop_rental_contract)
-		airport = frappe.get_doc("Airport", {"code": contract.airport_code})
 		recipient = frappe.db.get_value("Airport Tenant", self.tenant, "email")
-
+		self.today = today()
+		pdf_content = frappe.attach_print(
+			doctype=self.doctype, 
+			name=self.name,
+			print_format="Airport Shop Rental Receipt",
+			doc=self
+		)
 		if not recipient:
 			frappe.log_error(
-                title=_("Rental Receipt Email Failed"),
-                message=f"Could not find email address for Tenant: {self.tenant}. Receipt: {self.name}"
-            )
+				title=_("Rental Receipt Email Failed"),
+				message=_(f"Could not find email address for Tenant: {0}. Receipt: {1}").format(self.tenant, self.name)
+			)
 			return
 
 		frappe.sendmail(
 			recipients=[recipient],
-			subject=_(f"Receipt for Rental Payment: {self.period_start} to {self.period_end}"),
-			template="Rental Payment Receipt", 
-			args={
-				"doc": self,           # The Receipt (Current Doc)
-				"contract": contract,  # The Shop Rental Contract Doc
-				"airport": airport     # The Airport Doc
-			}
+			subject=_("Receipt for Rental Payment: {0} to {1}").format(self.period_start, self.period_end),
+			message=_("Please find the rental receipt for period between {0} and {1} attached.").format(self.period_start, self.period_end),
+			attachments=[pdf_content]
 		)
 		
 
