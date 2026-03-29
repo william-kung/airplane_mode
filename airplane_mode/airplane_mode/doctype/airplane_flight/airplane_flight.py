@@ -106,3 +106,26 @@ def get_events():
 			})
 
 	return processed_events
+
+
+@frappe.whitelist()
+@frappe.validate_and_sanitize_search_inputs
+def get_crew_member_list(doctype, txt, searchfield, start, page_len, filters):
+    return frappe.db.sql("""
+        SELECT 
+            tabUser.name, tabUser.full_name
+        FROM 
+            `tabUser`
+        INNER JOIN 
+            `tabHas Role` ON tabUser.name = `tabHas Role`.parent
+        WHERE 
+            `tabHas Role`.parenttype = 'User'
+            AND `tabHas Role`.role = 'Flight Crew Member'
+            AND tabUser.enabled = 1
+            AND (tabUser.name LIKE %(txt)s OR tabUser.full_name LIKE %(txt)s)
+        LIMIT %(start)s, %(page_len)s
+    """, {
+        'txt': f"%%{txt}%%",
+        'start': start,
+        'page_len': page_len
+    })

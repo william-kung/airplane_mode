@@ -13,7 +13,7 @@
    "fieldtype": "Link",
    "in_list_view": 1,
    "label": "Flight Crew Member",
-   "options": "Flight Crew Member",
+   "options": "User",
    "reqd": 1
   }
  ],
@@ -21,10 +21,10 @@
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2026-03-29 16:06:22.840190",
+ "modified": "2026-03-29 17:04:41.368058",
  "modified_by": "Administrator",
  "module": "Airplane Mode",
- "name": "Flight Crew On Board",
+ "name": "Flight Crew Member Detail",
  "owner": "Administrator",
  "permissions": [],
  "row_format": "Dynamic",

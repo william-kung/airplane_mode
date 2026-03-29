@@ -24,12 +24,12 @@
   "column_break_pixt",
   "time_of_departure",
   "amended_from",
-  "section_break_djkl",
-  "crew_on_board",
   "section_break_zffv",
   "is_published",
   "column_break_dhxo",
-  "route"
+  "route",
+  "section_break_vtww",
+  "crew_member"
  ],
  "fields": [
   {
@@ -158,14 +158,14 @@
    "label": "Destination Gate Number"
   },
   {
-   "fieldname": "section_break_djkl",
-   "fieldtype": "Section Break"
+   "fieldname": "crew_member",
+   "fieldtype": "Table",
+   "label": "Crew Member",
+   "options": "Flight Crew Member Detail"
   },
   {
-   "fieldname": "crew_on_board",
-   "fieldtype": "Table",
-   "label": "Crew On Board",
-   "options": "Flight Crew On Board"
+   "fieldname": "section_break_vtww",
+   "fieldtype": "Section Break"
   }
  ],
  "grid_page_length": 50,
@@ -179,7 +179,7 @@
    "link_fieldname": "flight"
   }
  ],
- "modified": "2026-03-20 09:27:55.211549",
+ "modified": "2026-03-29 17:24:01.498087",
  "modified_by": "Administrator",
  "module": "Airplane Mode",
  "name": "Airplane Flight",
