@@ -21,14 +21,17 @@ class AirplaneFlight(WebsiteGenerator):
 		seen_names = set()
 		unique_names = []
 		has_duplicates = False
-		for crew in self.crew_on_board:
+		
+		# Change 'self.crew_on_board' to 'self.crew_member'
+		for crew in self.crew_member: 
 			if crew.flight_crew_member not in seen_names:
 				seen_names.add(crew.flight_crew_member)
 				unique_names.append(crew)
 			else:
 				has_duplicates = True
+				
 		if has_duplicates:
-			self.crew_on_board = unique_names
+			self.crew_member = unique_names # Update the correct field here too
 			frappe.msgprint(
 				msg=_("Duplicated crew members were removed."),
 				title=_("Notice"),
@@ -111,7 +114,29 @@ def get_events():
 @frappe.whitelist()
 @frappe.validate_and_sanitize_search_inputs
 def get_crew_member_list(doctype, txt, searchfield, start, page_len, filters):
-    return frappe.db.sql("""
+    # Initialize base parameters
+    params = {
+        'txt': f"%{txt}%",
+        'start': int(start),
+        'page_len': int(page_len)
+    }
+    
+    # Handle the excluded crew list using named parameters
+    excluded_crew = filters.get("existing_crew") if filters else []
+    exclude_condition = ""
+    
+    if excluded_crew:
+        # Create unique keys for each excluded member to avoid positional conflicts
+        exclude_keys = []
+        for i, member in enumerate(excluded_crew):
+            key = f"exclude_{i}"
+            params[key] = member
+            exclude_keys.append(f"%({key})s")
+        
+        # Build the NOT IN clause: AND tabUser.name NOT IN (%(exclude_0)s, %(exclude_1)s)
+        exclude_condition = f"AND tabUser.name NOT IN ({', '.join(exclude_keys)})"
+
+    query = f"""
         SELECT 
             tabUser.name, tabUser.full_name
         FROM 
@@ -122,10 +147,9 @@ def get_crew_member_list(doctype, txt, searchfield, start, page_len, filters):
             `tabHas Role`.parenttype = 'User'
             AND `tabHas Role`.role = 'Flight Crew Member'
             AND tabUser.enabled = 1
+            {exclude_condition}
             AND (tabUser.name LIKE %(txt)s OR tabUser.full_name LIKE %(txt)s)
         LIMIT %(start)s, %(page_len)s
-    """, {
-        'txt': f"%%{txt}%%",
-        'start': start,
-        'page_len': page_len
-    })
+    """
+
+    return frappe.db.sql(query, params)
