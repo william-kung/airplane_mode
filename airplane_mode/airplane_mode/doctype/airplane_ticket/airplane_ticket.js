@@ -10,6 +10,20 @@ frappe.ui.form.on("Airplane Ticket", {
             show_seat_dialog(frm);
         }, __("Actions"));
         frm.page.set_indicator(`${frm.doc.status}`, get_status_color(frm.doc.status));
+    },
+    onload(frm) {
+        frm.set_query("item", "add_ons", () => {
+            let existing_items = (frm.doc.add_ons || [])
+                .map(row => row.item)
+                .filter(id => id);
+
+            return {
+                query: "airplane_mode.airplane_mode.doctype.airplane_ticket.airplane_ticket.get_airplane_ticket_add_on_item_list",
+                filters: {
+                    "existing_item": existing_items // Key must match Python filters.get()
+                }
+            };
+        });
     }
 });
 

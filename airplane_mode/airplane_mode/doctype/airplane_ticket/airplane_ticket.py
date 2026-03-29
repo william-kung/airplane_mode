@@ -84,3 +84,40 @@ class AirplaneTicket(Document):
 		sold_count = frappe.db.count(self.doctype, {'flight': self.flight})
 		if sold_count >= capacity:
 			frappe.throw(f"The flight is full.")
+
+
+@frappe.whitelist()
+@frappe.validate_and_sanitize_search_inputs
+def get_airplane_ticket_add_on_item_list(doctype, txt, searchfield, start, page_len, filters):
+    params = {
+        'txt': f"%{txt}%",
+        'start': int(start),
+        'page_len': int(page_len)
+    }
+    
+    # Match the key passed from JS
+    excluded_items = filters.get("existing_item") if filters else []
+    exclude_condition = ""
+
+    if excluded_items:
+        exclude_keys = []
+        for i, item in enumerate(excluded_items):
+            key = f"exclude_{i}"
+            params[key] = item
+            exclude_keys.append(f"%({key})s")
+
+        exclude_condition = f"AND name NOT IN ({', '.join(exclude_keys)})"
+
+    query = f"""
+        SELECT 
+            name
+        FROM 
+            `tabAirplane Ticket Add-on Type`
+        WHERE 
+            1=1 
+            {exclude_condition}
+            AND name LIKE %(txt)s
+        LIMIT %(start)s, %(page_len)s
+    """
+
+    return frappe.db.sql(query, params)
