@@ -5,6 +5,9 @@ import frappe
 from frappe import _
 from frappe.utils import add_to_date
 from datetime import timedelta
+from airplane_mode.airplane_mode.doctype.airplane_flight.airplane_flight import get_crew_member_list
+
+
 
 def execute(filters: dict | None = None):
 	"""Return columns and data for the report.
@@ -29,7 +32,7 @@ def get_columns() -> list[dict]:
 			"label": _("Crew"),
 			"fieldname": "crew_name",
 			"fieldtype": "Link",
-            "options": "Flight Crew Member",
+            "options": "User",
             "width": 190
 		},
 		{
@@ -62,17 +65,26 @@ def get_data(filters) -> list[dict]:
     if not filters:
         filters = {}
 
-    CrewsOnBoard = frappe.qb.DocType("Flight Crew On Board")
+    CrewDetail = frappe.qb.DocType("Flight Crew Member Detail")
     Flights = frappe.qb.DocType("Airplane Flight")
+    HasRole = frappe.qb.DocType('Has Role')
+    User = frappe.qb.DocType('User')
+
 
     # Initialize the query
     query = (
-        frappe.qb.from_(CrewsOnBoard)
-        .inner_join(Flights)
-        .on(Flights.name == CrewsOnBoard.parent)
+        frappe.qb.from_(HasRole)
+        .where(HasRole.role == "Flight Crew Member")
+        .inner_join(User).on(HasRole.parent == User.name)
+        .where(
+            (HasRole.parenttype == "User") &
+            (User.enabled == 1)
+        )
+        .inner_join(CrewDetail).on(User.name == CrewDetail.flight_crew_member)
+        .inner_join(Flights).on(CrewDetail.parent == Flights.name)
         .select(
-            CrewsOnBoard.flight_crew_member.as_("crew_name"),
-            CrewsOnBoard.parent.as_("flight"),
+            CrewDetail.flight_crew_member.as_("crew_name"),
+            CrewDetail.parent.as_("flight"),
             Flights.source_airport_code.as_("source_code"),
             Flights.destination_airport_code.as_("destination_code"),
             Flights.date_of_departure.as_("departure_time"),
@@ -82,11 +94,11 @@ def get_data(filters) -> list[dict]:
 
     # 1. Apply Filter conditionally to avoid errors
     if filters.get("crew_name"):
-        query = query.where(CrewsOnBoard.flight_crew_member == filters.get("crew_name"))
+        query = query.where(CrewDetail.flight_crew_member == filters.get("crew_name"))
 
     # 2. Apply Ordering
     query = (
-        query.orderby(CrewsOnBoard.flight_crew_member, order=frappe.qb.asc)
+        query.orderby(CrewDetail.flight_crew_member, order=frappe.qb.asc)
         .orderby(Flights.date_of_departure, order=frappe.qb.desc)
     )
 
