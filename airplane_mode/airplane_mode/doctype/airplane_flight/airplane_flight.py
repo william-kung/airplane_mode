@@ -40,7 +40,7 @@ class AirplaneFlight(WebsiteGenerator):
 
 
 	def on_update(self):
-		if self.is_new():
+		if not self.is_new():  # no need to execute if new as data are fetched anyway.
 			if self.is_ticket_related():
 				frappe.enqueue(
 					'airplane_mode.airplane_mode.doctype.airplane_flight.airplane_flight.push_to_ticket',
@@ -67,7 +67,7 @@ class AirplaneFlight(WebsiteGenerator):
 			return True
 		else:
 			return False
-			# if ticket related fields are changed push changes to ticket.
+			# if ticket related fields are changed, push changes to ticket.
 			
 def push_to_ticket(flight):
 	frappe.db.set_value(
@@ -128,12 +128,12 @@ def get_crew_member_list(doctype, txt, searchfield, start, page_len, filters=Non
 	
     conditions = []
 
-	# SECURITY: If 'name' is passed from JS, restrict to ONLY that user
+	# SECURITY: If 'name' is passed from JS of Flights by Crew Member report, restrict to ONLY that user
     if filters.get("name"):
         params["restricted_name"] = filters.get("name")
         conditions.append("AND tabUser.name = %(restricted_name)s")
 
-    # Handle the excluded crew list using named parameters
+    # UX Improve: Handle the excluded crew list on child table using named parameters
     excluded_crew = filters.get("existing_crew") if filters else []
     
     if excluded_crew:
