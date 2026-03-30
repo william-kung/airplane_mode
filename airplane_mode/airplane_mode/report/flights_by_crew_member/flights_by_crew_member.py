@@ -5,7 +5,6 @@ import frappe
 from frappe import _
 from frappe.utils import add_to_date
 from datetime import timedelta
-from airplane_mode.airplane_mode.doctype.airplane_flight.airplane_flight import get_crew_member_list
 
 
 
@@ -62,8 +61,14 @@ def get_columns() -> list[dict]:
 
 
 def get_data(filters) -> list[dict]:
-    if not filters:
-        filters = {}
+    filters = filters or {}
+
+    # identify user permission
+    user = frappe.session.user
+    roles = frappe.get_roles(user)
+    management_roles = ["Fleet Manager", "Airport Authority Personnel", "System Manager"]
+    is_management = any(item in management_roles for item in roles)
+
 
     CrewDetail = frappe.qb.DocType("Flight Crew Member Detail")
     Flights = frappe.qb.DocType("Airplane Flight")
@@ -92,14 +97,18 @@ def get_data(filters) -> list[dict]:
         )
     )
 
-    # 1. Apply Filter conditionally to avoid errors
+    # Apple role filter
+    if not is_management:
+        query = query.where(CrewDetail.flight_crew_member == user)
+
+    # Apply Filter conditionally to avoid errors
     if filters.get("crew_name"):
         query = query.where(CrewDetail.flight_crew_member == filters.get("crew_name"))
 
-    # 2. Apply Ordering
+    # Apply Ordering
     query = (
-        query.orderby(CrewDetail.flight_crew_member, order=frappe.qb.asc)
-        .orderby(Flights.date_of_departure, order=frappe.qb.desc)
+        query.orderby(Flights.date_of_departure, order=frappe.qb.desc)
+        .orderby(CrewDetail.flight_crew_member, order=frappe.qb.asc)
     )
 
     # Execute query

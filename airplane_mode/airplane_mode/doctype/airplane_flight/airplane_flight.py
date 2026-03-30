@@ -113,17 +113,28 @@ def get_events():
 
 @frappe.whitelist()
 @frappe.validate_and_sanitize_search_inputs
-def get_crew_member_list(doctype, txt, searchfield, start, page_len, filters):
-    # Initialize base parameters
+def get_crew_member_list(doctype, txt, searchfield, start, page_len, filters=None):
+    if isinstance(filters, str):
+        import json
+        filters = json.loads(filters)
+    filters = filters or {}
+	
+	# Initialize base parameters
     params = {
         'txt': f"%{txt}%",
-        'start': int(start),
-        'page_len': int(page_len)
+        'start': int(start or 0),
+        'page_len': int(page_len or 20)
     }
-    
+	
+    conditions = []
+
+	# SECURITY: If 'name' is passed from JS, restrict to ONLY that user
+    if filters.get("name"):
+        params["restricted_name"] = filters.get("name")
+        conditions.append("AND tabUser.name = %(restricted_name)s")
+
     # Handle the excluded crew list using named parameters
     excluded_crew = filters.get("existing_crew") if filters else []
-    exclude_condition = ""
     
     if excluded_crew:
         # Create unique keys for each excluded member to avoid positional conflicts
@@ -134,8 +145,10 @@ def get_crew_member_list(doctype, txt, searchfield, start, page_len, filters):
             exclude_keys.append(f"%({key})s")
         
         # Build the NOT IN clause: AND tabUser.name NOT IN (%(exclude_0)s, %(exclude_1)s)
-        exclude_condition = f"AND tabUser.name NOT IN ({', '.join(exclude_keys)})"
+        conditions.append(f"AND tabUser.name NOT IN ({', '.join(exclude_keys)})")
 
+    extra_condition = " ".join(conditions)
+	
     query = f"""
         SELECT 
             tabUser.name, tabUser.full_name
@@ -147,7 +160,7 @@ def get_crew_member_list(doctype, txt, searchfield, start, page_len, filters):
             `tabHas Role`.parenttype = 'User'
             AND `tabHas Role`.role = 'Flight Crew Member'
             AND tabUser.enabled = 1
-            {exclude_condition}
+            {extra_condition}
             AND (tabUser.name LIKE %(txt)s OR tabUser.full_name LIKE %(txt)s)
         LIMIT %(start)s, %(page_len)s
     """

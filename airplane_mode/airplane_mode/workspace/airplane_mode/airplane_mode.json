@@ -1,7 +1,7 @@
 {
  "app": "airplane_mode",
  "charts": [],
- "content": "[{\"id\":\"H93Ave-IJq\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h3\\\">Flights and Tickets</span>\",\"col\":12}},{\"id\":\"ER954e9I6i\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Flights\",\"col\":3}},{\"id\":\"iXrX5EcFYK\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Crew Members\",\"col\":3}},{\"id\":\"eeystrn3Tm\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Tickets\",\"col\":3}},{\"id\":\"EU4BW8ABSA\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"k4SZ1Zckfc\",\"type\":\"paragraph\",\"data\":{\"text\":\"<span class=\\\"h4\\\">Lease Management</span>\",\"col\":12}},{\"id\":\"FmnB5QVIXF\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Rental Income Tracking\",\"col\":4}},{\"id\":\"W_x8UBXYBu\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Rental Contracts\",\"col\":3}},{\"id\":\"0j6h291yrO\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Tenant Leads\",\"col\":3}},{\"id\":\"ZVX9eDM6QG\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"All Shops\",\"col\":3}},{\"id\":\"5dL_ROxlwO\",\"type\":\"paragraph\",\"data\":{\"text\":\"<span class=\\\"h3\\\">Reports</span>\",\"col\":12}},{\"id\":\"c9hs4m-fQK\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Revenue By Airline\",\"col\":3}},{\"id\":\"IE_vKltjOf\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Flights by Crew Member\",\"col\":3}},{\"id\":\"h9kw6C9ieh\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Shop Occupancy (Basic)\",\"col\":3}},{\"id\":\"m1jcS82OMY\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Shop Occupancy (Full)\",\"col\":3}}]",
+ "content": "[{\"id\":\"H93Ave-IJq\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h3\\\">Flights and Tickets</span>\",\"col\":12}},{\"id\":\"ER954e9I6i\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Flights\",\"col\":3}},{\"id\":\"eeystrn3Tm\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Tickets\",\"col\":3}},{\"id\":\"EU4BW8ABSA\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"k4SZ1Zckfc\",\"type\":\"paragraph\",\"data\":{\"text\":\"<span class=\\\"h4\\\">Lease Management</span>\",\"col\":12}},{\"id\":\"FmnB5QVIXF\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Rental Income Tracking\",\"col\":4}},{\"id\":\"W_x8UBXYBu\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Rental Contracts\",\"col\":3}},{\"id\":\"0j6h291yrO\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Tenant Leads\",\"col\":3}},{\"id\":\"ZVX9eDM6QG\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"All Shops\",\"col\":3}},{\"id\":\"5dL_ROxlwO\",\"type\":\"paragraph\",\"data\":{\"text\":\"<span class=\\\"h3\\\">Reports</span>\",\"col\":12}},{\"id\":\"c9hs4m-fQK\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Revenue By Airline\",\"col\":3}},{\"id\":\"IE_vKltjOf\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Flights by Crew Member\",\"col\":3}},{\"id\":\"h9kw6C9ieh\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Shop Occupancy (Basic)\",\"col\":3}},{\"id\":\"m1jcS82OMY\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Shop Occupancy (Full)\",\"col\":3}}]",
  "creation": "2026-02-22 20:52:24.049786",
  "custom_blocks": [],
  "docstatus": 0,
@@ -14,7 +14,7 @@
  "label": "Airplane Mode",
  "link_type": "DocType",
  "links": [],
- "modified": "2026-03-27 09:00:42.645565",
+ "modified": "2026-03-30 16:37:39.151321",
  "modified_by": "Administrator",
  "module": "Airplane Mode",
  "name": "Airplane Mode",
@@ -37,17 +37,17 @@
   {
    "color": "Grey",
    "doc_view": "List",
-   "label": "Flights by Crew Member",
-   "link_to": "Flights by Crew Member",
-   "report_ref_doctype": "Flight Crew Member",
+   "label": "Shop Occupancy (Basic)",
+   "link_to": "Airport Shop Occupancy Report",
+   "report_ref_doctype": "Airport Shop",
    "type": "Report"
   },
   {
    "color": "Grey",
    "doc_view": "List",
-   "label": "Shop Occupancy (Basic)",
-   "link_to": "Airport Shop Occupancy Report",
-   "report_ref_doctype": "Airport Shop",
+   "label": "Flights by Crew Member",
+   "link_to": "Flights by Crew Member",
+   "report_ref_doctype": "Airplane Flight",
    "type": "Report"
   },
   {
@@ -73,14 +73,6 @@
    "link_to": "Shop Lease by Date",
    "report_ref_doctype": "Airport Shop",
    "type": "Report"
-  },
-  {
-   "color": "Grey",
-   "doc_view": "List",
-   "label": "Crew Members",
-   "link_to": "Flight Crew Member",
-   "stats_filter": "[]",
-   "type": "DocType"
   },
   {
    "color": "Grey",
