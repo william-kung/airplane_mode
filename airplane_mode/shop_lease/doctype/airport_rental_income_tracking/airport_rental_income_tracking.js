@@ -37,14 +37,18 @@ frappe.ui.form.on("Airport Rental Income Tracking", {
 					),
 					primary_action: {
 						'label': __("Confirm"),
-						'server_action': 'airplane_mode.shop_lease.doctype.airport_rental_income_tracking.airport_rental_income_tracking.send_receipt_email',
-						action(){
+						// 'server_action': 'airplane_mode.shop_lease.doctype.airport_rental_income_tracking.airport_rental_income_tracking.enqueue_receipt_email',
+						// 'args': {
+						// 	'docname': frm.doc.name
+						// },
+						action() {
 							frm.save("Submit");
 						}
 					}
 				})
 			})
 		}
+
 		frm.page.set_indicator(`${frm.doc.status}`, get_status_color(frm.doc.status));
 	}
 });

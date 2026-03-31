@@ -37,13 +37,14 @@ class AirportRentalIncomeTracking(Document):
 
 
 	def on_submit(self):
-		frappe.enqueue(
-			method=self.send_receipt_email,
-			queue='default'
-		)
-		frappe.msgprint(
-			_("Receipt is being sent to the tenant.")
-		)
+		if (self.status == "Received"): 
+			frappe.enqueue(
+				method=self.send_receipt_email,
+				queue='default'
+			)
+			frappe.msgprint(
+				_("Receipt is being sent to the tenant.")
+			)
 		if self.is_expired():
 			frappe.msgprint(
 				msg=_("No new income tracking period was created."), 
@@ -108,10 +109,8 @@ class AirportRentalIncomeTracking(Document):
 		}
 		return dates
 	
-	@frappe.whitelist()
 	def send_receipt_email(self):
 		recipient = frappe.db.get_value("Airport Tenant", self.tenant, "email")
-		self.today = today()
 		pdf_content = frappe.attach_print(
 			doctype=self.doctype, 
 			name=self.name,
@@ -134,4 +133,9 @@ class AirportRentalIncomeTracking(Document):
 		
 
 
-	
+# @frappe.whitelist()
+# def enqueue_receipt_email():
+# 	frappe.enqueue(
+# 		method='airplane_mode.airplane_mode.doctype.airport_rental_income_tracking.airport_rental_income_tracking.send_receipt_email',
+# 		queue='default'
+# 	)

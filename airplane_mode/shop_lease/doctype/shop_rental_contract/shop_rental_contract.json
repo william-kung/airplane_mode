@@ -6,8 +6,8 @@
  "engine": "InnoDB",
  "field_order": [
   "airport_shop",
-  "airport_code",
   "shop_number",
+  "airport_code",
   "column_break_dbvn",
   "tenant",
   "shop_name",
@@ -81,7 +81,8 @@
    "fetch_from": "airport_shop.airport_code",
    "fieldname": "airport_code",
    "fieldtype": "Data",
-   "label": "Airport Code"
+   "label": "Airport Code",
+   "read_only": 1
   },
   {
    "fieldname": "section_break_itnz",
@@ -99,7 +100,8 @@
    "fetch_from": "airport_shop.shop_number",
    "fieldname": "shop_number",
    "fieldtype": "Data",
-   "label": "Shop Number"
+   "label": "Shop Number",
+   "read_only": 1
   },
   {
    "fieldname": "shop_name",
@@ -126,7 +128,8 @@
    "fetch_from": "airport_shop.area",
    "fieldname": "area",
    "fieldtype": "Float",
-   "label": "Area"
+   "label": "Area",
+   "read_only": 1
   },
   {
    "button_color": "Primary",
@@ -145,7 +148,7 @@
    "link_fieldname": "shop_rental_contract"
   }
  ],
- "modified": "2026-03-26 19:35:32.250872",
+ "modified": "2026-03-31 14:10:24.883532",
  "modified_by": "Administrator",
  "module": "Shop Lease",
  "name": "Shop Rental Contract",
