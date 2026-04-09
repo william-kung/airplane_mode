@@ -1,4 +1,10 @@
-{% extends "templates/web.html" %}
+<html>
+    <head>
+        <link rel="stylesheet" href="/assets/airplane_mode/css/picnic.css">
+        <title>{{ title |e }}</title>
+    </head>
+</html>
+
 
 {% block page_content %}
 <h1>{{ title |e }}</h1>
@@ -17,5 +23,3 @@
     {% endif %}
 </div>
 {% endblock %}
-
-<!-- this is a sample default web page template -->
